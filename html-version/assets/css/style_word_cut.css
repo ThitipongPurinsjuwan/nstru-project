@@ -1,0 +1,160 @@
+#wrapper {
+  margin: auto;
+  position: relative;
+}
+#mymenu{
+  display: block;
+}
+.article {
+  border: 1px solid red;
+}
+td {
+  background: lightblue;
+}
+caption {
+  background: lightskyblue;
+}
+.title-word-cut{
+  color: #434A54;
+  font-size: 18px;
+}
+.sub{
+ cursor: move;
+}
+.sub-in-main {
+ width: max-content;
+ padding: 5px;
+ border-radius: 5px;
+ cursor: pointer;
+ background-color: #E9ECEF;
+ margin-bottom: 5px;
+ display: inline-block;
+}
+.sub-in-main i {
+ color: crimson;
+}
+.date { 
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #4F548B !important;padding: 3px 5px;border-radius: 4px;';
+}
+.time { 
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #553260 !important;padding: 3px 5px;border-radius: 4px;';
+}
+.email {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #3A6BA5 !important;padding: 3px 5px;border-radius: 4px;"';
+}
+.len {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #A65A5A !important;padding: 3px 5px;border-radius: 4px;';
+}
+.location {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #FFBF00 !important;padding: 3px 5px;border-radius: 4px;';
+}
+.organization { 
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #3faf75 !important;padding: 3px 5px;border-radius: 4px;';
+}
+.person {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #d42225 !important;padding: 3px 5px;border-radius: 4px;"';
+}   
+.phone {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #6495ED !important;padding: 3px 5px;border-radius: 4px;';
+}
+.url {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #478C89 !important;padding: 3px 5px;border-radius: 4px;';
+}
+.zip {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #20385E !important;padding: 3px 5px;border-radius: 4px;';
+}
+.money {
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #CCCCFF !important;padding: 3px 5px;border-radius: 4px;';
+}
+.law { 
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #FFA07A !important;padding: 3px 5px;border-radius: 4px;';
+}
+.action { 
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #5e88a5 !important;padding: 3px 5px;border-radius: 4px;';
+}
+.how { 
+  display: inline-block !important;margin: 1px;color: #FFF !important;background-color: #4a908f !important;padding: 3px 5px;border-radius: 4px;';
+}
+.hide-keyword{
+  color: #ffffff !important;
+}
+.btn-delete-wc{
+  color: #D42225;
+  float: right;
+}
+.btn-delete-wc:hover{
+  color: #e85558;
+}
+
+.label-main{
+  display: none;
+}
+.label-success{
+  width: 100%;
+  background-color: #188E49;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 4px 4px 4px 10px;
+  border-radius: 5px;
+}
+.label-delete{
+  width: 100%;
+  background-color: #C15357;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 4px 4px 4px 10px;
+  border-radius: 5px;
+}
+.remark-keyword{
+  text-align: right;
+  font-size: 13px;
+  font-weight: 100;
+}
+.btn-process-file{
+  float: right;
+}
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  line-height: 30px;
+  padding-left: 10px;
+}
+#map {
+  height: 100%;
+}
+#process-status{
+  display: none;
+  font-size: 22px;
+  padding: 5px;
+}
+#process-success{
+  display: none;
+  font-size: 22px;
+  padding: 5px;
+}
+#process-fail{
+  display: none;
+  font-size: 22px;
+  padding: 5px;
+}
+.process-success-text-green{
+  color: #1A8E49;
+  font-size: 24px !important;
+  font-weight: 600;
+}
+.process-success-text-red{
+  color: #D42225;
+  font-size: 24px !important;
+  font-weight: 600;
+}
+
+

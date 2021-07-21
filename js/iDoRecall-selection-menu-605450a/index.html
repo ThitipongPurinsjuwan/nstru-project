@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>JavaScript context menu on selection by iDoRecall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="demos/gh-pages/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="demos/gh-pages/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="demos/gh-pages/stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="demos/gh-pages/selection-menu.css" media="screen">
+
+    <script src="http://github.hubspot.com/tether/dist/js/tether.js"></script>
+    <script src="http://github.hubspot.com/drop/dist/js/drop.js"></script>
+  </head>
+  <body>
+  
+    <div id="mymenu" hidden>
+      <a id="selection-menu-google">Google search for foo</a>
+      <a id="selection-menu-bing">Bing search for foo</a>
+    </div>
+    
+    <script src="src/selection-menu.js"></script>
+
+    <script>
+    window.addEventListener('DOMContentLoaded', function () {
+
+      new SelectionMenu({
+        container: document.getElementsByClassName('main-content')[0],
+        id: 'selection-menu',
+        content: document.querySelector('#mymenu'),
+        onselect: function (e) {
+          var truncatedText = this.selectedText.replace(/\s+/g, ' ');
+          if (truncatedText.length > 30)
+            truncatedText = truncatedText.slice(0, 30) + '...';
+
+          this.menu.innerHTML = this.menu.innerHTML.replace(/ search for .*/g, ' search for <i>' + truncatedText + '</i></a>');
+        },
+        handler: function (e) {
+          var target = e.target,
+            id = target.id || target.parentNode.id,  // if clicking on the search text
+            selectedText = this.selectedText,
+            query = encodeURI(selectedText.replace(/\s/g, '+')),
+            searchURI;
+
+          if (id == 'selection-menu-google') {
+            searchURI = 'http://www.google.com/search?q=';
+          } else if (id == 'selection-menu-bing') {
+            searchURI = 'http://www.bing.com/search?q=';
+          }
+
+          location.href = searchURI + query;
+        }
+      });
+
+    });
+    </script>
+  
+  
+    <section class="page-header">
+      <h1 class="project-name">JavaScript context menu on selection</h1>
+      <h2 class="project-tagline">Automatically pop over a context menu when the user selects text</h2>
+      <a href="https://github.com/iDoRecall/selection-menu" class="btn">View on GitHub</a>
+      <a href="https://github.com/iDoRecall/selection-menu/zipball/gh-pages" class="btn">Download .zip</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+        <a id="selectionmenu" class="anchor" href="#selectionmenu" aria-hidden="true"><span class="octicon octicon-link"></span></a>SelectionMenu
+      </h1>
+
+      <p>SelectionMenu is a small, self-contained, framework-agnostic JavaScript module that displays a custom context menu when the user selects text on the page.</p>
+
+      <p>The demo on this page shows that you can dynamically alter the menu based on the selection text.</p>
+
+      <p>This menu may offer a search feature, dictionary lookup, post to Facebook or similar.</p>
+
+      <p>Check out the <strong><a href="demos/iDoRecall.html">comprehensive demo</a></strong> for more features.</p>
+      
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/iDoRecall/selection-menu">JavaScript context menu on selection</a> is maintained by <a href="https://github.com/iDoRecall">iDoRecall</a>.</span>
+
+        <span class="site-footer-credits">Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+
+  </body>
+</html>

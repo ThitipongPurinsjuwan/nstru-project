@@ -1,0 +1,29 @@
+/* Example menu styling */
+
+.selection-menu {
+    background: #f8f8f8;
+    border: 1px solid #555;
+    box-shadow: 1px 1px 4px #aaa;
+    border-radius: 4px;
+
+}
+
+/* Menu item styling */
+.selection-menu a {
+    /* It's important to set the font explicitly, because the user might select heading text, and we don't want heading text font size in the menu */
+    font: 1rem arial, sans-serif;
+    
+    display: block;
+    border-bottom: 1px solid #aaa;
+    padding: 0 4px;
+    color: #111;
+    text-decoration: none;
+    cursor: pointer;
+}
+.selection-menu a:last-child {
+    border-bottom: 0;
+}
+
+.selection-menu a:hover {
+    background: #FBB03B;
+}
