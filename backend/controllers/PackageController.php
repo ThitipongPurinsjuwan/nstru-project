@@ -3,8 +3,9 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Package;
+
 use backend\models\PackageSearch;
+use common\models\Package;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

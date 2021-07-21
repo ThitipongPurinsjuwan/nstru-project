@@ -67,7 +67,7 @@ class PlaceController extends Controller
         $model = new Place();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id,'type' => $model->type]);
+            return $this->redirect(['view', 'id' => $model->id, 'type' => $model->type]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class PlaceController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id,'type' => $model->type]);
+            return $this->redirect(['view', 'id' => $model->id, 'type' => $model->type]);
         }
 
         return $this->render('update', [

@@ -37,7 +37,7 @@ class PlaceController extends Controller
     {
         $searchModel = new PlaceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        var_dump('55')
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
