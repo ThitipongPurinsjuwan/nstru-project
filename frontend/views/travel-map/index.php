@@ -1,0 +1,209 @@
+<?php
+
+use yii\helpers\Html;
+
+/* @var $this yii\web\View */
+/* @var $searchModel frontend\models\PlaceSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = "แผนที่ท่องเที่ยว";
+?>
+<style>
+  #mapid {
+    height: 60em;
+  }
+
+  .infoBox {
+    -webkit-animation: fadeIn 300ms;
+    animation: fadeIn 300ms;
+  }
+
+  .map-box {
+    background-color: #fff;
+    min-height: 90px;
+    box-shadow: 0 0 22px rgb(0 0 0 / 7%);
+  }
+
+  .map-box a {
+    text-decoration: none;
+    border: 0px;
+    max-height: 190px;
+  }
+
+  .map-box-image {
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+
+  .map-box a img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: inline-block;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+
+  img {
+    width: auto;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    max-width: 100%;
+  }
+
+  .infoBox .date {
+    padding: 0 25px 0 25px;
+    color: #888;
+    font-weight: 500;
+    margin: 0;
+    display: block;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-top: -4px;
+  }
+
+  .map-box ul,
+  .map-box p {
+    padding: 6px 25px 25px;
+    font-size: 15px;
+    margin: 0 0 15px 0;
+    line-height: 25px;
+  }
+
+  .infoBox-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    z-index: 999;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    height: 38px;
+    width: 38px;
+    background-color: #fff;
+    color: #333;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    font-family: "FontAwesome";
+  }
+
+  .map-box h2,
+  .map-box a h2 {
+    padding: 5px 25px 0 25px;
+    margin: 20px 0px 0px 0px;
+    font-size: 15px;
+    text-transform: uppercase;
+    line-height: 21px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* Popup Map */
+  .leaflet-popup-content {
+    margin: 0px 0px !important;
+  }
+
+  .leaflet-container a.leaflet-popup-close-button {
+    background-color: white;
+    width: 2em;
+    height: 2em;
+  }
+
+  .leaflet-popup-content-wrapper {
+    border-radius: 0px !important;
+    padding: 0px;
+  }
+
+  /* End Popup Map */
+</style>
+<div class="travel-map-index">
+  <h1 class="mb-4"><?= Html::encode($this->title) ?></h1>
+  <div id="mapid"></div>
+</div>
+
+<!-- <script>
+  const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
+  const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`
+
+
+  const mymap = L.map('mapid').setView([8.78194858715432, 99.66638324253091], 13);
+  L.tileLayer(mapboxUrl, {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken
+  }).addTo(mymap);
+
+  const marker = L.marker([8.773971781389085, 99.7232031318622]).addTo(mymap);
+  marker.bindPopup("<b>Hello world!</b><br>I am a popup.")
+
+  const marker2 = L.marker([8.773457, 99.66754]).addTo(mymap);
+  const info2 = '<div class="infoBox"' +
+    ' "><div><a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/"' +
+    ' class="map-box-image"><img src="http://wpvoyager.purethe.me/files/2015/07/budapest-1959378_640-300x200.jpg"' +
+    ' alt=""><i class="map-box-icon"></i></a><a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">' +
+    '<h2>5 Reasons You Need To Visit Budapest</h2></a><span class="date"><time class="entry-date published updated"' +
+    ' datetime="2017-07-06T15:55:48+00:00">July 6, 2017</time></span><p>Phasellus rhoncus metus sed neque efficitur' +
+    ' vestibulum. Suspendisse lacinia lacus vel ante scelerisqu.</p></div></div>';
+
+  marker2.bindPopup(info2)
+</script> -->
+<script>
+  var cities = L.layerGroup();
+
+  L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+    L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
+    L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
+    L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+
+
+  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+  var grayscale = L.tileLayer(mbUrl, {
+      id: 'mapbox/light-v9',
+      tileSize: 512,
+      zoomOffset: -1,
+      attribution: mbAttr
+    }),
+    streets = L.tileLayer(mbUrl, {
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      attribution: mbAttr
+    });
+
+  var map = L.map('mapid', {
+    center: [39.73, -104.99],
+    zoom: 10,
+    layers: [grayscale, cities]
+  });
+
+  var baseLayers = {
+    "Grayscale": grayscale,
+    "Streets": streets
+  };
+
+  var overlays = {
+    "Cities": cities
+  };
+
+  L.control.layers(baseLayers, overlays).addTo(map);
+</script>
