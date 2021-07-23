@@ -1,5 +1,7 @@
 <?php
 use common\models\Images;
+use common\models\Place;
+
 header('Access-Control-Allow-Origin: *'); 
 header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token'); 
 header('Content-Type: application/json'); 
@@ -75,6 +77,11 @@ if ($type == 'setting_important') {
 			$model = Images::find()->where(['id' => $_POST["img_id"]])->one();
 			$model->important = 1;
 			$model->save();
+
+			$model = Place::find()->where(['key_images' => $_POST["key_images"]])->one();
+			$model->name_img_important = $_POST['img_name'];
+			$model->save();
+
 			Images::updateAll(['important' => 0], ['and',['<>', 'id', $_POST["img_id"]],['key_images'=>$_POST['key_images']]]);
 		}
 }

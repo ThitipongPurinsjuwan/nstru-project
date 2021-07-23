@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use common\models\Amphures; 
+use common\models\Districts; 
+use common\models\Provinces; 
+use app\models\Users; 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\PlaceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -22,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     </p>
 
                     <?php Pjax::begin(); ?>
-                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -36,7 +40,20 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'details',
             // 'activity',
             //'price',
-            'contact',
+            'business_day',
+            [
+                                    'attribute'=>'business_hours',
+                                    'format'=>'raw',    
+                                    'value' => function($model)
+                                    {
+                                        if(!empty($model->business_hours))
+                                        {
+                                            return str_replace(","," - ",$model->business_hours)." น."; 
+                                        }
+                                    },
+                                ],
+              'price',
+                                 'contact',
             //'business_hours',
             //'key_images',
             //'amphure',

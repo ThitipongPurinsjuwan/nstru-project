@@ -45,7 +45,7 @@ class Place extends \yii\db\ActiveRecord
             [['type', 'price', 'amphure', 'district', 'province', 'status', 'user_create'], 'integer'],
             [['name', 'details', 'activity', 'key_images',], 'string'],
               [['business_day'], 'string', 'max' => 100],
-            [['contact', 'business_hours'], 'string', 'max' => 150],
+            [['contact', 'business_hours','name_img_important'], 'string', 'max' => 150],
             [[ 'latitude', 'longitude', 'date_create'], 'string', 'max' => 20],
         ];
     }
@@ -58,7 +58,7 @@ class Place extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'type' => Yii::t('app', 'ประเภท'),
-            'name' => Yii::t('app', 'ชื่อ'),
+            'name' => Yii::t('app', 'ชื่อสถานที่'),
             'details' => Yii::t('app', 'รายละเอียด'),
             'activity' => Yii::t('app', 'กิจกรรม'),
             'price' => Yii::t('app', 'ราคาเริ่มต้น (โดยประมาณ)'),

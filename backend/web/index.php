@@ -1,4 +1,6 @@
 <?php
+
+use app\models\TypePlace;
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
@@ -17,6 +19,7 @@ $config = yii\helpers\ArrayHelper::merge(
 (new yii\web\Application($config))->run();
 
 date_default_timezone_set("Asia/Bangkok");
+
 
 function DateThai($strDate)
 {
@@ -155,12 +158,14 @@ function sksort(&$array, $subkey="id", $sort_ascending=false) {
 
 
 function titlePlace($type){
-   $arrtitle = array(
-	   1=>"แหล่งท่องเที่ยวเชิงเกษตร",
-	   2=>"ร้านอาหาร",
-	   3=>"ที่พัก",
-   );
-return $arrtitle[$type];
+//    $arrtitle = array(
+// 	   1=>"แหล่งท่องเที่ยวเชิงเกษตร",
+// 	   2=>"ร้านอาหาร",
+// 	   3=>"ที่พัก",
+//    );
+   $query = TypePlace::find()
+	->where(['id'=>$type])->one();
+	return $query->name;
 }
 
 function titleNews($type){

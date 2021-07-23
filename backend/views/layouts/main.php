@@ -221,7 +221,7 @@ $server = $_SERVER['REQUEST_URI'];
           <div class="dropdown">
 
            <a href="javascript:void(0)" class="nav-link user_btn showuser_data">
-            <img class="avatar" src="../../frontend/web/uploads/<?php echo $users_now['images']; ?>" alt="" data-toggle="tooltip" data-placement="right" 
+            <img class="avatar" src="<?php echo  Yii::getAlias('@web').'/uploads/'.$users_now['images']; ?>" alt="" data-toggle="tooltip" data-placement="right" 
             title="<?= \Yii::$app->user->identity->username ?> "/>
           </a>
           <a href="javascript:void(0)" class="nav-link icon menu_toggle"><i class="fa  fa-align-left"></i></a>
@@ -475,7 +475,7 @@ $server = $_SERVER['REQUEST_URI'];
   <div class="card">
     <div class="card-body">
       <div class="media">
-       <img class="avatar avatar-xl mr-3" src="../../frontend/web/uploads/<?php echo $users_now['images']; ?>" alt="avatar">
+       <img class="avatar avatar-xl mr-3" src="<?php echo  Yii::getAlias('@web').'/uploads/'.$users_now['images']; ?>" alt="avatar">
        <div class="media-body">
         <h5 class="m-0"><?php echo $users_now['name'];?></h5>
 

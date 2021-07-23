@@ -57,6 +57,7 @@ $(document).ready(function($) {
             <img class="img-fluid img-thumbnail " src="<?=$partimages;?>${e.name}" alt="">
         </a>
 
+        <?php if($manage==1):?>
         <div class="text-center">
             <div class="btn-group">
                 <button type="button" class="btn btn-danger btn-sm delete bb-fix" data-img_id="${e.id}"
@@ -69,6 +70,7 @@ $(document).ready(function($) {
                         class="fa fa-bookmark" aria-hidden="true" title="ตั้งเป็นภาพหลัก"></i></button>
             </div>
         </div>
+        <?php endif; //($manage==1);?>
 
     </div>`;
                     });

@@ -18,21 +18,29 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+     <div class="row">
 
+    <?//= $form->field($model, 'id') ?>
+
+<div class="col-md-6">
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'status') ?>
+    </div>
 
-    <?= $form->field($model, 'images') ?>
 
-    <?= $form->field($model, 'date_create') ?>
+    <?//= $form->field($model, 'status') ?>
+
+    <?//= $form->field($model, 'images') ?>
+
+    <?//= $form->field($model, 'date_create') ?>
 
     <?php // echo $form->field($model, 'user_create') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
+    <div class="form-group col-md-12">
+          <?= Html::submitButton('สืบค้น', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('ล้างค่า', ['class' => 'btn btn-outline-secondary']) ?>
+    </div>
+
     </div>
 
     <?php ActiveForm::end(); ?>

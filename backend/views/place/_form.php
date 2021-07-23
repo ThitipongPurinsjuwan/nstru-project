@@ -11,6 +11,19 @@ use app\models\Provinces;
 $type = $_GET['type'];
 ?>
 
+	<link
+		data-require="leaflet@0.7.3"
+		data-semver="0.7.3"
+		rel="stylesheet"
+		href="../../leaflet-0.7.3/leaflet.css"
+		/>
+		<script
+		data-require="leaflet@0.7.3"
+		data-semver="0.7.3"
+		src="../../leaflet-0.7.3/leaflet.js"
+		></script>
+
+
 <div class="place-form">
 
 
@@ -42,7 +55,7 @@ $type = $_GET['type'];
         <div class="col-md-6">
 
             <label class="control-label" for="place-province">จังหวัด</label>
-            <select class="select2search form-control " onchange="getID_province(this.value);">
+            <select class="form-control select__province" onchange="getID_province(this.value);">
                 <option value="">
                     เลือกจังหวัด
                 </option>
@@ -65,7 +78,7 @@ $type = $_GET['type'];
                 <?php endforeach ?>
             </select>
 
-            <?= $form->field($model, 'province')->textInput()->label(false); ?>
+            <?= $form->field($model, 'province')->hiddenInput()->label(false); ?>
         </div>
 
         <div class="col-md-6">
@@ -75,7 +88,7 @@ $type = $_GET['type'];
                     เลือกอำเภอ
                 </option>
             </select>
-            <?= $form->field($model, 'amphure')->textInput()->label(false); ?>
+            <?= $form->field($model, 'amphure')->hiddenInput()->label(false); ?>
         </div>
 
         <div class="col-md-6">
@@ -85,7 +98,7 @@ $type = $_GET['type'];
                     เลือกตำบล
                 </option>
             </select>
-            <?= $form->field($model, 'district')->textInput()->label(false); ?>
+            <?= $form->field($model, 'district')->hiddenInput()->label(false); ?>
         </div>
 
 
@@ -98,11 +111,29 @@ $type = $_GET['type'];
 
 
         <div class="col-md-6">
-            <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'latitude')->textInput(['maxlength' => true,'class'=>'form-control getlat']) ?>
         </div>
         <div class="col-md-6">
 
-            <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'longitude')->textInput(['maxlength' => true,'class'=>'form-control getlon']) ?>
+        </div>
+
+        <div class="col-md-12">
+<div class="card card-collapsed remove_collapsed">
+	<div class="card-header">
+		<h3 class="card-title"><dt><i class="fa fa-map-marker" style="color: #dc3545 !important;"></i> เลือกพิกัดจากแผนที่ (ละติจูด , ลองจิจูด)</dt></h3>
+		<div class="card-options">
+			<div class="show-hide">
+				<a href="#showmap" class="card-options-collapse open_map"><i class="fe fe-chevron-up"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+
+		<div id="mapid" style="width: 100%; height: 500px;"></div>    
+	</div>
+</div>
+
         </div>
 
         <div class="col-md-6">
@@ -142,7 +173,7 @@ $type = $_GET['type'];
                 <input class="daytype_2 checkday" type="checkbox" value="อา" id="checkday10" data-daytype="2"> อา
             </label>
 
-            <?= $form->field($model, 'business_day')->textInput(['maxlength' => true])->label(false);  ?>
+            <?= $form->field($model, 'business_day')->hiddenInput(['maxlength' => true])->label(false);  ?>
             <span id="show-business_day"></span>
         </div>
 
@@ -217,25 +248,50 @@ $(document).ready(function() {
 
 });
 
+	var mymap = null;
+                var setlat = 13.732564;
+                var setlon = 100.515000;
+                var setzoom = 5;
 
 let arr_day_check = [];
 
-<?php
-if(!$model->isNewRecord):?>
+<?php if(!$model->isNewRecord):?>
     let day_checked = $("#place-business_day").val();
+    $("#show-business_day").html(day_checked);
     arr_day_check = day_checked.split(",");
 <?php endif; //(!$model->isNewRecord): ?>
 
-
 const checked_checkday = () => {
+    console.log(arr_day_check);
     $(".checkday").each(function() {  
         let day = $(this).val();
-        if($(this).is(':checked')){    
-            arr_day_check.push(day);
+        let type = $(this).data("daytype");
+        arr_day_check.forEach(element => {
+            if(day==element){
+                 $(this).prop( "checked", true );
+                if (type == 1) {
+            arr_day_check = [];
+            $(".daytype_2").each(function() {
+                $(this).prop( "checked", false );
+                $(this).prop("disabled", true);
+            });
+
+            $(".daytype_1").each(function() {
+                if ($(this).val() != day) {
+                    $(this).prop( "checked", false );
+                    $(this).prop("disabled", true);
+                }
+            });
         }
+            }
+        });
     });
    
 }
+
+<?php if(!$model->isNewRecord):?>
+checked_checkday();
+<?php endif; //(!$model->isNewRecord): ?>
 
 
 $(document).on('change', '.checkday', function() {
@@ -246,14 +302,14 @@ $(document).on('change', '.checkday', function() {
         if (type == 1) {
             arr_day_check = [];
             $(".daytype_2").each(function() {
-                $(this).removeAttr('checked');
+                $(this).prop( "checked", false );
                 $(this).prop("disabled", true);
             });
 
             $(".daytype_1").each(function() {
                 if ($(this).val() != day) {
+                    $(this).prop( "checked", false );
                     $(this).prop("disabled", true);
-                    $(this).removeAttr('checked');
                 }
             });
         }
@@ -280,13 +336,24 @@ $(document).on('change', '.checkday', function() {
     $("#show-business_day").html(day_check);
 });
 
-
+const getlatlon_province = () => {
+    setlat = $(".select__province").find(':selected').data('province_lat');
+    setlon = $(".select__province").find(':selected').data('province_lon');
+    setzoom = 13;
+}
 
 const getID_province = (val) => {
     if (val != undefined) {
         get_amphures(val, '');
         $("#place-province").val(val);
-
+         setlat = $(".select__province").find(':selected').data('province_lat');
+         setlon = $(".select__province").find(':selected').data('province_lon');
+         setzoom = 13;
+          mymap.off();
+         mymap.remove();
+         mymap = null;
+        
+         loadmap();
     }
 }
 
@@ -312,7 +379,6 @@ $(document).on('click', '.select__amphoe', function() {
 });
 
 const get_districts = (id, idselect) => {
-    console.log(id + "-" + idselect);
     $.ajax({
         url: "index.php?r=site/json_dynamic_select&type=get_districts&amphure_id=" + id + "&idselect=" +
             idselect,
@@ -333,7 +399,81 @@ $(document).on('click', '.select__tombon', function() {
 
 <?php
 if(!$model->isNewRecord):?>
+    getlatlon_province();
     get_amphures($("#place-province").val(), $("#place-amphure").val());
     get_districts($("#place-amphure").val(), $("#place-district").val()); 
 <?php endif; //(!$model->isNewRecord): ?>
+	
+				$(document).on('click', '.open_map', function(){
+					$(".show-hide").html(`
+						<a href="#showmap" class="card-options-collapse close_mep"><i class="fa fa-angle-up"></i></a>
+						`);
+
+					$(".remove_collapsed").removeClass("card-collapsed");
+					if (mymap==null) {loadmap();}else{
+					}
+				});
+
+
+				$(document).on('focusin', '.getlat', function(){
+					$(".show-hide").html(`
+						<a href="#showmap" class="card-options-collapse close_mep"><i class="fa fa-angle-up"></i></a>
+						`);
+
+					$(".remove_collapsed").removeClass("card-collapsed");
+					if (mymap==null) {loadmap();}else{
+					}
+				});
+
+				$(document).on('focusin', '.getlon', function(){
+					$(".show-hide").html(`
+						<a href="#showmap" class="card-options-collapse close_mep"><i class="fa fa-angle-up"></i></a>
+						`);
+
+					$(".remove_collapsed").removeClass("card-collapsed");
+					if (mymap==null) {loadmap();}else{
+					}
+				});
+
+				$(document).on('click', '.close_mep', function(){
+					$(".show-hide").html(`
+						<a href="#showmap" class="card-options-collapse open_map"><i class="fe fe-chevron-up"></i></a>
+						`);
+					$(".remove_collapsed").addClass("card-collapsed");
+				});
+
+				function loadmap(){
+					mymap = L.map('mapid').setView([setlat, setlon], setzoom);
+
+					L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+						maxZoom: 19,
+						attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+						'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+						'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+						id: 'mapbox/streets-v11',
+						tileSize: 512,
+						zoomOffset: -1
+					}).addTo(mymap);
+
+
+
+					var popup = L.popup();
+
+					function onMapClick(e) {
+						popup
+						.setLatLng(e.latlng)
+						.setContent("ตำแหน่งที่ตั้ง " + e.latlng.toString())
+						.openOn(mymap);
+						var latlng = e.latlng.toString().replace('LatLng(', "");
+						latlng = latlng.toString().replace(')', "");
+						latlng = latlng.toString().split(",");
+                        document.getElementsByClassName("getlat")[0].value = latlng[0];
+                        document.getElementsByClassName("getlon")[0].value = latlng[1];
+					}
+
+					mymap.on('click', onMapClick);
+
+				}
+
+
 </script>

@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\PlaceSearch */
 /* @var $form yii\widgets\ActiveForm */
+$type = $_GET['type'];
+
 ?>
 
 <div class="place-search">
@@ -18,15 +20,25 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="row">
 
-    <?= $form->field($model, 'type') ?>
+    <?//= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'type')->hiddenInput(['maxlength' => true,'value'=>$type])->label(false); ?>
+
+ <div class="col-md-6">
     <?= $form->field($model, 'name') ?>
+    </div>
 
-    <?= $form->field($model, 'details') ?>
+    <div class="col-md-6">
+    <?= $form->field($model, 'contact') ?>
+    </div>
 
-    <?= $form->field($model, 'activity') ?>
+
+
+    <?//= $form->field($model, 'details') ?>
+
+    <?//= $form->field($model, 'activity') ?>
 
     <?php // echo $form->field($model, 'price') ?>
 
@@ -52,9 +64,11 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'user_create') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
+    <div class="form-group col-md-12">
+        <?= Html::submitButton('สืบค้น', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('ล้างค่า', ['class' => 'btn btn-outline-secondary']) ?>
+    </div>
+
     </div>
 
     <?php ActiveForm::end(); ?>

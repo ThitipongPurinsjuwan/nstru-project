@@ -66,8 +66,20 @@ class TypePlaceController extends Controller
     {
         $model = new TypePlace();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+       if ($model->load(Yii::$app->request->post())) {
+            $model->images = $model->upload($model,'images');
+            if (!empty($model->images )) {
+                if ($model->validate()) {
+
+                 if($model->save())
+                   
+                        return $this->redirect(['view', 'id' => $model->id]);
+                } else {
+
+                    $errors = $model->errors;
+                }
+            }
+
         }
 
         return $this->render('create', [
@@ -86,9 +98,24 @@ class TypePlaceController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+         if ($model->load(Yii::$app->request->post())) {
+ if ($model->validate()) {
+            $model->images = $model->upload($model,'images');
+
+            if($model->images!=$_POST['file_name_old']){
+                if(!empty($_POST['file_name_old'])){
+                    unlink(Yii::getAlias('@webroot').'/uploads/'.$_POST['file_name_old']);
+                }
+            }
+
+            if($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
+      } else {
+
+        $errors = $model->errors;
+    }
+}
+
 
         return $this->render('update', [
             'model' => $model,

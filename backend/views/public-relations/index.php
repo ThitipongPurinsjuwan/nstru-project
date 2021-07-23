@@ -4,19 +4,23 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\PublicRelationsSearch */
+/* @var $searchModel common\models\PublicRelationsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = Yii::t('app', 'Public Relations');
+$type = $_GET['type'];
+$this->title = Yii::t('app', 'ข้อมูล'.titleNews($type));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="public-relations-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Public Relations'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+ 
+    <h4><?= Html::encode($this->title) ?></h4>
+    <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="card card-success">
+                <div class="card-body ribbon">
+                    <p>
+                        <?= Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
+                    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -41,5 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
     <?php Pjax::end(); ?>
+    </div>
+    </div>
+    </div>
+    </div>
 
 </div>

@@ -40,7 +40,11 @@ class PlaceSearch extends Place
      */
     public function search($params)
     {
-        $query = Place::find();
+        $this->load($params);
+
+        $type = $_GET['type'];
+
+        $query = Place::find()->where(['type'=>$type]);
 
         // add conditions that should always apply here
 
@@ -48,7 +52,6 @@ class PlaceSearch extends Place
             'query' => $query,
         ]);
 
-        $this->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -59,7 +62,7 @@ class PlaceSearch extends Place
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => $this->type,
+            // 'type' => $this->type,
             'price' => $this->price,
             'amphure' => $this->amphure,
             'district' => $this->district,

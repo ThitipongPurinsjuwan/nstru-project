@@ -1,4 +1,5 @@
 @import url('fonts.css');
+
 body,
 input,
 textarea,
@@ -111,6 +112,13 @@ table>tr>td {
 
 .summary {
     margin-bottom: 5px;
+}
+
+label {
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: .5rem;
+    margin-top: 0.5em;
 }
 
 
@@ -584,16 +592,19 @@ table.detail-view td:first-child {
 }
 
 @media only screen and (max-width:620px) {
+
     .grid-view>table.table th:last-child,
     .table td:last-child {
         width: 120px !important;
         text-align: center;
     }
+
     .grid-view>table.table th:first-child,
     .table td:first-child {
         width: 40px !important;
         text-align: center;
     }
+
     table.detail-view th:last-child,
     .table td:last-child {
         width: auto !important;

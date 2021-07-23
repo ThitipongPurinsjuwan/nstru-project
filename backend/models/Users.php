@@ -81,6 +81,7 @@ class Users extends \yii\db\ActiveRecord
 
     public function upload($model,$attribute)
     {
+         
         $photo  = UploadedFile::getInstance($model, $attribute);
         $path = $this->getUploadPath();
         if ($this->validate() && $photo !== null) {

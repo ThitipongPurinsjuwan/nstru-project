@@ -153,22 +153,17 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.checkimg', function() {
-    <
-    ? php
-    if (!$model - > isNewRecord): ? >
+    <?php if (!$model->isNewRecord): ?>
         if (!$('#file_name_old').val()) {
             if (!$('#users-images').val()) {
                 $("#imgerror").html('<span class="help-block">รูปภาพต้องไม่ว่างเปล่า</span>');
                 return false;
             }
-        } <
-        ? php
-    else : ? >
+        } <?php else: ?>
         if (!$('#users-images').val()) {
             $("#imgerror").html('<span class="help-block">รูปภาพต้องไม่ว่างเปล่า</span>');
             return false;
-        } <
-        ? php endif; ? >
+        } <?php endif; ?>
 
 });
 </script>

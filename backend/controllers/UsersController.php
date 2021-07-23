@@ -226,6 +226,7 @@ class UsersController extends Controller
             }
 
             $model->images = $model->upload($model,'images');
+
             if($model->images!=$_POST['file_name_old']){
                 if(!empty($_POST['file_name_old'])){
                     unlink(Yii::getAlias('@webroot').'/uploads/'.$_POST['file_name_old']);
