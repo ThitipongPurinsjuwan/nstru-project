@@ -322,70 +322,20 @@ Header START -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
-            <?php
-            if (!empty($menu_main_role)) :
-              $mainmenusql = "SELECT * FROM `menu_main` WHERE m_status = 'Y' $where_main_id ORDER BY m_sort ASC LIMIT 6";
-              $array_menu_main = Yii::$app->db->createCommand($mainmenusql)->queryAll();
-              foreach ($array_menu_main as $val_menu_main) :
+            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&type=1"><i class="fas fa-newspaper"></i> ข่าวประชาสัมพันธ์</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&amp;type=2"><i class="fas fa-user-tie"></i> ข้อควรรู้สำหรับนักท่องเที่ยว (infographic)</a></li>
 
-                if ($val_menu_main['m_active'] == '1') {
-                  $class_active = 'active';
-                } else {
-                  $class_active = '';
-                }
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-street-view"></i> สถานที่</a>
+              <ul class="dropdown-menu" aria-labelledby="homeMenu">
+                <li><a class="dropdown-item" href="index.php?r=place/index&amp;type=1"><i class="fas fa-map-marked-alt"></i> แหล่งท่องเที่ยวเชิงเกษตร</a></li>
+                <li><a class="dropdown-item" href="index.php?r=place%2Findex&amp;type=2"><i class="fas fa-utensils"></i> ร้านอาหาร</a></li>
+                <li><a class="dropdown-item" href="index.php?r=place%2Findex&amp;type=3"><i class="fas fa-bed"></i> ที่พัก</a></li>
+              </ul>
+            </li>
 
-            ?>
-                <?php if ($val_menu_main['m_link'] != '' || strlen($val_menu_main['m_link']) > 1) : ?>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?= $val_menu_main['m_link'] ?>"><i class="<?= $val_menu_main['m_icon']; ?>"></i> <?= $val_menu_main['m_name']; ?></a>
-                  </li>
-
-                <?php else : ?>
-                  <?php if ($val_menu_main['m_type'] != 'left_side') : ?>
-                    <li class="nav-item"><a class="nav-link" href="index.php?r=site/pages&view=menu-center&mainid=<?= $val_menu_main['id']; ?>"><i class="<?= $val_menu_main['m_icon']; ?>"></i> <?= $val_menu_main['m_name']; ?></a></li>
-                  <?php else : ?>
-                    <?php if ($val_menu_main['id'] == '1') : ?>
-                    <?php endif; ?>
-                    <?php
-                    $server = $_SERVER['REQUEST_URI'];
-                    $server = str_replace("/textx/frontend/web/", '', $server);
-                    $activeMenu = Yii::$app->db->createCommand("SELECT * FROM `menu_sub`,`menu_main` WHERE menu_sub.menu_id = menu_main.id AND menu_sub.submenu_link = '" . $server . "'")->queryOne();
-
-                    if ($server == $activeMenu['submenu_link']) {
-                      $act = "active";
-                    }
-
-                    ?>
-                    <li class=" nav-item dropdown <?php if ($val_menu_main['id'] == $activeMenu['id']) {
-                                                    echo 'active';
-                                                  } else {
-                                                    echo '';
-                                                  } ?>">
-                      <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-expanded="false" id="<?= $val_menu_main['id']; ?>"><i class="<?= $val_menu_main['m_icon']; ?>"></i> <?= $val_menu_main['m_name']; ?></a>
-                      <ul aria-expanded="true" class="dropdown-menu" aria-labelledby="<?= $val_menu_main['id']; ?>">
-                        <?php
-                        $array_menu_sub = Yii::$app->db->createCommand("SELECT * FROM `menu_sub` WHERE submenu_active = 'Y' $where_sub_id AND menu_id = '" . $val_menu_main['id'] . "' ORDER BY submenu_sort ASC")->queryAll();
-
-                        foreach ($array_menu_sub as $val_menu_sub) {
-                        ?>
-                          <li class="<?php if ($val_menu_sub['submenu_id'] == $activeMenu['submenu_id']) {
-                                        echo 'active-sub';
-                                      } else {
-                                        echo '';
-                                      } ?>">
-                            <a class="dropdown-item" href="<?= $val_menu_sub['submenu_link']; ?>">
-                              <?= $val_menu_sub['submenu_name']; ?>
-                            </a>
-                          </li>
-                        <?php } ?>
-                      </ul>
-                    </li>
-                  <?php endif; ?>
-                <?php endif; ?>
-
-              <?php endforeach; ?>
-            <?php endif; ?>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=travel-map/index"><i class="fas fa-map-marked-alt"></i> แผนที่</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=package%2Findex"><i class="far fa-list-alt"></i> Package ท่องเที่ยว</a></li>
 
           </ul>
         </div>

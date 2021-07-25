@@ -128,82 +128,69 @@ $this->title = "แผนที่ท่องเที่ยว";
     padding: 0px;
   }
 
+  .place-box {
+    padding: 2em;
+  }
+
   /* End Popup Map */
 </style>
 <div class="travel-map-index">
   <h1 class="mb-4"><?= Html::encode($this->title) ?></h1>
   <div id="mapid"></div>
+
 </div>
 
-<!-- <script>
-  const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
-  const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`
+<script>
+  const newPopup = () => {
+    const popup = '<div class="infoBox">' +
+      '<div>' +
+      '<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/" class="map-box-image">' +
+      '<img src="http://wpvoyager.purethe.me/files/2015/07/budapest-1959378_640-300x200.jpg" alt="">' +
+      '<i class="map-box-icon"></i>' +
+      '</a>' +
+      '<div class="place-box">' +
+      '<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">' +
+      '<h3>5 Reasons You Need To Visit Budapest</h3>' +
+      '</a>' +
+      '<span class="date"><time class="entry-date published updated" datetime="2017-07-06T15:55:48+00:00">July 6, 2017</time></span>' +
+      '<p>Phasellus rhoncus metus sed neque efficitur vestibulum. Suspendisse lacinia lacus vel ante scelerisqu.</p>' +
+      '</div></div></div>';
 
+    return popup;
+  }
 
   const mymap = L.map('mapid').setView([8.78194858715432, 99.66638324253091], 13);
+  const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
+  const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
+
   L.tileLayer(mapboxUrl, {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
     id: 'mapbox/streets-v11',
+    attribution: '',
+    maxZoom: 18,
     tileSize: 512,
     zoomOffset: -1,
     accessToken
   }).addTo(mymap);
 
-  const marker = L.marker([8.773971781389085, 99.7232031318622]).addTo(mymap);
-  marker.bindPopup("<b>Hello world!</b><br>I am a popup.")
-
-  const marker2 = L.marker([8.773457, 99.66754]).addTo(mymap);
-  const info2 = '<div class="infoBox"' +
-    ' "><div><a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/"' +
-    ' class="map-box-image"><img src="http://wpvoyager.purethe.me/files/2015/07/budapest-1959378_640-300x200.jpg"' +
-    ' alt=""><i class="map-box-icon"></i></a><a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">' +
-    '<h2>5 Reasons You Need To Visit Budapest</h2></a><span class="date"><time class="entry-date published updated"' +
-    ' datetime="2017-07-06T15:55:48+00:00">July 6, 2017</time></span><p>Phasellus rhoncus metus sed neque efficitur' +
-    ' vestibulum. Suspendisse lacinia lacus vel ante scelerisqu.</p></div></div>';
-
-  marker2.bindPopup(info2)
-</script> -->
-<script>
-  var cities = L.layerGroup();
-
-  L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
-    L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
-    L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-    L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+  L.marker([8.773971781389085, 99.7232031318622]).addTo(mymap).bindPopup(newPopup());
+  L.marker([8.773457, 99.66754]).addTo(mymap).bindPopup(newPopup());
 
 
-  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+  const location = L.layerGroup().addTo(mymap);
 
-  var grayscale = L.tileLayer(mbUrl, {
-      id: 'mapbox/light-v9',
-      tileSize: 512,
-      zoomOffset: -1,
-      attribution: mbAttr
-    }),
-    streets = L.tileLayer(mbUrl, {
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      attribution: mbAttr
-    });
+  L.marker([8.773457, 99.7232]).bindPopup(newPopup()).addTo(location),
+    L.marker([8.773457, 99.7332]).bindPopup(newPopup()).addTo(location),
+    L.marker([8.773457, 99.7432]).bindPopup(newPopup()).addTo(location),
+    L.marker([8.773457, 99.7532]).bindPopup(newPopup()).addTo(location);
 
-  var map = L.map('mapid', {
-    center: [39.73, -104.99],
-    zoom: 10,
-    layers: [grayscale, cities]
-  });
 
-  var baseLayers = {
-    "Grayscale": grayscale,
-    "Streets": streets
-  };
+  const overlays = {
+    'location': location,
+  }
 
-  var overlays = {
-    "Cities": cities
-  };
+  const layerOption = {
+    collapsed: false
+  }
 
-  L.control.layers(baseLayers, overlays).addTo(map);
+  L.control.layers(null, overlays, layerOption).addTo(mymap)
 </script>

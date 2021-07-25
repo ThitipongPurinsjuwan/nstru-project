@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Place;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -24,6 +25,13 @@ class TravelMapController extends Controller
 
   public function actionIndex()
   {
-    return $this->render('index');
+    $modelPlace = Place::find()->all();
+    // echo "<pre>";
+    // print_r($modelPlace);
+    // echo "</pre>";
+    // exit;
+    return $this->render('index', [
+      'modelPlace' => $modelPlace,
+    ]);
   }
 }
