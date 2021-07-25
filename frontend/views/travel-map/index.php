@@ -176,16 +176,16 @@ $this->title = "แผนที่ท่องเที่ยว";
   L.marker([8.773457, 99.66754]).addTo(mymap).bindPopup(newPopup());
 
 
-  const location = L.layerGroup().addTo(mymap);
+  const cities = L.layerGroup().addTo(mymap);
 
-  L.marker([8.773457, 99.7232]).bindPopup(newPopup()).addTo(location),
-    L.marker([8.773457, 99.7332]).bindPopup(newPopup()).addTo(location),
-    L.marker([8.773457, 99.7432]).bindPopup(newPopup()).addTo(location),
-    L.marker([8.773457, 99.7532]).bindPopup(newPopup()).addTo(location);
+  L.marker([8.773457, 99.7232]).bindPopup(newPopup()).addTo(cities),
+    L.marker([8.773457, 99.7332]).bindPopup(newPopup()).addTo(cities),
+    L.marker([8.773457, 99.7432]).bindPopup(newPopup()).addTo(cities),
+    L.marker([8.773457, 99.7532]).bindPopup(newPopup()).addTo(cities);
 
 
   const overlays = {
-    'location': location,
+    'Location': cities,
   }
 
   const layerOption = {
