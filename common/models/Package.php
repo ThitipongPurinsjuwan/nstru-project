@@ -49,15 +49,15 @@ class Package extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'details' => Yii::t('app', 'Details'),
-            'date_moment' => Yii::t('app', 'Date Moment'),
-            'place' => Yii::t('app', 'Place'),
-            'price' => Yii::t('app', 'Price'),
-            'status' => Yii::t('app', 'Status'),
+            'name' => Yii::t('app', 'ชื่อ Package'),
+            'details' => Yii::t('app', 'รายละเอียด'),
+            'date_moment' => Yii::t('app', 'จำนวนวันสำหรับท่องเที่ยว'),
+            'place' => Yii::t('app', 'สถานที่ (แหล่งท่องเที่ยว, ร้านอาหาร, ที่พัก)'),
+            'price' => Yii::t('app', 'ราคารวมโดยประมาณ'),
+            'status' => Yii::t('app', 'สถานะ'),
             'key_images' => Yii::t('app', 'Key Images'),
-            'date_create' => Yii::t('app', 'Date Create'),
-            'user_create' => Yii::t('app', 'User Create'),
+             'date_create' => Yii::t('app', 'วันที่บันทึก/แก้ไข'),
+            'user_create' => Yii::t('app', 'ผู้บันทึก/แก้ไข'),
         ];
     }
 }

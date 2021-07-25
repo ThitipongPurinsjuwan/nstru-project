@@ -13,7 +13,7 @@ $type = $_GET['type'];
 <div class="place-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        // 'action' => ['index'],
         'method' => 'get',
         'options' => [
             'data-pjax' => 1

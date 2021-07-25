@@ -40,7 +40,10 @@ class PublicRelationsSearch extends PublicRelations
      */
     public function search($params)
     {
-        $query = PublicRelations::find();
+
+        $type = $_GET['type'];
+
+        $query = PublicRelations::find()->where(['type'=>$type]);
 
         // add conditions that should always apply here
 

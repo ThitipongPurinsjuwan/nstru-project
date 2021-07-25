@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\PublicRelationsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $type = $_GET['type'];
-$this->title = Yii::t('app', 'ข้อมูล'.titleNews($type));
+$this->title = Yii::t('app', ''.titleNews($type));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="public-relations-index">
@@ -23,19 +23,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     </p>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'topic:ntext',
-            'details:ntext',
-            'status',
-            'date_imparting',
+            // 'id',
+            'topic',
+               'details:html',
+            // 'status',
+              [
+                                    'attribute'=>'date_imparting',
+                                    'format'=>'raw',    
+                                    'value' => function($model)
+                                    {
+                                        if(!empty($model->date_imparting))
+                                        {
+                                            return DateThaiTime($model->date_imparting);
+                                        }
+                                    },
+                                ],
             //'key_images',
             //'date_create',
             //'user_create',

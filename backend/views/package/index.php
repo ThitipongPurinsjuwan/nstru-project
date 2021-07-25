@@ -7,21 +7,25 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\PackageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Packages');
+$this->title = Yii::t('app', 'Package ท่องเที่ยว');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="package-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4><?= Html::encode($this->title) ?></h4>
+    <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="card card-success">
+                <div class="card-body ribbon">
+                    <p>
+                        <?= Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
+                    </p>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Package'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php Pjax::begin(); ?>
+                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+                    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -42,6 +46,15 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
+                    <?php Pjax::end(); ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 </div>

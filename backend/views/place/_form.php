@@ -143,9 +143,12 @@ $type = $_GET['type'];
             </label>
             <label class="checkbox-inline mr-2">
                 <input class="daytype_1 checkday" type="checkbox" value="จ-ส" id="checkday2" data-daytype="1"> จ-ส
-            </label>
+            </label> 
             <label class="checkbox-inline mr-2">
                 <input class="daytype_1 checkday" type="checkbox" value="ส-อา" id="checkday3" data-daytype="1"> ส-อา
+            </label>
+              <label class="checkbox-inline mr-2">
+                <input class="daytype_1 checkday" type="checkbox" value="ทุกวัน" id="checkday2" data-daytype="1"> ทุกวัน
             </label>
 
             <br>
@@ -224,19 +227,23 @@ $type = $_GET['type'];
 <script>
 $(document).ready(function() {
 
-    const open_time = $("#open_time").val();
-    const close_time = $("#close_time").val();
+    
 
+<?php if(!$model->isNewRecord):?>
     const business_hours = $("#place-business_hours").val();
     if (business_hours != '') {
         const myArr = business_hours.split(",");
         $("#open_time").val(myArr[0]);
         $("#close_time").val(myArr[1]);
     }
+    <?php endif; //(!$model->isNewRecord): ?>
 
     $(document).on('change', '.checkinputtime', function() {
+        const open_time = $("#open_time").val();
+    const close_time = $("#close_time").val();
+         console.log(`${open_time} - ${close_time}`);
         if (close_time != '' && open_time != '') {
-            console.log(`${open_time} - ${close_time}`);
+           
             $(".error_checkinputtime").html('');
             $("#place-business_hours").val(`${open_time},${close_time}`);
         } else {

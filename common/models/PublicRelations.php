@@ -32,9 +32,11 @@ class PublicRelations extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['topic', 'details', 'status', 'date_imparting', 'key_images', 'date_create', 'user_create'], 'required'],
-            [['topic', 'details'], 'string'],
+            [['topic', 'details', 'status', 'date_imparting', 'key_images', 'date_create', 'user_create','type'], 'required'],
+            [['details'], 'string'],
             [['status', 'user_create'], 'integer'],
+            [['type'], 'string', 'max' => 1],
+            [['topic'], 'string', 'max' => 255],
             [['date_imparting', 'key_images', 'date_create'], 'string', 'max' => 20],
         ];
     }
@@ -46,13 +48,14 @@ class PublicRelations extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'topic' => Yii::t('app', 'Topic'),
-            'details' => Yii::t('app', 'Details'),
+            'type' => Yii::t('app', 'type'),
+            'topic' => Yii::t('app', 'หัวข้อ'),
+            'details' => Yii::t('app', 'รายละเอียด'),
             'status' => Yii::t('app', 'Status'),
-            'date_imparting' => Yii::t('app', 'Date Imparting'),
+            'date_imparting' => Yii::t('app', 'วันที่ประกาศ'),
             'key_images' => Yii::t('app', 'Key Images'),
-            'date_create' => Yii::t('app', 'Date Create'),
-            'user_create' => Yii::t('app', 'User Create'),
+            'date_create' => Yii::t('app', 'วันที่บันทีึก/แก้ไข'),
+            'user_create' => Yii::t('app', 'ผู้บันทีึก/แก้ไข'),
         ];
     }
 }

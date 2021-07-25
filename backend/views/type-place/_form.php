@@ -54,8 +54,8 @@ input[type="file"] {
         <?= $form->field($model, 'user_create')->hiddenInput(['value'=>$_SESSION['user_id']])->label(false); ?>
         <?= $form->field($model, 'status')->hiddenInput(['value'=>1])->label(false); ?>
 
-        <div class="form-group col-md-12">
-            <?= Html::submitButton(Yii::t('app', 'บันทึก'), ['class' => 'btn btn-success checkimg']) ?>
+        <div class="form-group text-center col-md-12 mt-3">
+            <?= Html::submitButton(Yii::t('app', 'บันทึกข้อมูล'), ['class' => 'btn btn-success']) ?>
         </div>
 
     </div>

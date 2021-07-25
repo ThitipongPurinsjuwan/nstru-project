@@ -110,6 +110,13 @@ class PackageController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionGetDataPlace()
+    {
+        $this->layout = false;
+        return $this->render('get-data-place');
+    }
+
+
     /**
      * Finds the Package model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

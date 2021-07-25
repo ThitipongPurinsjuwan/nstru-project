@@ -62,7 +62,7 @@ class PlaceSearch extends Place
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            // 'type' => $this->type,
+            'type' => $this->type,
             'price' => $this->price,
             'amphure' => $this->amphure,
             'district' => $this->district,
@@ -72,14 +72,14 @@ class PlaceSearch extends Place
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'details', $this->details])
-            ->andFilterWhere(['like', 'activity', $this->activity])
-            ->andFilterWhere(['like', 'contact', $this->contact])
-            ->andFilterWhere(['like', 'business_hours', $this->business_hours])
-            ->andFilterWhere(['like', 'key_images', $this->key_images])
-            ->andFilterWhere(['like', 'latitude', $this->latitude])
-            ->andFilterWhere(['like', 'longitude', $this->longitude])
-            ->andFilterWhere(['like', 'date_create', $this->date_create]);
+            // ->andFilterWhere(['like', 'details', $this->details])
+            // ->andFilterWhere(['like', 'activity', $this->activity])
+            ->andFilterWhere(['like', 'contact', $this->contact]);
+            // ->andFilterWhere(['like', 'business_hours', $this->business_hours])
+            // ->andFilterWhere(['like', 'key_images', $this->key_images])
+            // ->andFilterWhere(['like', 'latitude', $this->latitude])
+            // ->andFilterWhere(['like', 'longitude', $this->longitude])
+            // ->andFilterWhere(['like', 'date_create', $this->date_create]);
 
         return $dataProvider;
     }

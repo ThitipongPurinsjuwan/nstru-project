@@ -754,15 +754,15 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
          
             <!-- <div class="card">
               <div class="card-body w_sparkline"> -->
-              <a href="index.php?r=eform-data/index&form_id=21" class="btn btn-outline-primary" style="padding: 10px;" >
+              <!-- <a href="index.php?r=eform-data/index&form_id=21" class="btn btn-outline-primary" style="padding: 10px;" >
                 <div class="details">
                   <h6 class="mb-0"> <i class="fa fa-user-o"></i> ข้อมูล ผกร</h6>
                 </div>
-                </a>
+                </a> -->
               <!-- </div>
             </div> -->
             
-            <a href="index.php?r=organization" class="btn btn-outline-primary" style="padding: 10px;" >
+            <!-- <a href="index.php?r=organization" class="btn btn-outline-primary" style="padding: 10px;" >
                 <div class="details">
                   <h6 class="mb-0"> <i class="fa fa-flag-o"></i> ข้อมูล องค์กร</h6>
                 </div>
@@ -772,7 +772,7 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
                 <div class="details">
                   <h6 class="mb-0"> <i class="fa fa-map-o"></i> ข้อมูล พื้นที่ปฏิบัติการ</h6>
                 </div>
-                </a>
+                </a> -->
 
 
           <!-- <a href="index.php?r=organization">

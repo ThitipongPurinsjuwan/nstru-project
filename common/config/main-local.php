@@ -5,7 +5,7 @@ return [
       'class' => 'yii\db\Connection',
       'dsn' => 'mysql:host=db;dbname=nstru',
       'username' => 'root',
-      'password' => '1234',
+      'password' => '123132123',
       'charset' => 'utf8',
     ],
     'hosxpDb' => [

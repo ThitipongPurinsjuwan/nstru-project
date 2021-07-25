@@ -79,8 +79,10 @@ if ($type == 'setting_important') {
 			$model->save();
 
 			$model = Place::find()->where(['key_images' => $_POST["key_images"]])->one();
+			if($model!=null){
 			$model->name_img_important = $_POST['img_name'];
 			$model->save();
+	}
 
 			Images::updateAll(['important' => 0], ['and',['<>', 'id', $_POST["img_id"]],['key_images'=>$_POST['key_images']]]);
 		}
