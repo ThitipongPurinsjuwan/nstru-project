@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\PublicRelations;
-use app\models\PublicRelationsSearch;
+use common\models\PublicRelations;
+use frontend\models\PublicRelationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
