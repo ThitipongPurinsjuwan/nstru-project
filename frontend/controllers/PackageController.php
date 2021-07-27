@@ -3,8 +3,10 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\Package;
+use common\models\Package;
 use app\models\PackageSearch;
+use common\models\Images;
+use common\models\Place;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,12 +37,19 @@ class PackageController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PackageSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        // $searchModel = new PackageSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        // return $this->render('index', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+        $model = Package::find()->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
@@ -52,8 +61,34 @@ class PackageController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $modelImage = Images::find()->where(['key_images' => $model->key_images])->one()->name;
+        $str = explode(",", $model->place);
+        $modelPlacearray = [];
+
+        for ($i = 0; $i < count($str); $i++) {
+            // 
+            $model_r = explode('"', $str[$i])[1];
+            array_push($modelPlacearray, (int)$model_r);
+        }
+        // print_r($modelPlacearray);
+
+        // $listPlace = explode(',', $model->place);
+
+        $modelPlace = Place::find()->where(['in', 'id', $modelPlacearray])->all();
+        // echo "<pre>";
+        // foreach ($modelPlace as $modelPlace) {
+
+        //     print_r($modelPlace->name);
+        //     echo "<br>";
+        // }
+        // echo "</pre>";
+        // exit;
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'modelImage' => $modelImage,
+            'modelPlace' => $modelPlace,
         ]);
     }
 
