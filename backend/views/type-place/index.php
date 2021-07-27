@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card card-success">
                 <div class="card-body ribbon">
-                    <p>
+                    <!-- <p>
                         <?= Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
-                    </p>
+                    </p> -->
 
     <?php Pjax::begin(); ?>
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>

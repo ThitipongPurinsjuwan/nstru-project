@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Place;
-use common\models\PlaceSearch;
+use backend\models\PlaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

@@ -12,7 +12,7 @@ $type = $_GET['type'];
 <div class="public-relations-search">
 
     <?php $form = ActiveForm::begin([
-        // 'action' => ['index'],
+        'action' => ['index','type'=>$type],
         'method' => 'get',
         'options' => [
             'data-pjax' => 1

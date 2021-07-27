@@ -664,13 +664,13 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
        </div>
        <div class="right">
         <ul class="nav nav-pills">
-          <li class="nav-item">
-            <div class="btn-group btn-group-sm" role="group">
-              <button class="btn btn-default" id="resize-font-orig">A</button>
-              <button class="btn btn-default" id="resize-font-plus">A+</button>
-            </div>
+          <!-- <li class="nav-item">
+            <div class="btn-group btn-group-sm" role="group">-->
+          <button class="btn btn-default" id="resize-font-orig" style="display:none;">A</button>
+              <button class="btn btn-default" id="resize-font-plus" style="display:none;">A+</button>
+          <!--   </div>
 
-          </li>
+          </li> -->
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">นำเข้าข้อมูล</a>
             <div class="dropdown-menu">
@@ -703,16 +703,16 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
           <a class="dropdown-item" href="index.php?r=users/update&id=<?php echo $_SESSION['user_id'];?>
           "><i class="dropdown-icon fe fe-user"></i> ข้อมูลส่วนตัว</a>
           <a class="dropdown-item" href="index.php?r=users/change_password&id=<?php echo $_SESSION['user_id'];?>"><i class="dropdown-icon fe fe-unlock"></i> เปลี่ยนรหัสผ่าน</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="index.php?r=user-role"><i class="dropdown-icon fe fe-sliders"></i> จัดการสิทธิ์การเข้าใช้งาน</a>
-          <?php if ($_SESSION['user_role']=='2'): ?>
+          <!-- <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="index.php?r=user-role"><i class="dropdown-icon fe fe-sliders"></i> จัดการสิทธิ์การเข้าใช้งาน</a> -->
+          <!-- <?php if ($_SESSION['user_role']=='2'): ?>
             <a class="dropdown-item" href="index.php?r=site/pages&view=stat_users_department"><i class="dropdown-icon fe fe-server"></i> สถิตการเข้าใช้งานหน่วยงาน</a>
           <?php endif ?>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="javascript:void(0)"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
           <a class="dropdown-item" href="index.php?r=site/pages&view=questionAndAnswer"><i class="dropdown-icon fe fe-file"></i> Q&A</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> ต้องการความช่วยเหลือ?</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> ต้องการความช่วยเหลือ?</a> -->
           <a class="dropdown-item" href="index.php?r=site/logout_clear"><i class="dropdown-icon fe fe-log-out"></i> Sign out</a>
         </div>
       </div>
@@ -820,10 +820,10 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 col-sm-12 text-md-right">
-          <ul class="list-inline mb-0">
+          <!-- <ul class="list-inline mb-0">
            <li class="list-inline-item"><a href="../doc/index.html">Documentation</a></li>
            <li class="list-inline-item"><a href="javascript:void(0)">FAQ</a></li>
-         </ul>
+         </ul> -->
        </div>
      </div>
    </div>

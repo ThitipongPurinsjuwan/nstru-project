@@ -43,7 +43,10 @@ use common\models\Place;
         </div>
 
         <div class="col-md-8">
-
+            <?php
+                 $myArray = str_replace('"',"",$model->place);
+                                 $myArray = explode(',', $myArray); 
+            ?>
             <label class="control-label" for="place-package">สถานที่</label>
             <select class="form-control select__package" multiple>
                 <!-- onchange="getID_place(this.value);" -->
@@ -61,7 +64,7 @@ use common\models\Place;
 					?>
 
                 <?php foreach ($Place as $pla): 
-						// $selected = ($model->province==$prov['id']) ? 'selected' : '' ;
+						$selected = (in_array($pla['id'],$myArray)) ? 'selected' : '' ;
 						?>
                 <option value="<?=$pla['id'];?>" data-type="<?=$pla['type'];?>" data-id="<?=$pla['id'];?>"
                     <?=$selected;?>>
@@ -69,7 +72,7 @@ use common\models\Place;
                 <?php endforeach ?>
             </select>
 
-            <?= $form->field($model, 'place')->textInput()->label(false); ?>
+            <?= $form->field($model, 'place')->hiddenInput()->label(false); ?>
         </div>
 
         <div class="col-md-12">
@@ -105,6 +108,7 @@ use common\models\Place;
 <script>
 $(document).ready(function() {
 
+    
     var mymap = null;
     var setlat = 13.732564;
     var setlon = 100.515000;
@@ -113,35 +117,62 @@ $(document).ready(function() {
     var count_price = 0;
 
     const getdata_place = (arr_id) => {
-        mymap.off();
-        mymap.remove();
-        mymap = null;
+        console.log(arr_id);
 
-        $.ajax({
-            url: "index.php?r=package/get-data-place",
+        var data = null;
+        var data = $.ajax({
+            async: false,
+            crossDomain: true,
+            url: "index.php?r=package/get-data-place&type=somedata",
             method: "POST",
-            dataType: 'json',
+            global: false,
+            dataType: "json",
             data: {
                 arr_id: arr_id,
             },
-            success: function(data) {
-                loadmap(data);
-            }
-        });
+        }).done(function(response) {
+            return response;
+        }).responseJSON;
+
+        console.log(data);
+
+        loadmap(data);
+
     }
 
-    const arr_id = [];
-    $('select').select2()
+ 
+
+    var arr_id = [];
+    $('select').select2({
+    multiple: true,
+  });
+
+  <?php if(!$model->isNewRecord):?>
+    let val = $('#package-place').val();
+    var array = JSON.parse("[" + val + "]");
+    arr_id = array;
+getdata_place(arr_id);
+  $('select').val(array).trigger('change');
+
+<?php else: //(!$model->isNewRecord): ?>
+loadmap(arr);
+<?php endif; //(!$model->isNewRecord): ?>
 
     $('select').on('select2:select', function(e) {
         var data = e.params.data;
         arr_id.push(data.id);
+          mymap.off();
+        mymap.remove();
+        mymap = null;
         getdata_place(arr_id);
         $('#package-place').val('"' + arr_id.join('","') + '"');
 
     });
 
     $('select').on('select2:unselect', function(e) {
+         mymap.off();
+        mymap.remove();
+        mymap = null;
         var data = e.params.data;
         arr_id.splice($.inArray(data.id, arr_id), 1);
         if (arr_id.length > 0) {
@@ -149,18 +180,25 @@ $(document).ready(function() {
             getdata_place(arr_id);
         } else {
             $('#package-place').val('');
+            getdata_place([]);
         }
 
     });
 
-    loadmap(arr);
+    
+
+    
 
     function loadmap(arr) {
-
+        count_price = 0;
         if (arr.length > 0) {
             setlat = arr[0].latitude;
-            setlat = arr[0].longitude;
+            setlon = arr[0].longitude;
             setzoom = 15;
+        }else{
+              setlat = 13.732564;
+     setlon = 100.515000;
+     setzoom = 5;
         }
 
         mymap = L.map('map').setView([setlat, setlon], setzoom);
@@ -174,9 +212,8 @@ $(document).ready(function() {
 
 
         for (var i = 0; i < arr.length; i++) {
-            count_price = count_price+arr[i].price;
-            $("#package-price").val(count_price);
-            
+            count_price = count_price + arr[i].price;
+
             marker =
                 L.marker([arr[i].latitude, arr[i].longitude], {
                     icon: new L.Icon({
@@ -189,11 +226,16 @@ $(document).ready(function() {
                 .bindPopup(`
                 <h6><b>${arr[i].name}</b></h6><br>
                 <img src="../../images/images_upload_forform/${arr[i].name_img_important}" class="img-set-inmarker">
-                <br>
-                ${arr[i].detail}
+                <br><br>
+                <b>วันทำการ : </b>${arr[i].business_day}<br>
+                <b>เวลาเปิด-ปิด : </b>${arr[i].business_hours}<br>
+                <b>ช่องทางติดต่อ : </b> ${arr[i].contact}
                 `)
                 .openPopup();
         }
+        console.log(count_price);
+        $("#package-price").val(count_price);
+
 
     }
 

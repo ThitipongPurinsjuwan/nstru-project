@@ -34,7 +34,7 @@ $type = isset($_GET['type']) ?  $_GET['type'] : (isset($_POST['type']) ? $_POST[
 	$count = 0;
 	$resultArray = array();
 
-		$resultArray[sum] = $use;
+		$resultArray['sum'] = $use;
 			
 
 	if(isset($_SESSION['user_id'])){

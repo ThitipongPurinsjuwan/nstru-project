@@ -84,6 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-md-6">
                     <div class="card card-info">
                         <div class="card-body ribbon">
+                         <h6><b>ภาพประกอบ</b></h6>
                             <input type="hidden" class="get_key_images" value="<?=$model->key_images;?>">
                             <?php
                     $manage = 0; 

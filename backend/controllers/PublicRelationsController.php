@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\PublicRelations;
-use common\models\PublicRelationsSearch;
+use backend\models\PublicRelationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

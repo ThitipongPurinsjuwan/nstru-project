@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use common\models\Place;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PackageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -23,19 +24,42 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <?php Pjax::begin(); ?>
-                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'name',
-            'details:ntext',
+            // 'details:ntext',
             'date_moment',
-            'place:ntext',
+            // 'place:ntext',
+             [
+                                    'attribute'=>'place',
+                                    'format'=>'raw',    
+                                    'value' => function($model)
+                                    {
+                                        if(!empty($model->place))
+                                        {
+                                   $myArray = str_replace('"',"",$model->place);
+                                 $myArray = explode(',', $myArray);               
+ $query =  Place::find()->where(['id'=>$myArray])
+                    ->orderBy([
+                        'name'=>SORT_ASC,
+                    ])
+                    ->all();
+$showplace = "";
+foreach ($query as $row) {
+    $showplace .= "- ".$row['name']."<br>";
+}
+$showplace = substr($showplace, 0, -4);
+                                            return  $showplace;
+                                        }
+                                    },
+                                ],
             //'price',
             //'status',
             //'key_images',
