@@ -49,9 +49,9 @@ use app\models\Notification;
 
 AppAsset::register($this);
 
-// if (empty($_SESSION['user_id'])) {
-//   echo "<script>window.location='index.php?r=site/logout_clear'</script>";
-// }
+if (empty($_SESSION['user_id'])) {
+  echo "<script>window.location='index.php?r=site/logout_clear'</script>";
+}
 
 // Start :: User Website Usaged
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";;
