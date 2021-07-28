@@ -377,38 +377,38 @@
       <!-- Category item -->
       <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(../../themes/template/assets/images/blog/4by3/01.jpg); background-position: center left; background-size: cover;">
         <div class="p-3">
-          <a href="#" class="stretched-link btn-link fw-bold text-white h5">Travel</a>
+          <a href="index.php?r=place/index&amp;type=1" class="stretched-link btn-link fw-bold text-white h5">แหล่งท่องเที่ยวเชิงเกษตร</a>
         </div>
       </div>
       <!-- Category item -->
       <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../../themes/template/assets/images/blog/4by3/02.jpg); background-position: center left; background-size: cover;">
         <div class="bg-dark-overlay-4 p-3">
-          <a href="#" class="stretched-link btn-link fw-bold text-white h5">Business</a>
+          <a href="index.php?r=place%2Findex&amp;type=2" class="stretched-link btn-link fw-bold text-white h5">ร้านอาหาร</a>
         </div>
       </div>
       <!-- Category item -->
       <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../../themes/template/assets/images/blog/4by3/03.jpg); background-position: center left; background-size: cover;">
         <div class="bg-dark-overlay-4 p-3">
-          <a href="#" class="stretched-link btn-link fw-bold text-white h5">Marketing</a>
+          <a href="index.php?r=place%2Findex&amp;type=3" class="stretched-link btn-link fw-bold text-white h5">ที่พัก</a>
         </div>
       </div>
       <!-- Category item -->
-      <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../../themes/template/assets/images/blog/4by3/04.jpg); background-position: center left; background-size: cover;">
+      <!-- <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../../themes/template/assets/images/blog/4by3/04.jpg); background-position: center left; background-size: cover;">
         <div class="bg-dark-overlay-4 p-3">
           <a href="#" class="stretched-link btn-link fw-bold text-white h5">Photography</a>
         </div>
-      </div>
+      </div> -->
       <!-- Category item -->
-      <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../../themes/template/assets/images/blog/4by3/05.jpg); background-position: center left; background-size: cover;">
+      <!-- <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../../themes/template/assets/images/blog/4by3/05.jpg); background-position: center left; background-size: cover;">
         <div class="bg-dark-overlay-4 p-3">
           <a href="#" class="stretched-link btn-link fw-bold text-white h5">Sports</a>
         </div>
-      </div>
+      </div> -->
       <!-- View All Category button -->
-      <div class="text-center mt-3">
+      <!-- <div class="text-center mt-3">
         <a href="#" class="fw-bold text-body text-primary-hover"><u>View all
             categories</u></a>
-      </div>
+      </div> -->
     </div>
     <!-- Trending topics widget END -->
 
