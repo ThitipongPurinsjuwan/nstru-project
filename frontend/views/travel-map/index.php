@@ -151,6 +151,12 @@ $this->title = "แผนที่ท่องเที่ยว";
     max-width: 100% !important;
   }
 
+  .btn-map {
+    border: 2px solid rgba(0, 0, 0, 0.2) !important;
+    background-clip: padding-box !important;
+    background-color: #fff !important;
+  }
+
   /* End Popup Map */
 </style>
 <div class="travel-map-index">
@@ -168,7 +174,6 @@ $this->title = "แผนที่ท่องเที่ยว";
       </div>
     </div>
   </div>
-  <button data-bs-toggle="modal" id="clickModal" href="#mapModalToggle" class="btn btn-success-soft">full screen</button>
   <!-- modal -->
 
   <h1 class="mb-4"><?= Html::encode($this->title) ?></h1>
@@ -207,6 +212,12 @@ $this->title = "แผนที่ท่องเที่ยว";
       showTopRight
     } = mapOption;
 
+    const container = L.DomUtil.get('mapM');
+
+    if (!container || container._leaflet_id) {
+      return;
+    }
+
     const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
     const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
     const mymap = L.map(mapId).setView([8.44425, 99.95037], 13);
@@ -214,28 +225,11 @@ $this->title = "แผนที่ท่องเที่ยว";
     if (!!showTopRight) {
       L.control.custom({
           position: 'topright',
-          content: '<button type="button" class="btn btn-default">' +
-            '    <i class="fa fa-crosshairs"></i>' +
-            '</button>' +
-            '<button type="button" class="btn btn-info">' +
-            '    <i class="fa fa-compass"></i>' +
-            '</button>' +
-            '<button type="button" class="btn btn-primary">' +
-            '    <i class="fa fa-spinner fa-pulse fa-fw"></i>' +
-            '</button>' +
-            '<button type="button" class="btn btn-danger">' +
-            '    <i class="fa fa-times"></i>' +
-            '</button>' +
-            '<button type="button" class="btn btn-success">' +
-            '    <i class="fa fa-check"></i>' +
-            '</button>' +
-            '<button type="button" class="btn btn-warning">' +
-            '    <i class="fa fa-exclamation-triangle"></i>' +
+          content: '<button data-bs-toggle="modal" href="#mapModalToggle" type="button" class="btn btn-map">' +
+            '    <i class="fas fa-expand"></i>' +
             '</button>',
           classes: '',
           style: {
-            margin: '10px',
-            padding: '0px 0 0 0',
             cursor: 'pointer',
           },
           datas: {
@@ -243,16 +237,9 @@ $this->title = "แผนที่ท่องเที่ยว";
           },
           events: {
             click: function(data) {
-              console.log('wrapper div element clicked');
-              console.log(data);
-            },
-            dblclick: function(data) {
-              console.log('wrapper div element dblclicked');
-              console.log(data);
-            },
-            contextmenu: function(data) {
-              console.log('wrapper div element contextmenu');
-              console.log(data);
+              initMap({
+                mapId: 'mapM'
+              });
             },
           }
         })
@@ -316,17 +303,10 @@ $this->title = "แผนที่ท่องเที่ยว";
     }, 450);
   }
 
-  const btn = document.querySelector('#clickModal');
-  btn.addEventListener('click', () => {
-    initMap({
-      mapId: 'mapM',
-      mapOption: {
-        showTopRight: true
-      }
-    });
-  })
-
   initMap({
-    mapId: 'mapid'
+    mapId: 'mapid',
+    mapOption: {
+      showTopRight: true
+    }
   });
 </script>
