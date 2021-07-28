@@ -9,7 +9,6 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 \yii\web\YiiAsset::register($this);
 ?>
-<link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/glightbox/css/glightbox.css" />
 <div class="place-view">
   <main>
     <!-- ======================= Inner intro START -->
@@ -50,45 +49,21 @@ $this->title = $model->name;
     <!-- ======================= Inner intro END -->
 
     <!-- ======================= Main START -->
-    <section>
+    <section class="pt-0">
       <div class="container position-relative" data-sticky-container>
         <div class="row">
           <!-- Main Content START -->
           <div class="col-lg-9 mb-5">
             <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
             <!-- Images -->
-            <div class="row g-2 ">
-              <div class="col-md-4">
-                <a href="../../themes/template/assets/images/blog/3by4/01.jpg" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="../../themes/template/assets/images/blog/3by4/01.jpg" alt="Image">
-                </a>
-
-              </div>
-              <div class="col-md-4">
-                <a href="../../themes/template/assets/images/blog/3by4/02.jpg" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="../../themes/template/assets/images/blog/3by4/02.jpg" alt="Image">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <a href="../../themes/template/assets/images/blog/3by4/03.jpg" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="../../themes/template/assets/images/blog/3by4/03.jpg" alt="Image">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <a href="../../themes/template/assets/images/blog/3by4/04.jpg" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="../../themes/template/assets/images/blog/3by4/04.jpg" alt="Image">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <a href="../../themes/template/assets/images/blog/3by4/05.jpg" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="../../themes/template/assets/images/blog/3by4/05.jpg" alt="Image">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <a href="../../themes/template/assets/images/blog/3by4/06.jpg" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="../../themes/template/assets/images/blog/3by4/06.jpg" alt="Image">
-                </a>
-              </div>
+            <div class="row g-2 my-5">
+              <?php foreach ($modelImage as $modelImage) :  ?>
+                <div class="col-md-4">
+                  <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                    <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
+                  </a>
+                </div>
+              <?php endforeach  ?>
             </div>
 
             <h4 class="mt-4">Productive rant about business</h4>
@@ -148,7 +123,5 @@ $this->title = $model->name;
       </div>
     </div>
     <!-- ======================= Sticky post END -->
-    <script src="../../themes/template/assets/vendor/glightbox/js/glightbox.js"></script>
-
   </main>
 </div>

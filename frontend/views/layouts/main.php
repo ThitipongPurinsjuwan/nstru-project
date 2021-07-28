@@ -167,6 +167,7 @@ $user_font_size = Yii::$app->db->createCommand("SELECT font_size FROM `users` WH
   <link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/font-awesome/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/bootstrap-icons/bootstrap-icons.css">
   <link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/tiny-slider/tiny-slider.css">
+  <link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/glightbox/css/glightbox.css">
 
   <!-- Theme CSS -->
   <link id="style-switch" rel="stylesheet" type="text/css" href="../../themes/template/assets/css/style.css">
@@ -812,6 +813,7 @@ JS libraries, plugins and custom scripts -->
   <!-- Vendors -->
   <script src="../../themes/template/assets/vendor/tiny-slider/tiny-slider.js"></script>
   <script src="../../themes/template/assets/vendor/sticky-js/sticky.min.js"></script>
+  <script src="../../themes/template/assets/vendor/glightbox/js/glightbox.js"></script>
 
   <!-- Template Functions -->
   <script src="../../themes/template/assets/js/functions.js"></script>
