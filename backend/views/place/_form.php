@@ -32,7 +32,7 @@ $type = $_GET['type'];
     <div class="row">
 
         <?= $form->field($model, 'type')->hiddenInput(['maxlength' => true,'value'=>$type])->label(false); ?>
-        <?php $key_images = (!$model->isNewRecord) ? $model->key_images : date("Ymd_his");?>
+        <?php $key_images = (!$model->isNewRecord) ? $model->key_images : time();?>
         <?= $form->field($model, 'key_images')->hiddenInput(['maxlength' => true,'value'=>$key_images, 'class'=>'get_key_images'])->label(false);?>
 
         <?= $form->field($model, 'date_create')->hiddenInput(['maxlength' => true, 'value'=>date("Y-m-d H:i:s")])->label(false); ?>
@@ -108,6 +108,19 @@ $type = $_GET['type'];
         <div class="col-md-12">
             <?= $form->field($model, 'contact')->textArea(['maxlength' => true,'rows' => '2']) ?>
         </div>
+
+          <div class="col-md-6">
+            <?= $form->field($model, 'facebook_link')->textInput(['maxlength' => true,'class'=>'form-control engOnly']) ?>
+        </div>
+
+          <div class="col-md-6">
+            <?= $form->field($model, 'line_id')->textInput(['maxlength' => true,'class'=>'form-control engOnly']) ?>
+        </div>
+          <div class="col-md-6">
+            <?= $form->field($model, 'phone')->textInput(['maxlength' => 12,'class'=>'form-control formatphone', 'onkeypress'=>'validate(event)']) ?>
+        </div>
+
+         <div class="col-md-6"> </div>
 
 
         <div class="col-md-6">

@@ -88,6 +88,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                     },
                                 ],
                                  'contact',
+                                  'facebook_link',
+                                   'line_id',
+                                    'phone',
             'latitude',
             'longitude',
            

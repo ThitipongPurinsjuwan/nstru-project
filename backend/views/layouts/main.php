@@ -850,6 +850,14 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
     });
 
   });
+
+$(document).on('keyup', '.formatphone', function(){
+  var length = 0;
+  length = $(this).val().length;
+  if (length == 3 || length == 7) {
+    $(this).val($(this).val().concat('-'));
+  }
+});
 </script>
 
 <div class="modal fade bd-modal-manual" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -892,6 +900,26 @@ $user_group = (!empty($usergroup['name'])) ? 'กลุ่มผู้ใช้ 
 <script src="../../js/select2/select2.min.js"></script>
 
 <script>
+
+function validate(evt) {
+  var theEvent = evt || window.event;
+
+  // Handle paste
+  if (theEvent.type === 'paste') {
+      key = event.clipboardData.getData('text/plain');
+  } else {
+  // Handle key press
+      var key = theEvent.keyCode || theEvent.which;
+      key = String.fromCharCode(key);
+  }
+  var regex = /[0-9]/;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+
+
 
   function validateQty(el, evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
@@ -1084,6 +1112,19 @@ $(".get_val_datetime").val(year + "-" + month + "-" + date);
       });
 
   });
+
+  $(document).on('keypress', '.engOnly', function(e){
+			var regex = new RegExp("^[a-zA-Z@/._0-9]+$");
+			var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+			if (regex.test(str)) {
+				return true;
+			}
+			else
+			{
+			e.preventDefault();
+			return false;
+			}
+		});
 
 
  });

@@ -85,6 +85,9 @@ if ($type == 'setting_important') {
 	}
 
 			Images::updateAll(['important' => 0], ['and',['<>', 'id', $_POST["img_id"]],['key_images'=>$_POST['key_images']]]);
+
+				$output['status'] = 1;
+		echo json_encode($output);
 		}
 }
 
@@ -97,6 +100,8 @@ if ($type == "delete") {
 		{
 			$model = Images::findOne($_POST["img_id"]);
 			$model->delete();
+			$output['status'] = 1;
+		echo json_encode($output);
 			
 		}
 	}

@@ -24,8 +24,8 @@ $partimages = $_URL.'/images/images_upload_forform/';
     font-size: 0.6rem;
 }
 
-#showlistimages{
-    height:555px;
+#showlistimages {
+    height: 555px;
     overflow: auto;
 }
 </style>
@@ -216,6 +216,7 @@ $(document).ready(function($) {
                 url: "index.php?r=site/page-ajaxuploadfile&type=setting_important&key_images=" +
                     get_key_images,
                 method: "POST",
+                dataType: 'json',
                 data: {
                     img_id: img_id,
                     img_name: img_name,
@@ -230,6 +231,7 @@ $(document).ready(function($) {
     });
 
     $(document).on('click', '.delete', function() {
+         showlistimages();
         var img_id = $(this).data("img_id");
         var img_name = $(this).data("img_name");
         if (confirm("ต้องการลบรูปภาพใช่หรือไม่?")) {
@@ -237,6 +239,7 @@ $(document).ready(function($) {
                 url: "index.php?r=site/page-ajaxuploadfile&type=delete&key_images=" +
                     get_key_images,
                 method: "POST",
+                dataType: 'json',
                 data: {
                     img_id: img_id,
                     img_name: img_name

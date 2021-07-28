@@ -26,6 +26,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name') ?>
 
     </div>
+    <div class="col-md-6">
+    <?= $form->field($model, 'name_eng') ?>
+
+    </div>
+
+
 
 
     <?//= $form->field($model, 'status') ?>

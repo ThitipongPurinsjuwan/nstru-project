@@ -34,7 +34,7 @@ class TypePlace extends \yii\db\ActiveRecord
         return [
             [['name', 'status', 'date_create', 'user_create'], 'required'],
             [['images'], 'string'],
-             [['name'], 'string', 'max' => 255],
+             [['name','name_eng'], 'string', 'max' => 255],
             [['status', 'user_create'], 'integer'],
             [['date_create'], 'string', 'max' => 20],
         ];
@@ -48,10 +48,13 @@ class TypePlace extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'ชื่อประเภท'),
+             'name_eng' => Yii::t('app', 'ชื่อประเภท (ภาษาอังกฤษ)'),
             'status' => Yii::t('app', 'สถานะ'),
             'images' => Yii::t('app', 'Icon marker'),
             'date_create' => Yii::t('app', 'วันที่บันทึก/แก้ไข'),
             'user_create' => Yii::t('app', 'ผู้บันทึก/แก้ไข'),
+            
+            
         ];
     }
 
@@ -72,13 +75,11 @@ class TypePlace extends \yii\db\ActiveRecord
   }
 
   public function getUploadPath(){
-    //   return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
-    return '../../images/image_maker/';
+      return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
   }
 
   public function getUploadUrl(){
-    //   return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
-    return '../../images/image_maker/';
+      return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
   }
 
   public function getPhotoViewer(){

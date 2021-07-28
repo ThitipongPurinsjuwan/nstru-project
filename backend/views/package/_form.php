@@ -85,7 +85,7 @@ use common\models\Place;
 
         <?= $form->field($model, 'status')->hiddenInput(['value'=>1])->label(false); ?>
 
-        <?php $key_images = (!$model->isNewRecord) ? $model->key_images : date("Ymd_his");?>
+        <?php $key_images = (!$model->isNewRecord) ? $model->key_images : time();?>
         <?= $form->field($model, 'key_images')->hiddenInput(['maxlength' => true,'value'=>$key_images, 'class'=>'get_key_images'])->label(false);?>
 
         <?= $form->field($model, 'date_create')->hiddenInput(['maxlength' => true, 'value'=>date("Y-m-d H:i:s")])->label(false); ?>

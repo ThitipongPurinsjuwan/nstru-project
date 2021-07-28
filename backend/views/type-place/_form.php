@@ -25,12 +25,14 @@ input[type="file"] {
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
         </div>
-
+        
         <div class="col-md-6">
 
-            <?//= $form->field($model, 'status')->radioList([0 => 'ปิดใช้งาน', 1 => 'เปิดใช้งาน']); ?>
+            <?= $form->field($model, 'name_eng')->textInput(['maxlength' => true]) ?>
 
         </div>
+
+      
 
         <div class="col-md-6">
 

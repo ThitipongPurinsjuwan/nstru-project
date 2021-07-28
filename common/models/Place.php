@@ -45,6 +45,8 @@ class Place extends \yii\db\ActiveRecord
             [['type', 'price', 'amphure', 'district', 'province', 'status', 'user_create'], 'integer'],
             [['name', 'details', 'activity', 'key_images',], 'string'],
               [['business_day'], 'string', 'max' => 100],
+                [['facebook_link','line_id','phone'], 'string', 'max' => 255],
+                  [['phone'], 'string', 'max' => 15],
             [['contact', 'business_hours','name_img_important'], 'string', 'max' => 150],
             [[ 'latitude', 'longitude', 'date_create'], 'string', 'max' => 20],
         ];
@@ -63,6 +65,9 @@ class Place extends \yii\db\ActiveRecord
             'activity' => Yii::t('app', 'กิจกรรม'),
             'price' => Yii::t('app', 'ราคาเริ่มต้น (โดยประมาณ)'),
             'contact' => Yii::t('app', 'ข้อมูลการติดต่อ'),
+             'facebook_link' => Yii::t('app', 'Facebook Link'),
+              'line_id' => Yii::t('app', 'Line ID'),
+               'phone' => Yii::t('app', 'เบอร์ติดต่อ'),
              'business_day' => Yii::t('app', 'วันทำการ'),
             'business_hours' => Yii::t('app', 'เวลาทำการ'),
             'key_images' => Yii::t('app', 'Key Images'),
