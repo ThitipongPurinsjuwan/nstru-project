@@ -9,6 +9,20 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 \yii\web\YiiAsset::register($this);
 ?>
+
+<style>
+  .rounded {
+    /* display: flex; */
+    height: 20vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 3px 7px #00000096;
+    width: 70vh;
+    margin: auto;
+  }
+</style>
+
+
 <div class="place-view">
   <main>
     <!-- ======================= Inner intro START -->
