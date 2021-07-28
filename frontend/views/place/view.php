@@ -266,19 +266,22 @@ $this->title = $model->name;
               </div>
               <ul class="nav flex-column">
                 <?php if ($model->facebook_link !== '') : ?>
-                  <li class="nav-item"><a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a>
+                  </li>
                 <?php endif ?>
 
                 <?php if ($model->line_id !== '') : ?>
-                  <li class="nav-item"><a class="nav-link" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a>
+                  </li>
                 <?php endif ?>
 
                 <?php if ($model->phone !== '') : ?>
                   <li class="nav-item">
-                    <form action="tel:<?= $model->phone ?>" class="nav-link"><button type="submit" class="phone-box"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></button></form>
+                    <a class="nav-link" href="callto://<?= $model->phone ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
                   </li>
                 <?php endif ?>
-                <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-youtube-square fa-fw me-2 text-youtube"></i>YouTube</a></li> -->
               </ul>
               <!-- Newsletter START -->
               <div class="bg-primary-soft p-3 mt-4 rounded-3 text-center">
