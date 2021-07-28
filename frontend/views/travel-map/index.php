@@ -9,6 +9,11 @@ use yii\helpers\Html;
 $this->title = "แผนที่ท่องเที่ยว";
 ?>
 <style>
+  #mapM {
+    height: 100%;
+    width: 100%;
+  }
+
   #mapid {
     height: 60em;
   }
@@ -140,92 +145,188 @@ $this->title = "แผนที่ท่องเที่ยว";
     margin-bottom: 0.5em;
   }
 
+  .full-screen {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+  }
+
   /* End Popup Map */
 </style>
 <div class="travel-map-index">
+  <!-- modal -->
+  <div class="modal fade" id="mapModalToggle" aria-hidden="true" aria-labelledby="mapModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered full-screen">
+      <div class="modal-content full-screen">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mapModalToggleLabel">แผนที่</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="mapM"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button data-bs-toggle="modal" id="clickModal" href="#mapModalToggle" class="btn btn-success-soft">full screen</button>
+  <!-- modal -->
+
   <h1 class="mb-4"><?= Html::encode($this->title) ?></h1>
   <div id="mapid"></div>
-
 </div>
 
 <script>
-  const newPopup = ({
-    img,
-    name = 'name',
-    detail = 'detail',
-    bussinessDay = 'open day'
+  const initMap = ({
+    mapId,
+    mapOption = {}
   }) => {
-    const popup = `<div class="infoBox">` +
-      `<div>` +
-      `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/" class="map-box-image">` +
-      `<img src="${img}">` +
-      `<i class="map-box-icon"></i>` +
-      `</a>` +
-      `<div class="place-box">` +
-      `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">` +
-      `<h3>${name}</h3>` +
-      `</a>` +
-      `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
-      `<p>${detail}</p>` +
-      `</div></div></div>`;
+    const newPopup = ({
+      img,
+      name = 'name',
+      detail = 'detail',
+      bussinessDay = 'open day'
+    }) => {
+      const popup = `<div class="infoBox">` +
+        `<div>` +
+        `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/" class="map-box-image">` +
+        `<img src="${img}">` +
+        `<i class="map-box-icon"></i>` +
+        `</a>` +
+        `<div class="place-box">` +
+        `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">` +
+        `<h3>${name}</h3>` +
+        `</a>` +
+        `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
+        `<p>${detail}</p>` +
+        `</div></div></div>`;
 
-    return popup;
-  }
-
-  const mymap = L.map('mapid').setView([8.44425, 99.95037], 13);
-  const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
-  const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
-
-  L.tileLayer(mapboxUrl, {
-    id: 'mapbox/streets-v11',
-    attribution: '',
-    maxZoom: 18,
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken
-  }).addTo(mymap);
-
-
-  const attraction = L.layerGroup().addTo(mymap);
-  const restaurant = L.layerGroup().addTo(mymap);
-  const hostel = L.layerGroup().addTo(mymap);
-  const others = L.layerGroup().addTo(mymap);
-
-  const LeafIcon = L.Icon.extend({
-    options: {
-      iconSize: [38, 40],
+      return popup;
     }
-  });
 
-  <?php for ($i = 0; $i < count($modelPlace); $i++) : ?>
+    const {
+      showTopRight
+    } = mapOption;
 
-    L.marker([
-        <?= $modelPlace[$i]['latitude'] ?>,
-        <?= $modelPlace[$i]['longitude'] ?>
-      ], {
-        icon: new LeafIcon({
-          iconUrl: '<?= $modelPlace[$i]['icon'] ?>'
+    const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
+    const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
+    const mymap = L.map(mapId).setView([8.44425, 99.95037], 13);
+
+    if (!!showTopRight) {
+      L.control.custom({
+          position: 'topright',
+          content: '<button type="button" class="btn btn-default">' +
+            '    <i class="fa fa-crosshairs"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-info">' +
+            '    <i class="fa fa-compass"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-primary">' +
+            '    <i class="fa fa-spinner fa-pulse fa-fw"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-danger">' +
+            '    <i class="fa fa-times"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-success">' +
+            '    <i class="fa fa-check"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-warning">' +
+            '    <i class="fa fa-exclamation-triangle"></i>' +
+            '</button>',
+          classes: '',
+          style: {
+            margin: '10px',
+            padding: '0px 0 0 0',
+            cursor: 'pointer',
+          },
+          datas: {
+            'foo': 'bar',
+          },
+          events: {
+            click: function(data) {
+              console.log('wrapper div element clicked');
+              console.log(data);
+            },
+            dblclick: function(data) {
+              console.log('wrapper div element dblclicked');
+              console.log(data);
+            },
+            contextmenu: function(data) {
+              console.log('wrapper div element contextmenu');
+              console.log(data);
+            },
+          }
         })
-      })
-      .bindPopup(newPopup({
-        name: '<?= $modelPlace[$i]['name'] ?>',
-        bussinessDay: '<?= $modelPlace[$i]['business_day'] ?>',
-        img: '<?= '../../images/images_upload_forform/' . $modelPlace[$i]['name_img_important'] ?>',
-      }))
-      .addTo(<?= $modelPlace[$i]['type_name'] ?>);
+        .addTo(mymap);
+    }
 
-  <?php endfor ?>
+    L.tileLayer(mapboxUrl, {
+      id: 'mapbox/streets-v11',
+      attribution: '',
+      maxZoom: 18,
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken
+    }).addTo(mymap);
 
-  const overlays = {
-    '<img src="../../images/image_maker/cbe9d35988281a4749388e69a7947b74.png" class="tool-icon">สถานที่ท่องเที่ยว': attraction,
-    '<img src="../../images/image_maker/4c4aec457d80886da1af6b7f338b6c0d.png" class="tool-icon">ร้านอาหาร': restaurant,
-    '<img src="../../images/image_maker/9d934073551321de49ea828ac4548508.png" class="tool-icon">ที่พัก': hostel,
-    '<img src="../../images/image_maker/9d934073551321de49ea828ac4548508.png" class="tool-icon">อื่นๆ': others,
+    const attraction = L.layerGroup().addTo(mymap);
+    const restaurant = L.layerGroup().addTo(mymap);
+    const hostel = L.layerGroup().addTo(mymap);
+    const others = L.layerGroup().addTo(mymap);
+
+    const LeafIcon = L.Icon.extend({
+      options: {
+        iconSize: [38, 40],
+      }
+    });
+
+    <?php for ($i = 0; $i < count($modelPlace); $i++) : ?>
+
+      L.marker([
+          <?= $modelPlace[$i]['latitude'] ?>,
+          <?= $modelPlace[$i]['longitude'] ?>
+        ], {
+          icon: new LeafIcon({
+            iconUrl: '<?= $modelPlace[$i]['icon'] ?>'
+          })
+        })
+        .bindPopup(newPopup({
+          name: '<?= $modelPlace[$i]['name'] ?>',
+          bussinessDay: '<?= $modelPlace[$i]['business_day'] ?>',
+          img: '<?= '../../images/images_upload_forform/' . $modelPlace[$i]['name_img_important'] ?>',
+        }))
+        .addTo(<?= $modelPlace[$i]['type_name'] ?>);
+
+    <?php endfor ?>
+
+    const overlays = {
+      '<img src="../../images/image_maker/cbe9d35988281a4749388e69a7947b74.png" class="tool-icon">สถานที่ท่องเที่ยว': attraction,
+      '<img src="../../images/image_maker/4c4aec457d80886da1af6b7f338b6c0d.png" class="tool-icon">ร้านอาหาร': restaurant,
+      '<img src="../../images/image_maker/9d934073551321de49ea828ac4548508.png" class="tool-icon">ที่พัก': hostel,
+      '<img src="../../images/image_maker/9d934073551321de49ea828ac4548508.png" class="tool-icon">อื่นๆ': others,
+    }
+
+    const layerOption = {
+      collapsed: false
+    }
+
+    L.control.layers(null, overlays, layerOption).addTo(mymap);
+
+    setTimeout(() => {
+      mymap.invalidateSize(true);
+    }, 450);
   }
 
-  const layerOption = {
-    collapsed: false
-  }
+  const btn = document.querySelector('#clickModal');
+  btn.addEventListener('click', () => {
+    initMap({
+      mapId: 'mapM',
+      mapOption: {
+        showTopRight: true
+      }
+    });
+  })
 
-  L.control.layers(null, overlays, layerOption).addTo(mymap)
+  initMap({
+    mapId: 'mapid'
+  });
 </script>
