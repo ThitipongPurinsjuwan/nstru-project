@@ -176,6 +176,12 @@ $this->title = $model->name;
   .text-phone {
     color: #f85f4f;
   }
+
+  .phone-box {
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding: 0;
+  }
 </style>
 
 
@@ -258,11 +264,20 @@ $this->title = $model->name;
               <div class="row">
                 <h5>Contact</h5>
               </div>
-
               <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></li>
+                <?php if ($model->facebook_link !== '') : ?>
+                  <li class="nav-item"><a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
+                <?php endif ?>
+
+                <?php if ($model->line_id !== '') : ?>
+                  <li class="nav-item"><a class="nav-link" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a></li>
+                <?php endif ?>
+
+                <?php if ($model->phone !== '') : ?>
+                  <li class="nav-item">
+                    <form action="tel:<?= $model->phone ?>" class="nav-link"><button type="submit" class="phone-box"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></button></form>
+                  </li>
+                <?php endif ?>
                 <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-youtube-square fa-fw me-2 text-youtube"></i>YouTube</a></li> -->
               </ul>
               <!-- Newsletter START -->
