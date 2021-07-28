@@ -12,13 +12,21 @@ $this->title = $model->name;
 
 <style>
   .rounded {
-    /* display: flex; */
+
     height: 20vh;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 2px 3px 7px #00000096;
     width: 70vh;
     margin: auto;
+  }
+
+  .text-line {
+    color: #00c10f;
+  }
+
+  .text-phone {
+    color: #f85f4f;
   }
 </style>
 
@@ -102,6 +110,13 @@ $this->title = $model->name;
               <div class="row">
                 <h5>Contact</h5>
               </div>
+
+              <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-youtube-square fa-fw me-2 text-youtube"></i>YouTube</a></li> -->
+              </ul>
               <!-- Newsletter START -->
               <div class="bg-primary-soft p-3 mt-4 rounded-3 text-center">
                 <?= $model->contact ?>
