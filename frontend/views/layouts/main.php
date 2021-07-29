@@ -263,51 +263,7 @@ $user_font_size = Yii::$app->db->createCommand("SELECT font_size FROM `users` WH
   <!-- =======================
 Header START -->
   <header class="navbar-light navbar-sticky header-static">
-    <div class="navbar-top d-none d-lg-block small">
-      <div class="container">
-        <div class="d-md-flex justify-content-between align-items-center my-2">
-          <!-- Top bar left -->
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link ps-0" href="about-us.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Forum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Buy now!</a>
-            </li>
-          </ul>
-          <!-- Top bar right -->
-          <div class="d-flex align-items-center">
-            <!-- Dark mode switch -->
-            <div class="modeswitch" id="darkModeSwitch">
-              <div class="switch"></div>
-            </div>
 
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-youtube-square"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link ps-2 pe-0 fs-5" href="#"><i class="fab fa-vimeo"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- Divider -->
-        <div class="border-bottom border-2 border-primary opacity-1"></div>
-      </div>
-    </div>
 
     <!-- Logo Nav START -->
     <nav class="navbar navbar-expand-lg">

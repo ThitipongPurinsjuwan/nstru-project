@@ -11,6 +11,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Place;
+use common\models\TypePlace;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -85,7 +87,14 @@ class SiteController extends Controller
   public function actionIndex()
   {
     // Yii::$app->mongodb->open();// ทดสอบการเชื่อมต่อ
-    return $this->render('index');
+    $model = TypePlace::find()->all();
+    $modelPlace = Place::find()->all();
+
+    return $this->render('index', [
+      'model' => $model,
+      'modelPlace' => $modelPlace,
+
+    ]);
   }
 
   public function actionLogout_clear()
