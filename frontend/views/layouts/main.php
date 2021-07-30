@@ -191,9 +191,9 @@ $user_font_size = Yii::$app->db->createCommand("SELECT font_size FROM `users` WH
     display: none;
   }
 
-  /* .container {
+  .container {
     max-width: 100% !important;
-  } */
+  }
 </style>
 
 <?php $this->beginBody() ?>

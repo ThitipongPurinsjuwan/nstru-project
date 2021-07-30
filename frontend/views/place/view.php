@@ -279,7 +279,7 @@ $this->title = $model->name;
 
                 <?php if ($model->phone !== '') : ?>
                   <li class="nav-item">
-                    <a class="nav-link" href="callto://<?= $model->phone ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
+                    <a class="nav-link" href="tel:<?= $model->phone ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
                   </li>
                 <?php endif ?>
               </ul>
@@ -308,12 +308,6 @@ $this->title = $model->name;
               <!-- modal -->
               <!-- Map END -->
 
-              <!-- Advertisement -->
-              <div class="mt-4">
-                <a href="#" class="d-block card-img-flash">
-                  <img src="../../themes/template/assets/images/adv.png" alt="">
-                </a>
-              </div>
             </div>
           </div>
           <!-- Right sidebar END -->
