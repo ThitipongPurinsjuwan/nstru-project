@@ -54,6 +54,7 @@ class TravelMapController extends Controller
 
     return $addTo;
   }
+
   public static function getTypeImage($typeId, $modelType)
   {
     for ($i = 0; $i < count($modelType); $i++) {

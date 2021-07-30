@@ -39,6 +39,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
+use yii\widgets\ActiveForm;
 
 use app\models\EformTemplate;
 use app\models\Eform;
@@ -310,10 +311,20 @@ Header START -->
               <i class="bi bi-search fs-4"> </i>
             </a>
             <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
-              <form class="input-group">
-                <input class="form-control border-success" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success m-0" type="submit">Search</button>
-              </form>
+
+              <?php $form = ActiveForm::begin([
+                'action' => ['package/index'],
+                'method' => 'get',
+                'options' => [
+                  'class' => 'input-group'
+                ]
+              ]); ?>
+
+              <input class="form-control border-success" name="name" value="" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-success m-0" type="submit">Search</button>
+
+              <?php ActiveForm::end(); ?>
+
             </div>
           </div>
           <!-- Offcanvas menu toggler -->

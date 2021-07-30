@@ -65,6 +65,7 @@ class PackageSearch extends Package
     ]);
 
     $query->andFilterWhere(['like', 'name', $this->name])
+      ->andFilterWhere(['like', 'name', $params['name']])
       ->andFilterWhere(['like', 'details', $this->details])
       ->andFilterWhere(['like', 'date_moment', $this->date_moment])
       ->andFilterWhere(['like', 'place', $this->place])

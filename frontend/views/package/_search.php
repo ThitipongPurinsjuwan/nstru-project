@@ -10,36 +10,22 @@ use yii\widgets\ActiveForm;
 
 <div class="package-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+  <?php $form = ActiveForm::begin([
+    'action' => ['index'],
+    'method' => 'get',
+  ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'name') ?>
-
-    <?= $form->field($model, 'details') ?>
-
-    <?= $form->field($model, 'date_moment') ?>
-
-    <?= $form->field($model, 'place') ?>
-
-    <?php // echo $form->field($model, 'price') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'key_images') ?>
-
-    <?php // echo $form->field($model, 'date_create') ?>
-
-    <?php // echo $form->field($model, 'user_create') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-4 col-sm-12 my-1">
+      <?= $form->field($model, 'date_moment')->input('number', ['placeholder' => "เลือกจำนวนวันสำหรับท่องเที่ยว"])->label(false) ?>
     </div>
+    <div class="col-md-2 col-sm-12 my-1">
+      <div class="form-group">
+        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary mb-0 w-100']) ?>
+      </div>
+    </div>
+  </div>
 
-    <?php ActiveForm::end(); ?>
+  <?php ActiveForm::end(); ?>
 
 </div>
