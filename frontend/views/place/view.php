@@ -359,7 +359,9 @@ $this->title = $model->name;
                       </div>
                     </div>
                     <div class="card-body px-0 pt-3">
-                      <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a></h5>
+                      <h5 class="card-title">
+                        <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
+                      </h5>
 
                       <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                         <li class="nav-item">
