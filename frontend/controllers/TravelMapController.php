@@ -30,29 +30,48 @@ class TravelMapController extends Controller
     $modelType = TypePlace::find()->asArray()->all();
 
     for ($i = 0; $i < count($modelPlace); $i++) {
-      $modelPlace[$i]['type_name'] = $this->getTypePlace($modelPlace[$i]['type']);
+      $modelPlace[$i]['type_name'] = $this->getNameTypePlaceWithId($modelPlace[$i]['type'], $modelType);
       $modelPlace[$i]['icon'] = '../../images/image_maker/' . $this->getTypeImage($modelPlace[$i]['type'], $modelType);
     }
+
+    $objTypePlace = $this->getObjTypePlace($modelType);
+    $iconsMap = $this->getIconsMap($modelType);
 
     return $this->render('index', [
       'modelPlace' => $modelPlace,
       'modelType' => $modelType,
+      'iconsMap' => $iconsMap,
+      'objTypePlace' => $objTypePlace,
     ]);
   }
 
-  public static function getTypePlace($typeId)
-  {
-    $addTo = 'others';
 
-    if ($typeId == 1) {
-      $addTo = 'attraction';
-    } elseif ($typeId == 2) {
-      $addTo = 'hostel';
-    } elseif ($typeId == 3) {
-      $addTo = 'restaurant';
+  public static function getIconsMap($model)
+  {
+    $icons = [];
+
+    for ($i = 0; $i < count($model); $i++) {
+      array_push($icons, '../../images/image_maker/' . $model[$i]['images']);
     }
 
-    return $addTo;
+    return $icons;
+  }
+  public static function getObjTypePlace($model)
+  {
+    $obj = [];
+
+    for ($i = 0; $i < count($model); $i++) {
+      $obj[$model[$i]['name_eng']] = $model[$i]['name'];
+    }
+
+    return $obj;
+  }
+
+  public static function getNameTypePlaceWithId($id, $modelType)
+  {
+    $key = array_search($id, array_column($modelType, 'id'));
+
+    return $modelType[$key]['name_eng'];
   }
 
   public static function getTypeImage($typeId, $modelType)

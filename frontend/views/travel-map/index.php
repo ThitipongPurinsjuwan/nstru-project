@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Place;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -181,71 +182,67 @@ $this->title = "แผนที่ท่องเที่ยว";
 </div>
 
 <script>
-  const initMap = ({
-    mapId,
-    mapOption = {}
+  const newPopup = ({
+    id = 1,
+    img,
+    name = 'No Name',
+    bussinessDay = 'open day'
   }) => {
-    const newPopup = ({
-      img,
-      name = 'name',
-      detail = 'detail',
-      bussinessDay = 'open day'
-    }) => {
-      const popup = `<div class="infoBox">` +
-        `<div>` +
-        `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/" class="map-box-image">` +
-        `<img src="${img}">` +
-        `<i class="map-box-icon"></i>` +
-        `</a>` +
-        `<div class="place-box">` +
-        `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">` +
-        `<h3>${name}</h3>` +
-        `</a>` +
-        `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
-        `<p>${detail}</p>` +
-        `</div></div></div>`;
+    const popup = `<div class="infoBox">` +
+      `<div>` +
+      `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}" class="map-box-image">` +
+      `<img src="${img}">` +
+      `<i class="map-box-icon"></i>` +
+      `</a>` +
+      `<div class="place-box">` +
+      `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}">` +
+      `<h3>${name}</h3>` +
+      `</a>` +
+      `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
+      `</div></div></div>`;
 
-      return popup;
-    }
+    return popup;
+  }
 
-    const {
-      showTopRight
-    } = mapOption;
-
+  const isInitMapAlready = () => {
     const container = L.DomUtil.get('mapM');
 
-    if (!container || container._leaflet_id) {
-      return;
-    }
+    return !container || container._leaflet_id;
+  }
 
-    const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
-    const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
-    const mymap = L.map(mapId).setView([8.44425, 99.95037], 13);
+  const initTypeMarker = (mymap, keys, objMarker) => {
+    keys.map((obj) => {
+      objMarker[obj] = L.layerGroup().addTo(mymap);
+    });
 
-    if (!!showTopRight) {
-      L.control.custom({
-          position: 'topright',
-          content: '<button data-bs-toggle="modal" href="#mapModalToggle" type="button" class="btn btn-map">' +
-            '    <i class="fas fa-expand"></i>' +
-            '</button>',
-          classes: '',
-          style: {
-            cursor: 'pointer',
+    return objMarker;
+  }
+
+  const initTopRightFullScreen = (mymap) => {
+    L.control.custom({
+        position: 'topright',
+        content: '<button data-bs-toggle="modal" href="#mapModalToggle" type="button" class="btn btn-map">' +
+          '    <i class="fas fa-expand"></i>' +
+          '</button>',
+        classes: '',
+        style: {
+          cursor: 'pointer',
+        },
+        datas: {
+          'foo': 'bar',
+        },
+        events: {
+          click: function() {
+            initMap({
+              mapId: 'mapM'
+            });
           },
-          datas: {
-            'foo': 'bar',
-          },
-          events: {
-            click: function(data) {
-              initMap({
-                mapId: 'mapM'
-              });
-            },
-          }
-        })
-        .addTo(mymap);
-    }
+        }
+      })
+      .addTo(mymap);
+  }
 
+  const initMapLayer = (mymap, mapboxUrl, accessToken) => {
     L.tileLayer(mapboxUrl, {
       id: 'mapbox/streets-v11',
       attribution: '',
@@ -254,11 +251,12 @@ $this->title = "แผนที่ท่องเที่ยว";
       zoomOffset: -1,
       accessToken
     }).addTo(mymap);
+  }
 
-    const attraction = L.layerGroup().addTo(mymap);
-    const restaurant = L.layerGroup().addTo(mymap);
-    const hostel = L.layerGroup().addTo(mymap);
-    const others = L.layerGroup().addTo(mymap);
+  const loadMarkerToMap = (objMarker) => {
+    let latlng = [];
+    let iconOption = {};
+    let popup = '';
 
     const LeafIcon = L.Icon.extend({
       options: {
@@ -267,30 +265,78 @@ $this->title = "แผนที่ท่องเที่ยว";
     });
 
     <?php for ($i = 0; $i < count($modelPlace); $i++) : ?>
+      latlng = [
+        <?= $modelPlace[$i]['latitude'] ?>,
+        <?= $modelPlace[$i]['longitude'] ?>
+      ];
 
-      L.marker([
-          <?= $modelPlace[$i]['latitude'] ?>,
-          <?= $modelPlace[$i]['longitude'] ?>
-        ], {
-          icon: new LeafIcon({
-            iconUrl: '<?= $modelPlace[$i]['icon'] ?>'
-          })
+      iconOption = {
+        icon: new LeafIcon({
+          iconUrl: '<?= $modelPlace[$i]['icon'] ?>'
         })
-        .bindPopup(newPopup({
-          name: '<?= $modelPlace[$i]['name'] ?>',
-          bussinessDay: '<?= $modelPlace[$i]['business_day'] ?>',
-          img: '<?= '../../images/images_upload_forform/' . $modelPlace[$i]['name_img_important'] ?>',
-        }))
-        .addTo(<?= $modelPlace[$i]['type_name'] ?>);
+      };
+
+      popup = newPopup({
+        id: '<?= $modelPlace[$i]['id'] ?>',
+        name: '<?= $modelPlace[$i]['name'] ?>',
+        bussinessDay: '<?= $modelPlace[$i]['business_day'] ?>',
+        img: '<?= '../../images/images_upload_forform/' . $modelPlace[$i]['name_img_important'] ?>',
+      });
+
+      L.marker(latlng, iconOption)
+        .bindPopup(popup)
+        .addTo(objMarker.<?= $modelPlace[$i]['type_name'] ?>);
 
     <?php endfor ?>
+  }
 
-    const overlays = {
-      '<img src="../../images/image_maker/cbe9d35988281a4749388e69a7947b74.png" class="tool-icon">สถานที่ท่องเที่ยว': attraction,
-      '<img src="../../images/image_maker/4c4aec457d80886da1af6b7f338b6c0d.png" class="tool-icon">ร้านอาหาร': restaurant,
-      '<img src="../../images/image_maker/9d934073551321de49ea828ac4548508.png" class="tool-icon">ที่พัก': hostel,
-      '<img src="../../images/image_maker/9d934073551321de49ea828ac4548508.png" class="tool-icon">อื่นๆ': others,
+  const getOverlay = (keys, val, objMarker) => {
+    const overlays = {};
+    const iconOnMap = <?= json_encode($iconsMap); ?>;
+
+    let templateIcon = '';
+
+    for (let i = 0; i < keys.length && i < val.length; i++) {
+      templateIcon = `<img src="${iconOnMap[i]}" class="tool-icon">`;
+      overlays[`${templateIcon}${val[i]}`] = objMarker[keys[i]];
     }
+
+    return overlays;
+  }
+
+  const initMap = ({
+    mapId,
+    mapOption = {}
+  }) => {
+
+    const {
+      showTopRight
+    } = mapOption;
+
+    if (isInitMapAlready()) {
+      return;
+    }
+
+    const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
+    const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
+    const mymap = L.map(mapId).setView([8.44425, 99.95037], 13);
+
+    let objMarker = JSON.parse('<?= json_encode($objTypePlace) ?>');
+
+    const keys = Object.keys(objMarker);
+    const val = Object.values(objMarker);
+
+    objMarker = initTypeMarker(mymap, keys, objMarker);
+
+    if (!!showTopRight) {
+      initTopRightFullScreen(mymap);
+    }
+
+    initMapLayer(mymap, mapboxUrl, accessToken);
+
+    loadMarkerToMap(objMarker);
+
+    const overlays = getOverlay(keys, val, objMarker);
 
     const layerOption = {
       collapsed: false

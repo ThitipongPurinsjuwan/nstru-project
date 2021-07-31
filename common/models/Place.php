@@ -88,4 +88,15 @@ class Place extends \yii\db\ActiveRecord
 
     return '+66' . $call;
   }
+
+  public static function showLess($content)
+  {
+    $text = $content;
+
+    if (strlen($content) > 50) {
+      $text = substr($content, 0, 50) . "...";
+    }
+
+    return $text;
+  }
 }
