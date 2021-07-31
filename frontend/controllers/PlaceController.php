@@ -54,8 +54,6 @@ class PlaceController extends Controller
     $model = $this->findModel($id);
     $modelImage = Images::find()->where(['key_images' => $model->key_images])->all();
 
-    $model->phone = Place::customizePhoneCall($model->phone);
-
     return $this->render('view', [
       'model' => $model,
       'modelImage' => $modelImage,

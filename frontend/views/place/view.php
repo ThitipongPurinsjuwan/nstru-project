@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Place;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -279,7 +280,7 @@ $this->title = $model->name;
 
                 <?php if ($model->phone !== '') : ?>
                   <li class="nav-item">
-                    <a class="nav-link" href="tel:<?= $model->phone ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
+                    <a class="nav-link" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
                   </li>
                 <?php endif ?>
               </ul>
