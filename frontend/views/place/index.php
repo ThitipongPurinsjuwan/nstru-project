@@ -21,7 +21,7 @@ $this->title = "แหล่งท่องเที่ยวเชิงเก�
           <div class="card">
             <!-- Card img -->
             <div class="position-relative">
-              <img class="card-img" src="../../themes/template/assets/images/blog/4by3/01.jpg" alt="Card image">
+              <img class="card-img" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
               <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                 <!-- Card overlay bottom -->
                 <div class="w-100 mt-auto">

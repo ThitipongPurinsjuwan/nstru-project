@@ -193,7 +193,7 @@ $this->title = $model->name;
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="card bg-dark-overlay-5 overflow-hidden card-bg-scale h-400 text-center" style="background-image:url(../../themes/template/assets/images/blog/16by9/06.jpg); background-position: center left; background-size: cover;">
+            <div class="card bg-dark-overlay-5 overflow-hidden card-bg-scale h-400 text-center" style="background-image:url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); background-position: center left; background-size: cover;">
               <!-- Card Image overlay -->
               <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
                 <div class="w-100 my-auto">
@@ -315,6 +315,68 @@ $this->title = $model->name;
         </div>
       </div>
     </section>
+
+
+    <!-- ==================== package -->
+    <!-- <section class="pt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+           
+            <div class="mb-4 d-md-flex justify-content-between align-items-center">
+              <h2 class="m-0"><i class="bi bi-megaphone"></i> PACKAGE</h2>
+            </div>
+            <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
+              <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-md="3" data-items-sm="2" data-items-xs="1">
+
+               
+
+                <div class="card">
+                  
+                  <div class="position-relative">
+                    <img class="card-img" src="../../themes/template/assets/images/blog/4by3/07.jpg" alt="Card image">
+                    <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                     
+                      <div class="w-100 mb-auto d-flex justify-content-end">
+                        <div class="text-end ms-auto">
+                          
+                          <div class="icon-md bg-white-soft bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
+                        </div>
+                      </div>
+                     
+                      <div class="w-100 mt-auto">
+                        <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Marketing</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body px-0 pt-3">
+                    <h5 class="card-title"><a href="post-single-3.html" class="btn-link text-reset fw-bold">7 common mistakes everyone makes
+                        while traveling</a></h5>
+                    
+                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                      <li class="nav-item">
+                        <div class="nav-link">
+                          <div class="d-flex align-items-center position-relative">
+                            <div class="avatar avatar-xs">
+                              <img class="avatar-img rounded-circle" src="../../themes/template/assets/images/avatar/07.jpg" alt="avatar">
+                            </div>
+                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Lori</a></span>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item">Mar 07, 2021</li>
+                    </ul>
+                  </div>
+                </div>
+
+
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
     <!-- ======================= Main END -->
 
     <!-- ======================= Sticky post START -->
