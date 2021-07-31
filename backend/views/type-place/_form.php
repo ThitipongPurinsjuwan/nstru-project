@@ -28,7 +28,7 @@ input[type="file"] {
         
         <div class="col-md-6">
 
-            <?= $form->field($model, 'name_eng')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'name_eng')->textInput(['maxlength' => true,'class'=>'form-control characterEngOnly']) ?>
 
         </div>
 
