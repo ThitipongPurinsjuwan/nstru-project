@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Images;
+use common\models\Package;
 use Yii;
 use common\models\Place;
 use frontend\models\PlaceSearch;
@@ -53,10 +54,12 @@ class PlaceController extends Controller
   {
     $model = $this->findModel($id);
     $modelImage = Images::find()->where(['key_images' => $model->key_images])->all();
+    $modelPackage = Package::find()->where(['like', 'place', $model->id])->all();
 
     return $this->render('view', [
       'model' => $model,
       'modelImage' => $modelImage,
+      'modelPackage' => $modelPackage,
     ]);
   }
 
