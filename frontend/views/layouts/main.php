@@ -217,50 +217,6 @@ $user_font_size = Yii::$app->db->createCommand("SELECT font_size FROM `users` WH
   </div>
   <!-- Top alert END -->
 
-  <!-- Offcanvas START -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu">
-    <div class="offcanvas-header">
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column pt-0">
-      <div>
-        <img class="light-mode-item my-3" src="../../themes/template/assets/images/logo.svg" alt="logo">
-        <img class="dark-mode-item my-3" src="../../themes/template/assets/images/logo-light.svg" alt="logo">
-        <p>The next-generation blog, news, and magazine theme for you to start sharing your stories today! </p>
-        <!-- Nav START -->
-        <ul class="nav d-block flex-column my-4">
-
-          <li class="nav-item">
-            <a href="index.html" class="nav-link h5">Home</a>
-          <li class="nav-item">
-            <a class="nav-link h5" href="about-us.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link h5" href="post-grid.html">Our Journal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link h5" href="contact-us.html">Contact Us</a>
-          </li>
-        </ul>
-        <!-- Nav END -->
-        <div class="bg-primary-soft p-4 mb-4 text-center w-100 rounded">
-          <span>The Blogzine</span>
-          <h3>Save on Premium Membership</h3>
-          <p>Get the insights report trusted by experts around the globe. Become a Member Today!</p>
-          <a href="#" class="btn btn-warning">View pricing plans</a>
-        </div>
-      </div>
-      <div class="mt-auto pb-3">
-        <!-- Address -->
-        <p class="text-body mb-2 fw-bold">New York, USA (HQ)</p>
-        <address class="mb-0">750 Sing Sing Rd, Horseheads, NY, 14845</address>
-        <p class="mb-2">Call: <a href="#" class="text-body"><u>469-537-2410</u> (Toll-free)</a> </p>
-        <a href="#" class="text-body d-block">hello@blogzine.com</a>
-      </div>
-    </div>
-  </div>
-  <!-- Offcanvas END -->
-
   <!-- =======================
 Header START -->
   <header class="navbar-light navbar-sticky header-static">
@@ -326,12 +282,6 @@ Header START -->
               <?php ActiveForm::end(); ?>
 
             </div>
-          </div>
-          <!-- Offcanvas menu toggler -->
-          <div class="nav-item">
-            <a class="nav-link p-0" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
-              <i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
-            </a>
           </div>
         </div>
         <!-- Nav right END -->
