@@ -46,7 +46,7 @@ class TravelMapController extends Controller
   }
 
 
-  public static function getIconsMap($model)
+  public function getIconsMap($model)
   {
     $icons = [];
 
@@ -56,25 +56,42 @@ class TravelMapController extends Controller
 
     return $icons;
   }
-  public static function getObjTypePlace($model)
+
+  public function getObjTypePlace($model)
   {
     $obj = [];
 
     for ($i = 0; $i < count($model); $i++) {
-      $obj[$model[$i]['name_eng']] = $model[$i]['name'];
+      $key = $model[$i]['name_eng'];
+      $key = $this->handleFormatStringName($key);
+
+      $obj[$key] = $model[$i]['name'];
     }
 
     return $obj;
   }
 
-  public static function getNameTypePlaceWithId($id, $modelType)
+  public function handleFormatStringName($name)
+  {
+    $pattern = '[\W|\d]';
+    $split = preg_split($pattern, $name);
+
+    $text = '';
+    for ($i = 0; $i < count($split); $i++) {
+      $text .= $split[$i];
+    }
+
+    return $text;
+  }
+
+  public function getNameTypePlaceWithId($id, $modelType)
   {
     $key = array_search($id, array_column($modelType, 'id'));
 
-    return $modelType[$key]['name_eng'];
+    return $this->handleFormatStringName($modelType[$key]['name_eng']);
   }
 
-  public static function getTypeImage($typeId, $modelType)
+  public function getTypeImage($typeId, $modelType)
   {
     for ($i = 0; $i < count($modelType); $i++) {
       if ($typeId == $modelType[$i]['id']) {

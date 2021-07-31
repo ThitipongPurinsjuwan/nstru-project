@@ -289,9 +289,18 @@ $this->title = $model->name;
                 <?= $model->contact ?>
               </div>
               <!-- Newsletter END -->
+              <!-- Newsletter START -->
+              <div class="bg-primary-soft mt-2 rounded-3">
+                <a target="_blank" href="https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=<?= $model->latitude ?>,<?= $model->longitude ?>">
+                  <div class="p-3 text-center">
+                    <i class="fa fa-location-arrow" aria-hidden="true"></i> ขอเส้นทาง
+                  </div>
+                </a>
+              </div>
+              <!-- Newsletter END -->
 
               <!-- Map START -->
-              <div id="mapid" class="mt-4"></div>
+              <div id="mapid" class="mt-2"></div>
               <!-- modal -->
               <div class="modal fade" id="mapModalToggle" aria-hidden="true" aria-labelledby="mapModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered full-screen">
@@ -398,71 +407,59 @@ $this->title = $model->name;
 </div>
 
 <script>
-  const initMap = ({
-    mapId,
-    mapOption = {}
+  const newPopup = ({
+    id = 1,
+    img,
+    name = 'No Name',
+    bussinessDay = 'open day'
   }) => {
-    const newPopup = ({
-      img,
-      name = 'name',
-      detail = 'detail',
-      bussinessDay = 'open day'
-    }) => {
-      const popup = `<div class="infoBox">` +
-        `<div>` +
-        `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/" class="map-box-image">` +
-        `<img src="${img}">` +
-        `<i class="map-box-icon"></i>` +
-        `</a>` +
-        `<div class="place-box">` +
-        `<a href="http://wpvoyager.purethe.me/2017/07/06/two-days-in-budapest/">` +
-        `<h3>${name}</h3>` +
-        `</a>` +
-        `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
-        `<p>${detail}</p>` +
-        `</div></div></div>`;
+    const popup = `<div class="infoBox">` +
+      `<div>` +
+      `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}" class="map-box-image">` +
+      `<img src="${img}">` +
+      `<i class="map-box-icon"></i>` +
+      `</a>` +
+      `<div class="place-box">` +
+      `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}">` +
+      `<h3>${name}</h3>` +
+      `</a>` +
+      `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
+      `</div></div></div>`;
 
-      return popup;
-    }
+    return popup;
+  }
 
-    const {
-      showTopRight
-    } = mapOption;
-
+  const isInitMapAlready = () => {
     const container = L.DomUtil.get('mapM');
 
-    if (!container || container._leaflet_id) {
-      return;
-    }
+    return !container || container._leaflet_id;
+  }
 
-    const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
-    const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
-    const mymap = L.map(mapId).setView([<?= $model->latitude ?>, <?= $model->longitude ?>], 13);
-
-    if (!!showTopRight) {
-      L.control.custom({
-          position: 'topright',
-          content: '<button data-bs-toggle="modal" href="#mapModalToggle" type="button" class="btn btn-map">' +
-            '    <i class="fas fa-expand"></i>' +
-            '</button>',
-          classes: '',
-          style: {
-            cursor: 'pointer',
+  const initTopRightFullScreen = (mymap) => {
+    L.control.custom({
+        position: 'topright',
+        content: '<button data-bs-toggle="modal" href="#mapModalToggle" type="button" class="btn btn-map">' +
+          '    <i class="fas fa-expand"></i>' +
+          '</button>',
+        classes: '',
+        style: {
+          cursor: 'pointer',
+        },
+        datas: {
+          'foo': 'bar',
+        },
+        events: {
+          click: function() {
+            initMap({
+              mapId: 'mapM'
+            });
           },
-          datas: {
-            'foo': 'bar',
-          },
-          events: {
-            click: function(data) {
-              initMap({
-                mapId: 'mapM'
-              });
-            },
-          }
-        })
-        .addTo(mymap);
-    }
+        }
+      })
+      .addTo(mymap);
+  }
 
+  const initMapLayer = (mymap, mapboxUrl, accessToken) => {
     L.tileLayer(mapboxUrl, {
       id: 'mapbox/streets-v11',
       attribution: '',
@@ -471,16 +468,38 @@ $this->title = $model->name;
       zoomOffset: -1,
       accessToken
     }).addTo(mymap);
+  }
 
+  const initMap = ({
+    mapId,
+    mapOption = {}
+  }) => {
+    const {
+      showTopRight
+    } = mapOption;
 
-    L.marker([<?= $model->latitude ?>, <?= $model->longitude ?>])
-      .bindPopup(newPopup({
-        name: '<?= $model->name ?>',
-        bussinessDay: '<?= $model->business_day ?>',
-        img: '<?= '../../images/images_upload_forform/' . $model->name_img_important ?>',
-      }))
-      .addTo(mymap);
+    if (isInitMapAlready()) {
+      return;
+    }
 
+    const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
+    const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
+    const mymap = L.map(mapId).setView([<?= $model->latitude ?>, <?= $model->longitude ?>], 13);
+
+    if (!!showTopRight) {
+      initTopRightFullScreen(mymap);
+    }
+
+    initMapLayer(mymap, mapboxUrl, accessToken);
+
+    const latlng = [<?= $model->latitude ?>, <?= $model->longitude ?>];
+    const popup = newPopup({
+      img: '<?= '../../images/images_upload_forform/' . $model->name_img_important ?>',
+      bussinessDay: '<?= $model->business_day ?>',
+      name: '<?= $model->name ?>',
+    });
+
+    L.marker(latlng).bindPopup(popup).addTo(mymap);
 
     const layerOption = {
       collapsed: false
@@ -495,8 +514,5 @@ $this->title = $model->name;
 
   initMap({
     mapId: 'mapid',
-    // mapOption: {
-    //   showTopRight: true
-    // }
   });
 </script>
