@@ -44,6 +44,7 @@ class PlaceController extends Controller
     return $this->render('index', [
       'model' => $model,
       'nameOfType' => $nameOfType,
+      'type' => $type,
     ]);
   }
 

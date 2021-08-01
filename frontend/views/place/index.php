@@ -22,13 +22,17 @@ $this->title = $nameOfType;
             <!-- Card img -->
             <div class="position-relative">
               <img class="card-img" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
-              <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                <!-- Card overlay bottom -->
-                <div class="w-100 mt-auto">
-                  <!-- Card category -->
-                  <a href="#" class="badge bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>type</a>
+
+              <?php if ($type == 3) : ?>
+                <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                  <!-- Card overlay bottom -->
+                  <div class="w-100 mt-auto">
+                    <!-- Card category -->
+                    <a href="#" class="badge bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>THB <?= $model->price ?></a>
+                  </div>
                 </div>
-              </div>
+              <?php endif ?>
+
             </div>
             <div class="card-body px-0 pt-3">
               <h4 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h4>
