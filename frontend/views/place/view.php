@@ -185,7 +185,6 @@ $this->title = $model->name;
   }
 </style>
 
-
 <div class="place-view">
   <main>
     <!-- ======================= Inner intro START -->
@@ -231,6 +230,7 @@ $this->title = $model->name;
         <div class="row">
           <!-- Main Content START -->
           <div class="col-lg-9 mb-5">
+            <!-- Detail -->
             <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
             <!-- Images -->
             <div class="row g-2 my-5">
@@ -243,20 +243,13 @@ $this->title = $model->name;
               <?php endforeach  ?>
             </div>
 
-            <h4 class="mt-4">Productive rant about business</h4>
+            <!-- Activity -->
+            <h4 class="mt-4">Activity</h4>
             <div class="row mb-4">
-              <div class="col-md-6">
-                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favorite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed of add screened rendered six say his striking confined.
-                </p>
-              </div>
-              <div class="col-md-6">
-                <p>Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible.</p>
+              <div class="col-md-12">
+                <p><?= $model->activity ?></p>
               </div>
             </div>
-
-            <p>Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible. </p>
-            <p> All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in. I think on style child of. Servants moreover in sensible it ye possible. Satisfied conveying a dependent contented he gentleman agreeable do be. </p>
-
           </div>
           <!-- Main Content END -->
           <!-- Right sidebar START -->
@@ -265,6 +258,7 @@ $this->title = $model->name;
               <div class="row">
                 <h5>Contact</h5>
               </div>
+              <!-- Contact START -->
               <ul class="nav flex-column">
                 <?php if ($model->facebook_link !== '') : ?>
                   <li class="nav-item">
@@ -284,6 +278,7 @@ $this->title = $model->name;
                   </li>
                 <?php endif ?>
               </ul>
+              <!-- Contact END -->
               <!-- Newsletter START -->
               <div class="bg-primary-soft p-3 mt-4 rounded-3 text-center">
                 <?= $model->contact ?>

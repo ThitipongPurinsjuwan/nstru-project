@@ -6,6 +6,7 @@ use common\models\Images;
 use common\models\Package;
 use Yii;
 use common\models\Place;
+use common\models\TypePlace;
 use frontend\models\PlaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -38,9 +39,11 @@ class PlaceController extends Controller
   public function actionIndex($type)
   {
     $model = Place::find()->where(['type' => $type])->all();
+    $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;
 
     return $this->render('index', [
       'model' => $model,
+      'nameOfType' => $nameOfType,
     ]);
   }
 

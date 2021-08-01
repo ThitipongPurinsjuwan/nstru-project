@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $searchModel frontend\models\PlaceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = "แหล่งท่องเที่ยวเชิงเกษตร";
+$this->title = $nameOfType;
 ?>
 <div class="place-index">
   <h1 class="mb-4"><?= Html::encode($this->title) ?></h1>
