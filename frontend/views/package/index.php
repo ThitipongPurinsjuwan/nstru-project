@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $searchModel frontend\models\PackageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Packages');
+$this->title = 'แพ็คเกจ';
 ?>
 <div class="package-index">
   <?= $this->render('_search', ['model' => $searchModel]); ?>

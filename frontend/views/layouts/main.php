@@ -179,7 +179,7 @@ Header START -->
                 ]
               ]); ?>
 
-              <input class="form-control border-success" name="name" value="" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control border-success" name="name" value="" type="search" placeholder="Package ท่องเที่ยว" aria-label="Search">
               <button class="btn btn-success m-0" type="submit">Search</button>
 
               <?php ActiveForm::end(); ?>

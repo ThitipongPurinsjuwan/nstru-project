@@ -347,7 +347,7 @@
 
     <!-- Trending topics widget START -->
     <div>
-      <h4 class="mt-4 mb-3">Trending topics</h4>
+      <h4 class="mt-4 mb-3">Topics</h4>
       <!-- Category item -->
       <?php foreach ($model as $model) :  ?>
         <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(../../themes/template/assets/images/blog/4by3/01.jpg); background-position: center left; background-size: cover;">
@@ -363,7 +363,7 @@
     <div class="row">
       <!-- Recent post widget START -->
       <div class="col-12 col-sm-6 col-lg-12">
-        <h4 class="mt-4 mb-3">Recent post</h4>
+        <h4 class="mt-4 mb-3">Package</h4>
         <!-- Recent post item -->
         <div class="card mb-3">
           <div class="row g-3">
