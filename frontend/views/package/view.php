@@ -12,9 +12,18 @@ $this->title = $model->name;
 ?>
 
 <style>
-  .card-img {
-    display: flex;
-    height: auto;
+  .image2 {
+
+
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 3px 7px #00000096;
+    margin: auto;
+  }
+
+  .rounded {
+
+    height: 20vh;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 2px 3px 7px #00000096;
@@ -25,66 +34,74 @@ $this->title = $model->name;
 
 <div class="package-view">
 
-  <h1><?= Html::encode($this->title) ?></h1>
-
   <!-- Card item START -->
-  <section class="position-relative pt-0">
+  <section class="pt-0 card-grid">
     <div class="row">
       <div class="col-12">
-
-        <div class="card">
-          <!-- Card img -->
-          <div class="position-relative">
-            <img class="card-img" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="Card image">
-            <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-              <!-- Card overlay bottom -->
-            </div>
-          </div>
-        </div>
-
-        <div class="row mt-5">
-          <p class="card-text"><?= $model->details ?></>
-        </div>
-
-        <?php foreach ($modelPlace as $modelPlace) :  ?>
-          <div class="row">
-            <h4 class="mt-4"><?= $modelPlace->name ?></h4>
-          </div>
-
-          <div class="card">
-            <!-- Card img -->
-            <div class="position-relative">
-              <img class="card-img" src='<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>' alt="Card image">
-              <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                <!-- Card overlay bottom -->
+        <div class="tiny-slider arrow-hover arrow-blur arrow-white arrow-round rounded-3 overflow-hidden">
+          <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="1" data-arrow="true" data-dots="false" data-items="1">
+            <div class="card bg-dark-overlay-3 h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url(../../themes/template/assets/images/blog/packges/c1.jpg); background-position: center left; background-size: cover;">
+              <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
+                <div class="w-100 my-auto">
+                  <div class="col-md-10 col-lg-7 mx-auto text-center">
+                    <h2 class="text-white display-5"><?= Html::encode($this->title) ?></h2>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="row">
-            <p class="lead">
-              <?= $modelPlace->activity ?>
-            </p>
-          </div>
+  <section class="position-relative pt-0">
+    <div class="container" data-sticky-container>
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="row">
 
-          <div class="row">
-            <h4 class="lead"> ราคา : ฿
-              <?= $modelPlace->price ?>
-            </h4>
-          </div>
+              <div class="col-md-8 mt-3 mt-5 md-6">
 
-          <div class="row">
-            <p class="lead"> ติดต่อ :
-              <?= $modelPlace->contact ?>
-            </p>
-          </div>
+                <!-- Detail -->
+                <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
+                <!-- Images -->
+                <div class="row g-2 my-5">
+                  <?php foreach ($modelImage as $modelImage) :  ?>
+                    <div class="col-md-4">
+                      <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                        <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
+                      </a>
+                    </div>
+                  <?php endforeach  ?>
+                </div>
 
-          <div class="row">
-            <p class="lead"> เปิดทำการ :
-              <?= $modelPlace->business_day ?>
-            </p>
+              </div>
+
+              <div class="col-md-4 mt-3 mt-5 md-0">
+                <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
+                <?php foreach ($modelPlace as $modelPlace) :  ?>
+                  <!-- Recent post item -->
+                  <div class="card border rounded-3 up-hover p-2 mb-2">
+                    <div class="card mb-3">
+                      <div class="row g-3">
+                        <div class="col-6">
+                          <div class="image2">
+                            <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
+                          </div>
+                        </div>
+                        <div class="col-6 ">
+                          <h4><a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset fw-normal"><?= $modelPlace->name ?></a></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <?php endforeach  ?>
+              </div>
+            </div>
           </div>
-        <?php endforeach  ?>
+        </div>
       </div>
     </div>
   </section>

@@ -65,7 +65,7 @@ class PackageController extends Controller
   public function actionView($id)
   {
     $model = $this->findModel($id);
-    $modelImage = Images::find()->where(['key_images' => $model->key_images])->one()->name;
+    $modelImage = Images::find()->where(['key_images' => $model->key_images])->all();
     $str = explode(",", $model->place);
     $modelPlacearray = [];
 
