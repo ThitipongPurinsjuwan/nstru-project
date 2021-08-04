@@ -30,6 +30,10 @@ $this->title = $model->name;
     width: 70vh;
     margin: auto;
   }
+
+  .Namemann {
+    color: black !important;
+  }
 </style>
 
 <div class="package-view">
@@ -83,18 +87,20 @@ $this->title = $model->name;
                 <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
                 <?php foreach ($modelPlace as $modelPlace) :  ?>
                   <!-- Recent post item -->
-                  <div class="card border rounded-3 up-hover p-2 mb-2">
-                    <div class="card mb-3">
-                      <div class="row g-3">
-                        <div class="col-6">
-                          <div class="image2">
-                            <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
+                  <div class="card border rounded-3 up-hover p-2 mb-2 mt-2">
+                    <div class="card mb-1">
+                      <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>">
+                        <div class="row g-3">
+                          <div class="col-6">
+                            <div class="image2">
+                              <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
+                            </div>
+                          </div>
+                          <div class="col-6 ">
+                            <h5 class=" btn-link text-reset fw-normal Namemann"><?= $modelPlace->name ?></h5>
                           </div>
                         </div>
-                        <div class="col-6 ">
-                          <h4><a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset fw-normal"><?= $modelPlace->name ?></a></h4>
-                        </div>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 <?php endforeach  ?>
