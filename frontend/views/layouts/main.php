@@ -54,14 +54,14 @@ AppAsset::register($this);
   <meta charset="<?= Yii::$app->charset; ?>">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="../../images/favicon_io/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../../images/rajabhat-logo.png" type="image/x-icon" />
   <?php $this->registerCsrfMetaTags(); ?>
   <title> ระบบสารสนเทศภูมิศาสตร์​แหล่งท่องเที่ยวเชิงเกษตร​</title>
   <title><?= Html::encode($this->title); ?></title>
   <?php $this->head(); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="../../themes/template/assets/images/favicon.ico">
+  <link rel="shortcut icon" href="../../images/rajabhat-logo.png">
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -97,6 +97,12 @@ AppAsset::register($this);
 
   .container {
     max-width: 100% !important;
+  }
+
+  .logo-support {
+    height: 6em;
+    width: auto;
+    min-width: 4em;
   }
 </style>
 
@@ -143,10 +149,6 @@ Header START -->
         <!-- Main navbar START -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav navbar-nav-scroll mx-auto">
-
-            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&type=1"><i class="fas fa-newspaper"></i> ข่าวประชาสัมพันธ์</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&amp;type=2"><i class="fas fa-user-tie"></i> ข้อควรรู้สำหรับนักท่องเที่ยว (infographic)</a></li>
-
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-street-view"></i> สถานที่</a>
               <ul class="dropdown-menu" aria-labelledby="homeMenu">
@@ -157,8 +159,9 @@ Header START -->
             </li>
 
             <li class="nav-item"><a class="nav-link" href="index.php?r=travel-map/index"><i class="fas fa-map-marked-alt"></i> แผนที่</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&type=1"><i class="fas fa-newspaper"></i> ข่าวประชาสัมพันธ์</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&amp;type=2"><i class="fas fa-user-tie"></i> ข้อควรรู้สำหรับนักท่องเที่ยว (infographic)</a></li>
             <li class="nav-item"><a class="nav-link" href="index.php?r=package%2Findex"><i class="far fa-list-alt"></i> Package ท่องเที่ยว</a></li>
-
           </ul>
         </div>
         <!-- Main navbar END -->

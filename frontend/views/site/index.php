@@ -322,26 +322,22 @@
     <!-- Social widget START -->
     <div class="row g-2">
       <div class="col-4">
-        <a href="#" class="bg-facebook rounded text-center text-white-force p-3 d-block">
-          <i class="fab fa-facebook-square fs-5 mb-2"></i>
-          <h6 class="m-0">1.5K</h6>
-          <span class="small">Fans</span>
+        <a href="#" class="rounded text-center text-white-force p-3 d-block">
+          <img class="logo-support" src="../../images/TSRI.png" alt="">
         </a>
       </div>
       <div class="col-4">
-        <a href="#" class="bg-instagram-gradient rounded text-center text-white-force p-3 d-block">
-          <i class="fab fa-instagram fs-5 mb-2"></i>
-          <h6 class="m-0">1.8M</h6>
-          <span class="small">Followers</span>
+        <a href="#" class="rounded text-center text-white-force p-3 d-block">
+          <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
         </a>
       </div>
-      <div class="col-4">
+      <!-- <div class="col-4">
         <a href="#" class="bg-youtube rounded text-center text-white-force p-3 d-block">
           <i class="fab fa-youtube-square fs-5 mb-2"></i>
           <h6 class="m-0">22K</h6>
           <span class="small">Subs</span>
         </a>
-      </div>
+      </div> -->
     </div>
     <!-- Social widget END -->
 
