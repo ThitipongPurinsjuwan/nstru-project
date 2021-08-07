@@ -83,6 +83,23 @@ use common\models\Place;
             <?= $form->field($model, 'price')->textInput(['readonly'=>true]) ?>
         </div>
 
+         <div class="col-md-12">
+            <?= $form->field($model, 'contact')->textArea(['maxlength' => true,'rows' => '2']) ?>
+        </div>
+
+          <div class="col-md-6">
+            <?= $form->field($model, 'facebook_link')->textInput(['maxlength' => true,'class'=>'form-control engOnly']) ?>
+        </div>
+
+          <div class="col-md-6">
+            <?= $form->field($model, 'line_id')->textInput(['maxlength' => true,'class'=>'form-control engOnly']) ?>
+        </div>
+          <div class="col-md-6">
+            <?= $form->field($model, 'phone')->textInput(['maxlength' => 12,'class'=>'form-control formatphone', 'onkeypress'=>'validate(event)']) ?>
+        </div>
+
+         <div class="col-md-6"> </div>
+
         <?= $form->field($model, 'status')->hiddenInput(['value'=>1])->label(false); ?>
 
         <?php $key_images = (!$model->isNewRecord) ? $model->key_images : time();?>

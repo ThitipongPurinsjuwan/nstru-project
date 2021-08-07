@@ -34,10 +34,12 @@ class Package extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'details', 'date_moment', 'place', 'price', 'status', 'key_images', 'date_create', 'user_create'], 'required'],
+            [['name', 'details', 'date_moment', 'place', 'price', 'status', 'key_images', 'date_create', 'user_create','contact'], 'required'],
             [['details', 'place'], 'string'],
             [['price', 'status', 'user_create'], 'integer'],
             [['name'], 'string', 'max' => 250],
+            [['facebook_link', 'line_id', 'phone'], 'string', 'max' => 255],
+            [['contact'], 'string', 'max' => 150],
             [['date_moment', 'key_images', 'date_create'], 'string', 'max' => 20],
         ];
     }
@@ -58,6 +60,10 @@ class Package extends \yii\db\ActiveRecord
             'key_images' => Yii::t('app', 'Key Images'),
              'date_create' => Yii::t('app', 'วันที่บันทึก/แก้ไข'),
             'user_create' => Yii::t('app', 'ผู้บันทึก/แก้ไข'),
+              'contact' => Yii::t('app', 'ข้อมูลการติดต่อ'),
+      'facebook_link' => Yii::t('app', 'Facebook Link'),
+      'line_id' => Yii::t('app', 'Line ID'),
+      'phone' => Yii::t('app', 'เบอร์ติดต่อ'),
         ];
     }
 }

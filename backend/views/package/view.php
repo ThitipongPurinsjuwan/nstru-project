@@ -77,6 +77,10 @@ $showplace = substr($showplace, 0, -4);
                                     },
                                 ],
             'price',
+               'contact',
+                                  'facebook_link',
+                                   'line_id',
+                                    'phone',
             // 'status',
             // 'key_images',
             [
