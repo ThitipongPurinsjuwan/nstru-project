@@ -34,6 +34,20 @@ $this->title = $model->name;
   .Namemann {
     color: black !important;
   }
+
+  .text-line {
+    color: #00c10f;
+  }
+
+  .text-phone {
+    color: #f85f4f;
+  }
+
+  .phone-box {
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding: 0;
+  }
 </style>
 
 <div class="package-view">
@@ -66,7 +80,7 @@ $this->title = $model->name;
           <div class="card mb-4">
             <div class="row">
 
-              <div class="col-md-8 mt-3 mt-5 md-6">
+              <div class="col-md-9 mt-3 mt-5 md-6">
 
                 <!-- Detail -->
                 <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
@@ -83,7 +97,29 @@ $this->title = $model->name;
 
               </div>
 
-              <div class="col-md-4 mt-3 mt-5 md-0">
+              <div class="col-md-3 mt-3 mt-5 md-0">
+                <div data-sticky data-margin-top="80" data-sticky-for="991">
+                  <div class="row">
+                    <h3>Contact</h3>
+                  </div>
+                  <!-- Contact START -->
+                  <ul class="nav flex-column">
+
+                    <li class="nav-item">
+                      <a class="nav-link pt-0" target="_brank" href="#"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://line.me/ti/p/"></a><i class="fab fa-line fa-fw me-2 text-line"></i>@Test_00</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="tel:"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i>080-00000</a></form>
+                    </li>
+
+                  </ul>
+                </div>
+
                 <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
                 <?php foreach ($modelPlace as $modelPlace) :  ?>
                   <!-- Recent post item -->

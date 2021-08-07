@@ -384,6 +384,70 @@ $this->title = $model->name;
     </section>
     <!-- ======================= Main END -->
 
+    <!-- ======================= comments -->
+
+    <section class="pt-0">
+      <div class="container position-relative" data-sticky-container>
+        <div class="col-lg-9 mb-5">
+          <div class="mt-5">
+            <h3>2 comments</h3>
+            <!-- Comment level 1-->
+            <div class="my-4 d-flex">
+              <img class="avatar avatar-md rounded-circle float-start me-3" src='../../themes/template/assets/images/avatar/01.jpg' alt="avatar">
+              <div>
+                <div class="mb-2">
+                  <h5 class="m-0">Allen Smith </h5>
+                  <span class="me-3 small">June 11, 2021 at 6:01 am </span>
+                  <a href="#" class="text-body fw-normal">Reply</a>
+                </div>
+                <p>Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
+              </div>
+            </div>
+
+
+            <!-- Comment level 1 -->
+            <div class="my-4 d-flex">
+              <img class="avatar avatar-md rounded-circle float-start me-3" src="../../themes/template/assets/images/avatar/04.jpg" alt="avatar">
+              <div>
+                <div class="mb-2">
+                  <h5 class="m-0">Judy Nguyen</h5>
+                  <span class="me-3 small">June 18, 2021 at 11:55 am </span>
+                  <a href="#" class="text-body fw-normal">Reply</a>
+                </div>
+                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favorite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================END comments -->
+
+    <!-- Reply START -->
+    <section class="pt-0">
+      <div class="container position-relative" data-sticky-container>
+        <div class="col-lg-9 mb-5">
+          <form class="row g-3 mt-2">
+            <div class="col-12">
+              <label class="form-label">Your Comment *</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-12" style="direction: rtl;">
+              <button type="submit" class="btn btn-primary">Post comment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- Reply END -->
+
+
     <!-- ======================= Sticky post START -->
     <div class="sticky-post bg-light border p-4 mb-5 text-sm-end rounded d-none d-xxl-block">
       <div class="d-flex align-items-center">
