@@ -361,57 +361,23 @@
       <div class="col-12 col-sm-6 col-lg-12">
         <h4 class="mt-4 mb-3">Package</h4>
         <!-- Recent post item -->
-        <div class="card mb-3">
-          <div class="row g-3">
-            <div class="col-4">
-              <img class="rounded" src="../../themes/template/assets/images/blog/4by3/thumb/01.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <h6><a href="post-single-2.html" class="btn-link stretched-link text-reset fw-bold">The pros and
-                  cons of business agency</a></h6>
-              <div class="small mt-1">May 17, 2021</div>
-            </div>
-          </div>
-        </div>
-        <!-- Recent post item -->
-        <div class="card mb-3">
-          <div class="row g-3">
-            <div class="col-4">
-              <img class="rounded" src="../../themes/template/assets/images/blog/4by3/thumb/02.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <h6><a href="post-single-2.html" class="btn-link stretched-link text-reset fw-bold">5 reasons why
-                  you shouldn't startup</a></h6>
-              <div class="small mt-1">Apr 04, 2021</div>
+        <?php foreach ($modelPackage as $modelPackage) :  ?>
+
+          <div class="card mb-3">
+            <div class="row g-3">
+              <div class=" col-4">
+                <img class="rounded" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="">
+              </div>
+              <div class="col-8">
+                <h6 class="card-title">
+                  <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
+                </h6>
+                <div class="small mt-1"><?= $modelPackage->date_create ?></div>
+              </div>
+
             </div>
           </div>
-        </div>
-        <!-- Recent post item -->
-        <div class="card mb-3">
-          <div class="row g-3">
-            <div class="col-4">
-              <img class="rounded" src="../../themes/template/assets/images/blog/4by3/thumb/03.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <h6><a href="post-single-2.html" class="btn-link stretched-link text-reset fw-bold">Ten questions
-                  you should answer truthfully.</a></h6>
-              <div class="small mt-1">Jun 30, 2021</div>
-            </div>
-          </div>
-        </div>
-        <!-- Recent post item -->
-        <div class="card mb-3">
-          <div class="row g-3">
-            <div class="col-4">
-              <img class="rounded" src="../../themes/template/assets/images/blog/4by3/thumb/04.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <h6><a href="post-single-2.html" class="btn-link stretched-link text-reset fw-bold">Five
-                  unbelievable facts about money.</a></h6>
-              <div class="small mt-1">Nov 29, 2021</div>
-            </div>
-          </div>
-        </div>
+        <?php endforeach  ?>
       </div>
       <!-- Recent post widget END -->
     </div>

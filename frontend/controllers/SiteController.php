@@ -7,11 +7,14 @@ use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
+use common\models\Images;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Package;
 use common\models\Place;
+use common\models\PublicRelations;
 use common\models\TypePlace;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -89,11 +92,16 @@ class SiteController extends Controller
     // Yii::$app->mongodb->open();// ทดสอบการเชื่อมต่อ
     $model = TypePlace::find()->all();
     $modelPlace = Place::find()->all();
+    $modeNews = PublicRelations::find()->where(['type' => 2])->all();
+    $modelPackage = Package::find()->all();
+    // $modelImage = Images::find()->where(['key_images' => $modeNews->key_images])->all();
 
     return $this->render('index', [
       'model' => $model,
       'modelPlace' => $modelPlace,
-
+      'modeNews' => $modeNews,
+      'modelPackage' => $modelPackage,
+      // 'modelImage' => $modelImage,
     ]);
   }
 
