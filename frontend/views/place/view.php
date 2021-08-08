@@ -396,9 +396,8 @@ $this->title = $model->name;
               <img class="avatar avatar-md rounded-circle float-start me-3" src='../../themes/template/assets/images/avatar/01.jpg' alt="avatar">
               <div>
                 <div class="mb-2">
-                  <h5 class="m-0">Allen Smith </h5>
+                  <h5 class="m-0">Post 1</h5>
                   <span class="me-3 small">June 11, 2021 at 6:01 am </span>
-                  <a href="#" class="text-body fw-normal">Reply</a>
                 </div>
                 <p>Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
               </div>
@@ -410,9 +409,8 @@ $this->title = $model->name;
               <img class="avatar avatar-md rounded-circle float-start me-3" src="../../themes/template/assets/images/avatar/04.jpg" alt="avatar">
               <div>
                 <div class="mb-2">
-                  <h5 class="m-0">Judy Nguyen</h5>
+                  <h5 class="m-0">Post 2</h5>
                   <span class="me-3 small">June 18, 2021 at 11:55 am </span>
-                  <a href="#" class="text-body fw-normal">Reply</a>
                 </div>
                 <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favorite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. </p>
               </div>

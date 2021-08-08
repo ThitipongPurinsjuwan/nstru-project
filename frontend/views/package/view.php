@@ -110,11 +110,11 @@ $this->title = $model->name;
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" href="http://line.me/ti/p/"></a><i class="fab fa-line fa-fw me-2 text-line"></i>@Test_00</a>
+                      <a class="nav-link" href="http://line.me/ti/p/"><i class="fab fa-line fa-fw me-2 text-line"></i>@Test_00</a>
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" href="tel:"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i>080-00000</a></form>
+                      <a class="nav-link" href="tel:"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i>080-00000</a>
                     </li>
 
                   </ul>

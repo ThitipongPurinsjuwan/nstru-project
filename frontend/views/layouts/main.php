@@ -133,12 +133,8 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
 <?php $this->beginBody() ?>
 
 <body>
-
-  <!-- =======================
-Header START -->
+  <!-- ======================= Header START -->
   <header class="navbar-light navbar-sticky header-static">
-
-
     <!-- Logo Nav START -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
@@ -203,17 +199,10 @@ Header START -->
     </nav>
     <!-- Logo Nav END -->
   </header>
-  <!-- =======================
-Header END -->
-
+  <!-- ======================= Header END -->
   <!-- **************** MAIN CONTENT START **************** -->
   <main>
-
-
-
-
-    <!-- =======================
-Main content START -->
+    <!-- ======================= Main content START -->
     <section class="position-relative">
       <div class="container" data-sticky-container>
         <div class="row">
@@ -231,16 +220,14 @@ Main content START -->
         </div> <!-- Row end -->
       </div>
     </section>
-    <!-- =======================
-Main content END -->
+    <!-- ======================= Main content END -->
 
     <!-- Divider -->
     <div class="container">
       <div class="border-bottom border-primary border-2 opacity-1"></div>
     </div>
 
-    <!-- =======================
-Section START -->
+    <!-- ======================= Section START -->
     <section class="pt-4">
       <div class="container">
         <div class="row">
@@ -248,7 +235,7 @@ Section START -->
             <!-- Title -->
             <div class="mb-4 d-md-flex justify-content-between align-items-center">
               <h2 class="m-0"><i class="bi bi-megaphone"></i> Sponsored news</h2>
-              <a href="#" class="text-body small"><u>Content by: Bootstrap</u></a>
+              <!-- <a href="#" class="text-body small"><u>Content by: Bootstrap</u></a> -->
             </div>
             <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
               <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-md="3" data-items-sm="2" data-items-xs="1">
@@ -280,14 +267,12 @@ Section START -->
         </div>
       </div>
     </section>
-    <!-- =======================
-Section END -->
+    <!-- ======================= Section END -->
 
   </main>
   <!-- **************** MAIN CONTENT END **************** -->
 
-  <!-- =======================
-Footer START -->
+  <!-- ======================= Footer START -->
   <footer class="bg-dark pt-5">
     <div class="container">
       <!-- About and Newsletter START -->
@@ -474,14 +459,12 @@ Footer START -->
     </div>
     <!-- Footer copyright END -->
   </footer>
-  <!-- =======================
-Footer END -->
+  <!-- ======================= Footer END -->
 
   <!-- Back to top -->
   <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
 
-  <!-- =======================
-JS libraries, plugins and custom scripts -->
+  <!-- ======================= JS libraries, plugins and custom scripts -->
 
   <!-- Bootstrap JS -->
   <script src="../../themes/template/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -490,6 +473,8 @@ JS libraries, plugins and custom scripts -->
   <script src="../../themes/template/assets/vendor/tiny-slider/tiny-slider.js"></script>
   <script src="../../themes/template/assets/vendor/sticky-js/sticky.min.js"></script>
   <script src="../../themes/template/assets/vendor/glightbox/js/glightbox.js"></script>
+  <script src="../../themes/template/assets/vendor/jarallax/jarallax.min.js"></script>
+  <script src="../../themes/template/assets/vendor/jarallax/jarallax-video.min.js"></script>
 
   <!-- Template Functions -->
   <script src="../../themes/template/assets/js/functions.js"></script>
