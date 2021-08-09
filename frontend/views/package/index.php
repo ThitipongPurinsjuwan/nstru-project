@@ -9,15 +9,17 @@ use yii\helpers\Html;
 $this->title = 'แพ็คเกจ';
 ?>
 <div class="package-index">
-  <?= $this->render('_search', ['model' => $searchModel]); ?>
+  <?= $this->render('_search', ['model' => $searchModel, 'listOfDateMoment' => $listOfDateMoment]); ?>
 
   <h1><?= Html::encode($this->title) ?></h1>
 
-  <?php foreach ($model as $model) :  ?>
-    <section class="position-relative pt-0">
-      <div class="row">
-        <div class="col-12">
-          <div class="row gy-4">
+
+  <section class="position-relative pt-0">
+    <div class="row">
+      <div class="col-12">
+        <div class="row gy-4">
+
+          <?php foreach ($model as $model) :  ?>
             <!-- Card item START -->
             <div class="col-sm-6 col-lg-4">
               <div class="card">
@@ -36,8 +38,10 @@ $this->title = 'แพ็คเกจ';
                 </div>
               </div>
             </div>
-          </div>
-    </section>
-    <!-- Card item END -->
-  <?php endforeach  ?>
+            <!-- Card item END -->
+          <?php endforeach  ?>
+
+        </div>
+  </section>
+
 </div>

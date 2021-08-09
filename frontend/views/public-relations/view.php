@@ -45,8 +45,6 @@ Main START -->
             <?php endforeach  ?>
           </div>
 
-
-
         </div>
         <!-- Main Content END -->
         <!-- Right sidebar START -->

@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
       <?= $form->field($model, 'name')->input('text', ['placeholder' => "ชื่อแพ็คเกจ"])->label(false) ?>
     </div>
     <div class="col-md-1 col-sm-12 my-1 min-w-7">
-      <?= $form->field($model, 'date_moment')->dropdownList([3, 2, 1], ['prompt' => 'เลือกจำนวนวัน'])->label(false) ?>
+      <?= $form->field($model, 'date_moment')->dropdownList(ArrayHelper::map($listOfDateMoment, "date_moment", "date_moment"), ['prompt' => 'เลือกจำนวนวัน', 'class' => 'form-select'])->label(false) ?>
     </div>
     <div class="col-md-2 col-sm-12 my-1">
       <div class="form-group">

@@ -89,12 +89,10 @@ class SiteController extends Controller
 
   public function actionIndex()
   {
-    // Yii::$app->mongodb->open();// ทดสอบการเชื่อมต่อ
     $model = TypePlace::find()->all();
     $modelPlace = Place::find()->all();
     $modeNews = PublicRelations::find()->where(['type' => 2])->all();
-    $modelPackage = Package::find()->all();
-    // $modelImage = Images::find()->where(['key_images' => $modeNews->key_images])->all();
+    $modelPackage = Package::find()->limit(4)->all();
 
     return $this->render('index', [
       'model' => $model,

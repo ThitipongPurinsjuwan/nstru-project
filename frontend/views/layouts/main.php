@@ -99,6 +99,11 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
     display: none;
   }
 
+  .leaflet-control-layers section {
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+  }
+
   .container {
     max-width: 100% !important;
   }
