@@ -49,9 +49,6 @@
           <h4 class="card-title"><a href="post-single.html" class="btn-link text-reset fw-bold">12 worst types
               of business accounts
               you follow on Twitter</a></h4>
-          <p class="card-text">He moonlights difficult engrossed it, sportsmen. Interested
-            has all Devonshire difficulty gay assistance joy. Unaffected at ye of
-            compliment alteration to</p>
           <!-- Card info -->
         </div>
       </div>
@@ -124,7 +121,6 @@
                 <h6 class="card-title">
                   <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
                 </h6>
-                <div class="small mt-1"><?= $modelPackage->date_create ?></div>
               </div>
             </div>
           </div>
