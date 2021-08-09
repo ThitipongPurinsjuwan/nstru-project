@@ -9,31 +9,11 @@
               <!-- Card Image overlay -->
               <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
                 <div class="w-100 my-auto">
-
                   <div class="col-md-10 col-lg-7 mx-auto text-center">
                     <!-- Card category -->
-                    <a href="#" class="badge bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
+                    <a href="#" class="badge bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
                     <!-- Card title -->
-
                     <h2 class="text-white display-5"><a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset fw-normal"><?= $modelPlace->name ?></a></h2>
-                    <p class="text-white">For who thoroughly her boy estimating conviction.
-                      Removed demands expense account in outward tedious do.</p>
-                    <!-- Card info -->
-
-                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                      <li class="nav-item">
-                        <div class="nav-link">
-                          <div class="d-flex align-items-center text-white position-relative">
-                            <div class="avatar avatar-sm">
-                              <img class="avatar-img rounded-circle" src="../../themes/template/assets/images/avatar/14.jpg" alt="avatar">
-                            </div>
-                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Carolyn</a></span>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="nav-item">Jan 26, 2021</li>
-                      <li class="nav-item"><a href="#" class="btn-link"><i class="far fa-comment-alt me-1"></i> 5 Comments</a></li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -47,8 +27,8 @@
   <br>
   <!-- Title -->
   <div class="mb-4">
-    <h2 class="m-0"><i class="bi bi-hourglass-top me-2"></i>Today's top highlights</h2>
-    <p>Latest breaking news, pictures, videos, and special reports</p>
+    <h2 class="m-0"><i class="bi bi-hourglass-top me-2"></i>กำลังฮิต</h2>
+    <p>ข่าวประชาสัมพันธ์ล่าสุด, รูปภาพ, วีดิโอ, กิจกรรมพิเศษ</p>
   </div>
   <div class="row gy-4">
     <!-- Card item START -->
@@ -73,19 +53,6 @@
             has all Devonshire difficulty gay assistance joy. Unaffected at ye of
             compliment alteration to</p>
           <!-- Card info -->
-          <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-            <li class="nav-item">
-              <div class="nav-link">
-                <div class="d-flex align-items-center position-relative">
-                  <div class="avatar avatar-xs">
-                    <img class="avatar-img rounded-circle" src="../../themes/template/assets/images/avatar/01.jpg" alt="avatar">
-                  </div>
-                  <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item">Jan 22, 2021</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -103,13 +70,6 @@
             <!-- Card title -->
             <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">5 investment doubts you should clarify</a></h4>
             <!-- Card info -->
-            <ul class="nav nav-divider text-white-force align-items-center small">
-              <li class="nav-item position-relative">
-                <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Dennis</a>
-                </div>
-              </li>
-              <li class="nav-item">Jan 28, 2021</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -136,7 +96,7 @@
     <!-- Social widget END -->
     <!-- Trending topics widget START -->
     <div>
-      <h4 class="mt-4 mb-3">Topics</h4>
+      <h4 class="mt-4 mb-3">สถานที่</h4>
       <!-- Category item -->
       <?php foreach ($model as $model) :  ?>
         <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(../../themes/template/assets/images/blog/4by3/01.jpg); background-position: center left; background-size: cover;">
@@ -151,7 +111,7 @@
     <div class="d-flex">
       <!-- Recent post widget START -->
       <div class="col-12 col-sm-6 col-lg-12">
-        <h4 class="mt-4 mb-3">Package</h4>
+        <h4 class="mt-4 mb-3">แพ็คเกจ</h4>
         <!-- Recent post item -->
         <?php foreach ($modelPackage as $modelPackage) :  ?>
 

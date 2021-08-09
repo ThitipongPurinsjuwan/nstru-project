@@ -38,7 +38,7 @@ $this->title = $nameOfType;
               <h4 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h4>
               <!-- <p class="card-text"><?php $model->details ?></> -->
               <!-- Card info -->
-              <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+              <!-- <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                 <li class="nav-item">
                   <div class="nav-link">
                     <div class="d-flex align-items-center position-relative">
@@ -50,7 +50,7 @@ $this->title = $nameOfType;
                   </div>
                 </li>
                 <li class="nav-item">Jan 22, 2021</li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </div>

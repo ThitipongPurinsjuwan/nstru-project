@@ -48,12 +48,6 @@ class PackageController extends Controller
       'dataProvider' => $dataProvider,
       'model' => $model,
     ]);
-
-    // $model = Package::find()->all();
-
-    // return $this->render('index', [
-    //   'model' => $model,
-    // ]);
   }
 
   /**
@@ -66,27 +60,16 @@ class PackageController extends Controller
   {
     $model = $this->findModel($id);
     $modelImage = Images::find()->where(['key_images' => $model->key_images])->all();
+
+    $modelPlaceArray = [];
     $str = explode(",", $model->place);
-    $modelPlacearray = [];
 
     for ($i = 0; $i < count($str); $i++) {
-      // 
       $model_r = explode('"', $str[$i])[1];
-      array_push($modelPlacearray, (int)$model_r);
+      array_push($modelPlaceArray, (int)$model_r);
     }
-    // print_r($modelPlacearray);
 
-    // $listPlace = explode(',', $model->place);
-
-    $modelPlace = Place::find()->where(['in', 'id', $modelPlacearray])->all();
-    // echo "<pre>";
-    // foreach ($modelPlace as $modelPlace) {
-
-    //     print_r($modelPlace->name);
-    //     echo "<br>";
-    // }
-    // echo "</pre>";
-    // exit;
+    $modelPlace = Place::find()->where(['in', 'id', $modelPlaceArray])->all();
 
     return $this->render('view', [
       'model' => $model,

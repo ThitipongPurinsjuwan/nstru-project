@@ -196,25 +196,8 @@ $this->title = $model->name;
               <!-- Card Image overlay -->
               <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
                 <div class="w-100 my-auto">
-                  <!-- Card category -->
-                  <a href="#" class="badge bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
                   <!-- Card title -->
                   <h2 class="text-white display-5"><?= $model->name ?></h2>
-                  <!-- Card info -->
-                  <ul class="nav nav-divider text-white-force align-items-center justify-content-center">
-                    <li class="nav-item">
-                      <div class="nav-link">
-                        <div class="d-flex align-items-center text-white position-relative">
-                          <div class="avatar avatar-sm">
-                            <img class="avatar-img rounded-circle" src="../../themes/template/assets/images/avatar/11.jpg" alt="avatar">
-                          </div>
-                          <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="nav-item">Nov 15, 2021</li>
-                    <li class="nav-item">5 min read</li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -244,7 +227,7 @@ $this->title = $model->name;
             </div>
 
             <!-- Activity -->
-            <h4 class="mt-4">Activity</h4>
+            <h4 class="mt-4"><i class="bi bi-calendar2-check-fill"></i> กิจกรรม</h4>
             <div class="row mb-4">
               <div class="col-md-12">
                 <p><?= $model->activity ?></p>
@@ -256,7 +239,7 @@ $this->title = $model->name;
           <div class="col-lg-3">
             <div data-sticky data-margin-top="80" data-sticky-for="991">
               <div class="row">
-                <h5>Contact</h5>
+                <h5><i class="bi bi-person-lines-fill" style="margin-right: 0.5em;"></i> ช่องทางติดต่อ</h5>
               </div>
               <!-- Contact START -->
               <ul class="nav flex-column">
@@ -320,7 +303,6 @@ $this->title = $model->name;
       </div>
     </section>
 
-
     <!-- ==================== package -->
     <section class="pt-4">
       <div class="container">
@@ -328,54 +310,35 @@ $this->title = $model->name;
           <div class="col-md-12">
 
             <div class="mb-4 d-md-flex justify-content-between align-items-center">
-              <h2 class="m-0"><i class="bi bi-megaphone"></i> PACKAGE</h2>
+              <h2 class="m-0"><i class="bi bi-megaphone"></i> แพ็คเกจ</h2>
             </div>
             <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
               <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-md="3" data-items-sm="2" data-items-xs="1">
 
-
                 <?php foreach ($modelPackage as $modelPackage) :  ?>
                   <div class="card">
-
                     <div class="position-relative">
+
                       <img class="card-img" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="Card image">
                       <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-
-                        <div class="w-100 mb-auto d-flex justify-content-end">
+                        <!-- <div class="w-100 mb-auto d-flex justify-content-end">
                           <div class="text-end ms-auto">
-
                             <div class="icon-md bg-white-soft bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
                           </div>
-                        </div>
-
+                        </div> -->
                         <div class="w-100 mt-auto">
-                          <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Marketing</a>
+                          <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
                         </div>
                       </div>
+
                     </div>
                     <div class="card-body px-0 pt-3">
                       <h5 class="card-title">
                         <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
                       </h5>
-
-                      <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-                        <li class="nav-item">
-                          <div class="nav-link">
-                            <div class="d-flex align-items-center position-relative">
-                              <div class="avatar avatar-xs">
-                                <img class="avatar-img rounded-circle" src="../../themes/template/assets/images/avatar/07.jpg" alt="avatar">
-                              </div>
-                              <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Lori</a></span>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="nav-item">Mar 07, 2021</li>
-                      </ul>
                     </div>
                   </div>
                 <?php endforeach  ?>
-
-
               </div>
             </div>
           </div>
@@ -385,7 +348,6 @@ $this->title = $model->name;
     <!-- ======================= Main END -->
 
     <!-- ======================= comments -->
-
     <section class="pt-0">
       <div class="container position-relative" data-sticky-container>
         <div class="col-lg-9 mb-5">
@@ -397,30 +359,26 @@ $this->title = $model->name;
               <div>
                 <div class="mb-2">
                   <h5 class="m-0">Post 1</h5>
-                  <span class="me-3 small">June 11, 2021 at 6:01 am </span>
+                  <span class="me-3 small">9 มีนาคม 2564 เวลา 15.30 น. </span>
                 </div>
-                <p>Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
+                <p>คนนำทัวร์ดูแลดีมากกกกก สนุกมากค่ะ แนะนำเลยค่ะทัวร์นี้ </p>
               </div>
             </div>
-
-
             <!-- Comment level 1 -->
             <div class="my-4 d-flex">
               <img class="avatar avatar-md rounded-circle float-start me-3" src="../../themes/template/assets/images/avatar/04.jpg" alt="avatar">
               <div>
                 <div class="mb-2">
                   <h5 class="m-0">Post 2</h5>
-                  <span class="me-3 small">June 18, 2021 at 11:55 am </span>
+                  <span class="me-3 small">13 มิถุนายน 2564 เวลา 10.30 น.</span>
                 </div>
-                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favorite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. </p>
+                <p>คุ้มครับ ราคานี้ได้เยอะมาก ไกด์สวยและน่ารักมาก</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
-
     <!-- =======================END comments -->
 
     <!-- Reply START -->
@@ -439,12 +397,7 @@ $this->title = $model->name;
         </div>
       </div>
     </section>
-
-
-
-
     <!-- Reply END -->
-
 
     <!-- ======================= Sticky post START -->
     <div class="sticky-post bg-light border p-4 mb-5 text-sm-end rounded d-none d-xxl-block">
@@ -461,6 +414,7 @@ $this->title = $model->name;
       </div>
     </div>
     <!-- ======================= Sticky post END -->
+
   </main>
 </div>
 

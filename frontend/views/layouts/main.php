@@ -109,6 +109,10 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
     min-width: 4em;
   }
 
+  .min-w-7 {
+    min-width: 7em;
+  }
+
   .navbar-sticky-custom {
     background-color: #0d6efd !important;
   }
@@ -163,9 +167,8 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
             </li>
 
             <li class="nav-item"><a class="nav-link" href="index.php?r=travel-map/index"><i class="fas fa-map-marked-alt"></i> แผนที่</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&type=1"><i class="fas fa-newspaper"></i> ข่าวประชาสัมพันธ์</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&amp;type=2"><i class="fas fa-user-tie"></i> ข้อควรรู้สำหรับนักท่องเที่ยว (infographic)</a></li>
             <li class="nav-item"><a class="nav-link" href="index.php?r=package%2Findex"><i class="far fa-list-alt"></i> Package ท่องเที่ยว</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&amp;type=2"><i class="fas fa-user-tie"></i> ข้อควรรู้สำหรับนักท่องเที่ยว (infographic)</a></li>
           </ul>
         </div>
         <!-- Main navbar END -->
@@ -176,18 +179,19 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
             <a class="nav-link dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-search fs-4"> </i>
             </a>
-            <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
+            <div class="dropdown-menu dropdown-menu-end shadow p-2" aria-labelledby="navSearch">
 
               <?php $form = ActiveForm::begin([
                 'action' => ['package/index'],
                 'method' => 'get',
                 'options' => [
-                  'class' => 'input-group'
+                  'class' => 'input-group',
+                  'style' => 'margin-bottom: 0px;'
                 ]
               ]); ?>
 
               <input class="form-control border-success" name="name" value="" type="search" placeholder="Package ท่องเที่ยว" aria-label="Search">
-              <button class="btn btn-success m-0" type="submit">Search</button>
+              <button class="btn btn-success m-0" type="submit">ค้นหา</button>
 
               <?php ActiveForm::end(); ?>
 
@@ -214,6 +218,7 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
           ]) ?>
           <?= Alert::widget() ?>
           <?= $content ?>
+
           <!-- </div> -->
           <!-- Main Post END -->
 
@@ -234,8 +239,7 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
           <div class="col-md-12">
             <!-- Title -->
             <div class="mb-4 d-md-flex justify-content-between align-items-center">
-              <h2 class="m-0"><i class="bi bi-megaphone"></i> Sponsored news</h2>
-              <!-- <a href="#" class="text-body small"><u>Content by: Bootstrap</u></a> -->
+              <h2 class="m-0"><i class="bi bi-megaphone"></i> ข่าวประชาสัมพันธ์</h2>
             </div>
             <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
               <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-md="3" data-items-sm="2" data-items-xs="1">
@@ -279,25 +283,6 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
       <div class="row pt-3 pb-4">
         <div class="col-md-3">
           <img src="../../themes/template/assets/images/logo-footer.svg" alt="footer logo">
-        </div>
-        <div class="col-md-5">
-          <p class="text-muted">The next-generation blog, news, and magazine theme for you to start sharing
-            your stories today! This Bootstrap 5 based theme is ideal for all types of sites that deliver
-            the news.</p>
-        </div>
-        <div class="col-md-4">
-          <!-- Form -->
-          <form class="row row-cols-lg-auto g-2 align-items-center justify-content-end">
-            <div class="col-12">
-              <input type="email" class="form-control" placeholder="Enter your email address">
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary m-0">Subscribe</button>
-            </div>
-            <div class="form-text mt-2">By subscribing you agree to our
-              <a href="#" class="text-decoration-underline text-reset">Privacy Policy</a>
-            </div>
-          </form>
         </div>
       </div>
       <!-- About and Newsletter END -->
@@ -435,8 +420,7 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
             <div class="text-center text-md-start text-primary-hover text-muted">©2021 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">Webestica</a>. All rights reserved
             </div>
           </div>
-          <div class="col-md-6 d-sm-flex align-items-center justify-content-center justify-content-md-end">
-            <!-- Language switcher -->
+          <!-- <div class="col-md-6 d-sm-flex align-items-center justify-content-center justify-content-md-end">
             <div class="dropup me-0 me-sm-3 mt-3 mt-md-0 text-center text-sm-end">
               <a class="dropdown-toggle text-primary-hover" href="#" role="button" id="languageSwitcher" data-bs-toggle="dropdown" aria-expanded="false">
                 English Edition
@@ -447,13 +431,12 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
                 <li><a class="dropdown-item" href="#">French</a></li>
               </ul>
             </div>
-            <!-- Links -->
             <ul class="nav text-primary-hover text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
               <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
               <li class="nav-item"><a class="nav-link pe-0" href="#">Cookies</a></li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

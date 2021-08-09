@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -19,8 +20,8 @@ use yii\widgets\ActiveForm;
     <div class="col-md-3 col-sm-12 my-1">
       <?= $form->field($model, 'name')->input('text', ['placeholder' => "ชื่อแพ็คเกจ"])->label(false) ?>
     </div>
-    <div class="col-md-3 col-sm-12 my-1">
-      <?= $form->field($model, 'date_moment')->input('number', ['placeholder' => "เลือกจำนวนวันสำหรับท่องเที่ยว"])->label(false) ?>
+    <div class="col-md-1 col-sm-12 my-1 min-w-7">
+      <?= $form->field($model, 'date_moment')->dropdownList([3, 2, 1], ['prompt' => 'เลือกจำนวนวัน'])->label(false) ?>
     </div>
     <div class="col-md-2 col-sm-12 my-1">
       <div class="form-group">
