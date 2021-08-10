@@ -8,6 +8,7 @@ use backend\models\PlaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\Images;
 
 /**
  * PlaceController implements the CRUD actions for Place model.
@@ -67,6 +68,15 @@ class PlaceController extends Controller
         $model = new Place();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $image = Images::find()->where(['key_images' => $model->key_images])->andWhere(['important'=>1])->one();
+            $update_image = Place::find()->where(['id' => $model->id])->one();
+            	if($update_image!=null){
+			$update_image->name_img_important = $image->name;
+			$update_image->save();
+            }
+
+
             return $this->redirect(['view', 'id' => $model->id, 'type' => $model->type]);
         }
 
@@ -104,9 +114,10 @@ class PlaceController extends Controller
      */
     public function actionDelete($id)
     {
+        $gettype = Place::find()->where(['id' => $id])->one();
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index','type'=>$gettype->type]);
     }
 
     /**

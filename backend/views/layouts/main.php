@@ -47,6 +47,7 @@ $menu_main_role = str_replace('"', '\'', $menu_main_role);
 
 if (!empty($menu_main_role)) {
   $where_main_id = "AND id IN (".$menu_main_role.")";
+  $where_main_id_w = "WHERE id IN (".$menu_main_role.")";
 
 }else{
   $where_main_id = "";
@@ -68,7 +69,7 @@ $PHP_SELF = explode("/", $ALL_URL);
 $rr = array_slice($PHP_SELF,4);
 $r_url = implode("/",$rr);
 
-$check_isn_database_main = Yii::$app->db->createCommand("SELECT COUNT(*) FROM `menu_main` WHERE m_link = '".$r_url."' AND m_status = 'Y'")->queryScalar();
+$check_isn_database_main = Yii::$app->db->createCommand("SELECT COUNT(*) FROM `menu_main` WHERE m_link = '".$r_url."' ")->queryScalar(); //AND m_status = 'Y'
 
 $check_isn_database_sub = Yii::$app->db->createCommand("SELECT COUNT(*) FROM `menu_sub` WHERE submenu_link = '".$r_url."' AND submenu_active = 'Y'")->queryScalar();
 
@@ -76,7 +77,7 @@ $check_isn_database = $check_isn_database_sub + $check_isn_database_main;
 
 if ($check_isn_database>0) {
   if (!empty($where_main_id)) {
-    $check_url_main = Yii::$app->db->createCommand("SELECT * FROM `menu_main` WHERE m_link != '' AND m_status = 'Y' $where_main_id")->queryAll();
+    $check_url_main = Yii::$app->db->createCommand("SELECT * FROM `menu_main` WHERE m_link != '' $where_main_id")->queryAll(); //AND m_status = 'Y'
 
     $check_main_count = 0;
     foreach ($check_url_main as $url_main) {
@@ -570,7 +571,7 @@ $server = $_SERVER['REQUEST_URI'];
 
         <?php if(!empty($menu_main_role)):
          
-          $mainmenusql = "SELECT * FROM `menu_main` WHERE m_status = 'Y' $where_main_id ORDER BY m_sort ASC";
+          $mainmenusql = "SELECT * FROM `menu_main` $where_main_id_w ORDER BY m_sort ASC";
           $array_menu_main = Yii::$app->db->createCommand($mainmenusql)->queryAll();
           foreach ($array_menu_main as $val_menu_main):
             if ($val_menu_main['m_active']=='1') {

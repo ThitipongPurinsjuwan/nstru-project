@@ -64,7 +64,7 @@ if(isset($_POST["menu_slot"])) {
 
     echo "<script>window.location='index.php?r=menu-main';</script>";
 }
-$result = Yii::$app->db->createCommand("SELECT * FROM menu_main WHERE m_status = 'Y' ORDER BY m_sort ASC")->queryAll();
+$result = Yii::$app->db->createCommand("SELECT * FROM menu_main ORDER BY m_sort ASC")->queryAll(); //WHERE m_status = 'Y'
 
 ?>
 <div class="menu-main-index">
@@ -105,12 +105,14 @@ $result = Yii::$app->db->createCommand("SELECT * FROM menu_main WHERE m_status =
                                     <li id="<?php echo $row["id"]; ?>" class="menu-slot">
                                         <div class="menu-slot-left">
                                             <i class="<?php echo $row["m_icon"]; ?>"></i>
-                                            <strong><?php echo $row["m_name"]; ?></strong> -
+                                            <strong><?php echo $row["m_name"]; ?></strong>
 
-                                            [<?=$count = MenuSub::find()
+                                        <?php if($row["m_status"]=="Y"):?>
+                                            [แสดงเมนูบนหน้าเว็บไซต์]
+                                            <!-- [<?=$count = MenuSub::find()
                                                     ->where(['menu_id' => $row["id"]])
-                                                    ->count();?> เมนู]
-
+                                                    ->count();?> เมนู] -->
+                                        <?php endif; //if($row["m_status"]=="Y")?>
                                         </div>
                                         <div class="menu-slot-right">
                                             <a href="index.php?r=menu-main%2Fview&amp;id=<?php echo $row["id"]; ?>">

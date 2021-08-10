@@ -20,7 +20,7 @@ class TypePlace extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-     public $upload_foler ='uploads';
+     public $upload_foler ='images/image_maker';
     public static function tableName()
     {
         return 'type_place';
@@ -36,7 +36,11 @@ class TypePlace extends \yii\db\ActiveRecord
             [['images'], 'string'],
              [['name','name_eng'], 'string', 'max' => 255],
             [['status', 'user_create'], 'integer'],
+             [['name_img_important'], 'string', 'max' => 150],
             [['date_create'], 'string', 'max' => 20],
+             [['key_images'], 'string', 'max' => 20],
+               [['m_icon'], 'string', 'max' => 50],
+             
         ];
     }
 
@@ -75,11 +79,13 @@ class TypePlace extends \yii\db\ActiveRecord
   }
 
   public function getUploadPath(){
-      return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
+    //   return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
+    return '../../images/image_maker/';
   }
 
   public function getUploadUrl(){
-      return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
+    //   return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
+     return '../../images/image_maker/';
   }
 
   public function getPhotoViewer(){

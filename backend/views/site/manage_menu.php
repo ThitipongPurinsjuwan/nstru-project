@@ -31,7 +31,7 @@ if (!empty($id)) {
 	$arraycheck_menusub = explode(",", $allow_access_sub);
 }
 
-$sql = Yii::$app->db->createCommand("SELECT * FROM `menu_main` WHERE m_status = 'Y' ORDER BY m_sort ASC")->queryAll();
+$sql = Yii::$app->db->createCommand("SELECT * FROM `menu_main` ORDER BY m_sort ASC")->queryAll(); //WHERE m_status = 'Y'
 // $sql = "SELECT * FROM `menu_main` WHERE m_status = 'Y' ORDER BY m_sort ASC";
 
 // $result = $conn->query($sql)or die($conn->error);

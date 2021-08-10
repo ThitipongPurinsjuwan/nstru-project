@@ -36,7 +36,7 @@ $(document).ready(function($) {
     const showlistimages = () => {
         let show = '';
         $.ajax({
-            url: "index.php?r=site/page-ajaxuploadfile&type=show&manage=<?=$manage;?>&key_images=" +
+            url: "index.php?r=site/page-ajaxuploadfile&type=show&table=<?=$table;?>&manage=<?=$manage;?>&key_images=" +
                 get_key_images,
             type: 'post',
             dataType: 'json',
@@ -115,7 +115,7 @@ $(document).ready(function($) {
 
     var myDropzone = {};
     Dropzone.options.myAwesomeDropzone = {
-        url: 'index.php?r=site/page-ajaxuploadfile&type=upload&key_images=' + get_key_images,
+        url: 'index.php?r=site/page-ajaxuploadfile&table=<?=$table;?>&type=upload&key_images=' + get_key_images,
         paramName: "fileOther", // ชื่อไฟล์ปลายทางเมื่อ upload แบบ mutiple จะเป็น array
         autoProcessQueue: true, // ใส่เพื่อไม่ให้อัพโหลดทันที หลังจากเลือกไฟล์
         uploadMultiple: true, // อัพโหลดไฟล์หลายไฟล์
@@ -213,7 +213,7 @@ $(document).ready(function($) {
         var key_images = $(this).data("key_images");
         if (confirm("ต้องการตั้งเป็นภาพหลักใช่หรือไม่?")) {
             $.ajax({
-                url: "index.php?r=site/page-ajaxuploadfile&type=setting_important&key_images=" +
+                url: "index.php?r=site/page-ajaxuploadfile&table=<?=$table;?>&type=setting_important&key_images=" +
                     get_key_images,
                 method: "POST",
                 dataType: 'json',
@@ -236,7 +236,7 @@ $(document).ready(function($) {
         var img_name = $(this).data("img_name");
         if (confirm("ต้องการลบรูปภาพใช่หรือไม่?")) {
             $.ajax({
-                url: "index.php?r=site/page-ajaxuploadfile&type=delete&key_images=" +
+                url: "index.php?r=site/page-ajaxuploadfile&table=<?=$table;?>&type=delete&key_images=" +
                     get_key_images,
                 method: "POST",
                 dataType: 'json',

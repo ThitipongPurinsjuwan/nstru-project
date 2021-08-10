@@ -13,26 +13,26 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="type-place-view">
 
-   
+
     <h4><?= Html::encode($this->title) ?></h4>
     <div class="row clearfix">
-        <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="col-xl-6 col-lg-6 col-md-6">
             <div class="card card-success">
                 <div class="card-body ribbon">
 
 
-       <p>
-                                <?= Html::a(Yii::t('app', 'แก้ไข'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                                <?= Html::a(Yii::t('app', 'ยกเลิก'), ['delete', 'id' => $model->id], [
+                    <p>
+                        <?= Html::a(Yii::t('app', 'แก้ไข'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a(Yii::t('app', 'ยกเลิก'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
-                            </p>
+                    </p>
 
-    <?= DetailView::widget([
+                    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -78,5 +78,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
         ],
     ]) ?>
-</div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-info">
+                <div class="card-body ribbon">
+                    <h6><b>ภาพประกอบ</b></h6>
+                    <input type="hidden" class="get_key_images" value="<?=$model->key_images;?>">
+                    <?php
+                    $manage = 0; 
+                    include('../../js/dropzone-4.3.0/page-uploadfile.php');
+                    ?>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </div>

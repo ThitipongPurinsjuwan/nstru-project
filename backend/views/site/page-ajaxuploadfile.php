@@ -1,12 +1,17 @@
 <?php
 use common\models\Images;
 use common\models\Place;
+use common\models\Package;
+use common\models\PublicRelations;
+use common\models\TypePlace;
+
 
 header('Access-Control-Allow-Origin: *'); 
 header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token'); 
 header('Content-Type: application/json'); 
 $type = isset($_GET['type'])?$_GET['type']:(isset($_POST['type'])?$_POST['type']:''); 
 $key_images = isset($_GET['key_images'])?$_GET['key_images']:(isset($_POST['key_images'])?$_POST['key_images']:''); 
+$table = isset($_GET['table'])?$_GET['table']:(isset($_POST['table'])?$_POST['table']:''); 
 
 if ($type == 'upload') {
 if (count($_FILES[ 'fileOther' ]) > 0) {
@@ -35,6 +40,27 @@ if ( ! empty($tmpName) && is_uploaded_file($tmpName)) {
 move_uploaded_file($tmpName, $location); 
 
 		$important = ($countimages>0)? 0:($index==0)?1:0;
+
+		if($important==1){
+			switch ($table) {
+    case 'Place':
+        $model = Place::find()->where(['key_images' => $key_images])->one();
+        break;
+    case 'Package':
+        $model = Package::find()->where(['key_images' => $key_images])->one();
+        break;
+    case 'PublicRelations':
+        $model = PublicRelations::find()->where(['key_images' => $key_images])->one();
+        break;
+		case 'TypePlace':
+        $model = TypePlace::find()->where(['key_images' => $key_images])->one();
+        break;
+}	
+			if($model!=null){
+			$model->name_img_important = $img_name;
+			$model->save();
+	}
+		}
 			
 	    $model = new Images;
 		$model->name = $img_name;
@@ -78,7 +104,20 @@ if ($type == 'setting_important') {
 			$model->important = 1;
 			$model->save();
 
-			$model = Place::find()->where(['key_images' => $_POST["key_images"]])->one();
+			switch ($table) {
+    case 'Place':
+        $model = Place::find()->where(['key_images' => $_POST["key_images"]])->one();
+        break;
+    case 'Package':
+        $model = Package::find()->where(['key_images' => $_POST["key_images"]])->one();
+        break;
+    case 'PublicRelations':
+        $model = PublicRelations::find()->where(['key_images' => $_POST["key_images"]])->one();
+        break;
+		case 'TypePlace':
+        $model = TypePlace::find()->where(['key_images' => $_POST["key_images"]])->one();
+        break;
+}	
 			if($model!=null){
 			$model->name_img_important = $_POST['img_name'];
 			$model->save();
@@ -95,6 +134,25 @@ if ($type == "delete") {
 	if(isset($_POST["img_id"]))
 	{
 		// echo $_POST["img_name"];
+		switch ($table) {
+    case 'Place':
+        $model = Place::find()->where(['key_images' => $_POST["key_images"],'name_img_important'=>$_POST["img_name"]])->one();
+        break;
+    case 'Package':
+        $model = Package::find()->where(['key_images' => $_POST["key_images"],'name_img_important'=>$_POST["img_name"]])->one();
+        break;
+    case 'PublicRelations':
+        $model = PublicRelations::find()->where(['key_images' => $_POST["key_images"],'name_img_important'=>$_POST["img_name"]])->one();
+        break;
+		case 'TypePlace':
+        $model = TypePlace::find()->where(['key_images' => $_POST["key_images"],'name_img_important'=>$_POST["img_name"]])->one();
+        break;
+}	
+			if($model!=null){
+			$model->name_img_important = '';
+			$model->save();
+			}
+			
 		$file_path = '../../images/images_upload_forform/' . $_POST["img_name"];
 		if(unlink($file_path))
 		{

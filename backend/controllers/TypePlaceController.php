@@ -8,6 +8,7 @@ use app\models\TypePlaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\Images;
 
 /**
  * TypePlaceController implements the CRUD actions for TypePlace model.
@@ -72,6 +73,13 @@ class TypePlaceController extends Controller
                 if ($model->validate()) {
 
                  if($model->save())
+
+                  $image = Images::find()->where(['key_images' => $model->key_images])->andWhere(['important'=>1])->one();
+            $update_image = TypePlace::find()->where(['id' => $model->id])->one();
+            	if($update_image!=null){
+			$update_image->name_img_important = $image->name;
+			$update_image->save();
+            }
                    
                         return $this->redirect(['view', 'id' => $model->id]);
                 } else {
@@ -104,7 +112,8 @@ class TypePlaceController extends Controller
 
             if($model->images!=$_POST['file_name_old']){
                 if(!empty($_POST['file_name_old'])){
-                    unlink(Yii::getAlias('@webroot').'/uploads/'.$_POST['file_name_old']);
+                    // unlink(Yii::getAlias('@webroot').'/uploads/'.$_POST['file_name_old']);
+                     unlink('../../images/image_maker/'.$_POST['file_name_old']);
                 }
             }
 
@@ -131,6 +140,7 @@ class TypePlaceController extends Controller
      */
     public function actionDelete($id)
     {
+       
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

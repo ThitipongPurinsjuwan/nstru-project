@@ -37,6 +37,7 @@ class PublicRelations extends \yii\db\ActiveRecord
             [['status', 'user_create'], 'integer'],
             [['type'], 'string', 'max' => 1],
             [['topic'], 'string', 'max' => 255],
+            [['name_img_important'], 'string', 'max' => 150],
             [['date_imparting', 'key_images', 'date_create'], 'string', 'max' => 20],
         ];
     }

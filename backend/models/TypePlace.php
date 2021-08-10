@@ -37,6 +37,9 @@ class TypePlace extends \yii\db\ActiveRecord
              [['name','name_eng'], 'string', 'max' => 255],
             [['status', 'user_create'], 'integer'],
             [['date_create'], 'string', 'max' => 20],
+              [['name_img_important'], 'string', 'max' => 150],
+               [['key_images'], 'string', 'max' => 20],
+                 [['m_icon'], 'string', 'max' => 50],
         ];
     }
 
@@ -75,11 +78,13 @@ class TypePlace extends \yii\db\ActiveRecord
   }
 
   public function getUploadPath(){
-      return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
+    //   return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
+     return '../../images/image_maker/';
   }
 
   public function getUploadUrl(){
-      return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
+    //   return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
+     return '../../images/image_maker/';
   }
 
   public function getPhotoViewer(){

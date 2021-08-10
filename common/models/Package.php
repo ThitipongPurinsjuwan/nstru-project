@@ -39,7 +39,7 @@ class Package extends \yii\db\ActiveRecord
             [['price', 'status', 'user_create'], 'integer'],
             [['name'], 'string', 'max' => 250],
             [['facebook_link', 'line_id', 'phone'], 'string', 'max' => 255],
-            [['contact'], 'string', 'max' => 150],
+            [['contact','name_img_important'], 'string', 'max' => 150],
             [['date_moment', 'key_images', 'date_create'], 'string', 'max' => 20],
         ];
     }

@@ -8,6 +8,7 @@ use backend\models\PublicRelationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\Images;
 
 /**
  * PublicRelationsController implements the CRUD actions for PublicRelations model.
@@ -67,6 +68,14 @@ class PublicRelationsController extends Controller
         $model = new PublicRelations();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+             $image = Images::find()->where(['key_images' => $model->key_images])->andWhere(['important'=>1])->one();
+            $update_image = PublicRelations::find()->where(['id' => $model->id])->one();
+            	if($update_image!=null){
+			$update_image->name_img_important = $image->name;
+			$update_image->save();
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -104,9 +113,10 @@ class PublicRelationsController extends Controller
      */
     public function actionDelete($id)
     {
+        $gettype = PublicRelations::find()->where(['id' => $id])->one();
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index','type'=>$gettype->type]);
     }
 
     /**

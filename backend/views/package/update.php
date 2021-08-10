@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id
                 <div class="col-md-6">
                     <?php
                     $manage = 1; 
+                     $table = 'Package';
                     include('../../js/dropzone-4.3.0/page-uploadfile.php');
                     ?>
                 </div>

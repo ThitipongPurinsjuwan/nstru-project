@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card card-success">
                 <div class="card-body ribbon">
-                    <!-- <p>
+                    <p>
                         <?= Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
-                    </p> -->
+                    </p>
 
     <?php Pjax::begin(); ?>
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -73,7 +73,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
             //'user_create',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // ['class' => 'yii\grid\ActionColumn'],
+               ['class' => 'yii\grid\ActionColumn',
+                                'buttons' => [
+                                    'view' => function ($url, $model, $key) {
+                                        return Html::a('<i class="fas fa-eye"></i>',
+                                            ['view', 'id' => $model->id],['title' => 'View','class'=>'btn btn-light']
+                                        );
+                                    },
+                                    'update' => function ($url, $model, $key) {
+
+                                        return Html::a('<i class="fas fa-pencil-alt"></i>',
+                                            ['update', 'id' => $model->id],['title' => 'Update','class'=>'btn btn-light']
+                                        );
+                                    },
+                                    'delete' => function ($url, $model, $key) {
+                                       
+                                        return  '<button type="button" class="btn btn-light deldata"><i class="fas fa-trash"></i></button>';//Html::a('<i class="fas fa-trash"></i>','class'=>'btn btn-light']); งง
+                                        
+
+                                    },
+
+                                ],
+                                'options'=> ['style'=>'width:20%;'],
+                            ],
         ],
     ]); ?>
 
@@ -84,3 +107,36 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
+
+<div class="modal fade" id="showselect_type" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on('click', '.deldata', function() {
+        if (confirm("ต้องการยกประเภทสถานที่ใช่หรือไม่?")) {
+            if (confirm("ต้องการลบข้อมูลทั้งหมดที่อยู่ในประเภทนี้เลยใช่ไหม?")) {
+                
+            }else{
+                $('#showselect_type').modal('show')
+            }
+        }
+    });
+</script>

@@ -23,6 +23,8 @@ input[type="file"] {
         <div class="col-md-6">
 
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                 <?php $key_images = (!$model->isNewRecord) ? $model->key_images : time();?>
+        <?= $form->field($model, 'key_images')->hiddenInput(['maxlength' => true,'value'=>$key_images, 'class'=>'get_key_images'])->label(false);?>
 
         </div>
         
@@ -51,6 +53,13 @@ input[type="file"] {
             <?php endif ?>
         </div>
 
+        
+		<div class="col-md-12">
+			<label for="">เลือกไอคอนเมนู</label>
+			<div id="target"></div>
+			<?= $form->field($model, 'm_icon')->hiddenInput(['maxlength' => true,'id'=>'showdata'])->label(false); ?>
+		</div>
+
         <?= $form->field($model, 'date_create')->hiddenInput(['maxlength' => true, 'value'=>date("Y-m-d H:i:s")])->label(false); ?>
 
         <?= $form->field($model, 'user_create')->hiddenInput(['value'=>$_SESSION['user_id']])->label(false); ?>
@@ -65,6 +74,43 @@ input[type="file"] {
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<link rel="stylesheet" href="../../js/bootstrap-iconpicker-1.10.0/icon-fonts/elusive-icons-2.0.0/css/elusive-icons.min.css"/>
+<link rel="stylesheet" href="../../js/bootstrap-iconpicker-1.10.0/icon-fonts/map-icons-2.1.0/css/map-icons.min.css"/>
+<link rel="stylesheet" href="../../js/bootstrap-iconpicker-1.10.0/dist/css/bootstrap-iconpicker.css"/>
+<script type="text/javascript" src="../../js/bootstrap-iconpicker-1.10.0/dist/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-iconpicker-1.10.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-iconpicker-1.10.0/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
+
+<script type="text/javascript">
+
+	(function($) {
+		$('#target').iconpicker({
+			align:'left',
+			arrowClass: 'btn-primary',
+			arrowPrevIconClass: 'fas fa-angle-left',
+			arrowNextIconClass: 'fas fa-angle-right',
+			cols: 8,
+			footer: true,
+			header: true,
+			icon: '<?=$model->m_icon;?>',
+			iconset: 'fontawesome5',
+			labelHeader: '{0} of {1} pages',
+			labelFooter: '{0} - {1} of {2} icons',
+			placement: 'bottom',
+			rows: 6,
+			search: true,
+			searchText: 'Search',
+			selectedClass: 'btn-warning',
+			unselectedClass: ''
+		}
+		).on('change', function(e) {
+			$("#showdata").val(e.icon);
+		});
+
+	})(jQuery);
+
+</script>
 
 <script>
 

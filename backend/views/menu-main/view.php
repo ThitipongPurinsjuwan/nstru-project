@@ -117,12 +117,12 @@ $result = Yii::$app->db->createCommand("SELECT * FROM menu_main WHERE m_status =
                         ],
                     ]) ?>
 
-                    <h6>ข้อมูลเมนูย่อย</h6>
+                    <!-- <h6>ข้อมูลเมนูย่อย</h6> -->
 
                     <div class="row">
-                        <div class="col-md-12 menu-sub-margin">
+                        <!-- <div class="col-md-12 menu-sub-margin">
                          <?= Html::a(Yii::t('app', 'เพิ่มเมนูย่อย'), ['menu-sub/create','id_main' => $model->id], ['class' => 'btn btn-success']) ?>
-                     </div>
+                     </div> -->
                      <div class="col-md-8">
                         <?php   $form = ActiveForm::begin([
                             'enableClientValidation' => true,
@@ -169,7 +169,7 @@ $result = Yii::$app->db->createCommand("SELECT * FROM menu_main WHERE m_status =
                                 ?>
                             </ul>
 
-                            <input type="submit" class="btn btn-primary" value="บันทึกการเรียงลำดับ" onClick="saveOrder();" style="margin: 0;"/>
+                            <!-- <input type="submit" class="btn btn-primary" value="บันทึกการเรียงลำดับ" onClick="saveOrder();" style="margin: 0;"/> -->
                             <a href="index.php?r=user-role%2Fupdate&id=1" class="btn btn-primary" style="margin: 0;" >จัดการสิทธิ์การเข้าใช้เมนู</a>
                             
                         </div>

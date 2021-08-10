@@ -16,13 +16,27 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'แก้ไข');
 
      <h4><?= Html::encode($this->title) ?></h4>
     <div class="row clearfix">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-            <div class="card card-success">
-                <div class="card-body ribbon">
+      <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-success">
+                        <div class="card-body ribbon">
 
-                    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+                            <?= $this->render('_form', [
+						'model' => $model,
+					]) ?>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <?php
+                    $manage = 1; 
+                    $table = 'TypePlace';
+                    include('../../js/dropzone-4.3.0/page-uploadfile.php');
+                    ?>
                 </div>
             </div>
         </div>
