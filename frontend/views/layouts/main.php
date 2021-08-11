@@ -34,8 +34,10 @@ if (!isset($_SESSION)) {
 /* @var $content string */
 
 use common\models\PublicRelations;
+use common\models\TypePlace;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
+use frontend\models\MenuMain;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
@@ -47,6 +49,8 @@ AppAsset::register($this);
 
 
 $modeNews = PublicRelations::find()->where(['type' => 2])->all();
+$modelTypePlace = TypePlace::find()->all();
+$menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
 ?>
 
 
@@ -165,15 +169,17 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-street-view"></i> สถานที่</a>
               <ul class="dropdown-menu" aria-labelledby="homeMenu">
-                <li><a class="dropdown-item nav-link-text" href="index.php?r=place/index&amp;type=1"><i class="fas fa-map-marked-alt"></i> แหล่งท่องเที่ยวเชิงเกษตร</a></li>
-                <li><a class="dropdown-item nav-link-text" href="index.php?r=place%2Findex&amp;type=2"><i class="fas fa-utensils"></i> ร้านอาหาร</a></li>
-                <li><a class="dropdown-item nav-link-text" href="index.php?r=place%2Findex&amp;type=3"><i class="fas fa-bed"></i> ที่พัก</a></li>
+
+                <?php foreach ($modelTypePlace as $modelType) : ?>
+                  <li><a class="dropdown-item nav-link-text" href="index.php?r=place/index&amp;type=<?= $modelType->id ?>"><i class="<?= $modelType->m_icon ?>"></i> <?= $modelType->name ?></a></li>
+                <?php endforeach ?>
+
               </ul>
             </li>
-
             <li class="nav-item"><a class="nav-link" href="index.php?r=travel-map/index"><i class="fas fa-map-marked-alt"></i> แผนที่</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=package%2Findex"><i class="far fa-list-alt"></i> Package ท่องเที่ยว</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=public-relations%2Findex&amp;type=2"><i class="fas fa-user-tie"></i> ข้อควรรู้สำหรับนักท่องเที่ยว (infographic)</a></li>
+            <?php foreach ($menuMain as $menu) : ?>
+              <li class="nav-item"><a class="nav-link" href="<?= $menu->m_link ?>"><i class="<?= $menu->m_icon ?>"></i> <?= $menu->m_name ?></a></li>
+            <?php endforeach ?>
           </ul>
         </div>
         <!-- Main navbar END -->

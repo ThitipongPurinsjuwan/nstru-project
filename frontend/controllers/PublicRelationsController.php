@@ -36,13 +36,19 @@ class PublicRelationsController extends Controller
    */
   public function actionIndex()
   {
-    $searchModel = new PublicRelationsSearch();
-    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    $model = PublicRelations::find()->where(['type' => 2])->all();
 
     return $this->render('index', [
-      'searchModel' => $searchModel,
-      'dataProvider' => $dataProvider,
+      'model' => $model,
     ]);
+
+    // $searchModel = new PublicRelationsSearch();
+    // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+    // return $this->render('index', [
+    //   'searchModel' => $searchModel,
+    //   'dataProvider' => $dataProvider,
+    // ]);
   }
 
   /**

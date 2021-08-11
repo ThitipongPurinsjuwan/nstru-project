@@ -48,25 +48,28 @@ use yii\grid\GridView;
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <!-- Card item START -->
-          <div class="card border rounded-3 up-hover p-4 mb-4">
-            <div class="row g-3">
-              <div class="col-lg-5">
-                <!-- Title -->
-                <h2 class="card-title">
-                  <a href="post-single-6.html" class="btn-link text-reset stretched-link">7 common mistakes everyone makes while traveling</a>
-                </h2>
-                <div class="d-flex align-items-center position-relative mt-3">
-                  <p>For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving. See resolved goodness felicity shy civility domestic had but. Drawings offended yet answered Jennings perceive laughing six did far. </p>
+
+          <?php foreach ($model as $model) : ?>
+            <!-- Card item START -->
+            <div class="card border rounded-3 up-hover p-4 mb-4">
+              <div class="row g-3">
+                <div class="col-lg-5">
+                  <!-- Title -->
+                  <h2 class="card-title">
+                    <a href="post-single-6.html" class="btn-link text-reset stretched-link"> <?= $model->topic ?></a>
+                  </h2>
+                  <div class="d-flex align-items-center position-relative mt-3">
+                    <p><?= $model->details ?></p>
+                  </div>
+                </div>
+                <!-- Image -->
+                <div class="col-md-12 col-lg-7">
+                  <img class="rounded-3 img-knowing" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
                 </div>
               </div>
-              <!-- Image -->
-              <div class="col-md-12 col-lg-7">
-                <img class="rounded-3 img-knowing" src="../../themes//template/assets/images/blog/4by3/07.jpg" alt="Card image">
-              </div>
             </div>
-          </div>
-          <!-- Card item END -->
+            <!-- Card item END -->
+          <?php endforeach ?>
           <!-- Card item START -->
           <div class="card border rounded-3 up-hover p-4 mb-4">
             <div class="row">
