@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\Images;
 use common\models\Place;
+use yii\web\Response;
+
 /**
  * TypePlaceController implements the CRUD actions for TypePlace model.
  */
@@ -142,6 +144,9 @@ class TypePlaceController extends Controller
     public function actionDelete($id)
     {
        
+        $gettype = TypePlace::find()->where(['id' => $id])->one();
+        Images::deleteAll(['key_images'=>$gettype->key_images]);
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -168,9 +173,15 @@ class TypePlaceController extends Controller
     public function actionSelectType($id)
     {
        
-        $model = TypePlace::find()->where(['<>','id', $id])->all();
+        $query_type = TypePlace::find()->where(['<>','id', $id])->all();
 
-        return $this->redirect(['index']);
+        $response = Yii::$app->response;
+    $response->format = \yii\web\Response::FORMAT_JSON;
+    $response->data = $query_type;
+
+    return $response;
+
+        // return $this->redirect(['index']);
     }
 
 

@@ -114,6 +114,7 @@ class PublicRelationsController extends Controller
     public function actionDelete($id)
     {
         $gettype = PublicRelations::find()->where(['id' => $id])->one();
+        Images::deleteAll(['key_images'=>$gettype->key_images]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index','type'=>$gettype->type]);

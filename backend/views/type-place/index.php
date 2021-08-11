@@ -108,46 +108,71 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<div class="modal fade" id="showselect_type" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-sm" id="showselect_type" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">เลือกประเภทสถานที่ที่ต้องการย้ายข้อมูล</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+      </div> -->
       <div class="modal-body">
-        ...
+        <select id="selectnew_type" class="form-control"></select>
+        <p id="selectnewtype_error" style="font-weight:bold;color:red;"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-primary savenewtype">บันทึก</button>
       </div>
     </div>
   </div>
 </div>
 
 
+
 <script>
+let iddel = '';
 $(document).on('click', '.deldata', function() {
-    var id = $(this).data("id");
-        if (confirm("ต้องการยกประเภทสถานที่ใช่หรือไม่?")) {
+    iddel = $(this).data("id");
+        if (confirm("ต้องการยกเลิกประเภทสถานที่ใช่หรือไม่?")) {
             if (confirm("ต้องการลบข้อมูลทั้งหมดที่อยู่ในประเภทนี้เลยใช่หรือไม่?")) {
-            //     $.ajax({
-            //     url: "index.php?r=type-place/delete-all&id="+id,
-            //     method: "POST",
-            //     success: function(data) {
-            //     }
-            // });
-            var url = "index.php?r=type-place/delete-all&id="+id;
+            var url = "index.php?r=type-place/delete-all&id="+iddel;
 var form = $('<form action="' + url + '" method="post">' +'</form>');
 $('body').append(form);
 $(form).submit();
-            // location.reload();
+            
             }else{
-                $('#showselect_type').modal('show')
+                     $.ajax({
+                        url: "index.php?r=type-place/select-type&id="+iddel,
+                        method: "GET",
+                        dataType: 'json',
+                        success: function(data) {
+                            let show_select = `<option value="">เลือกประเภทสถานที่ใหม่</option>`;
+                            data.forEach(e => {
+                                show_select += `<option value="${e.id}">${e.name} (${e.name_eng})</option>`;
+                            });
+                            $("#selectnew_type").html(show_select);
+                        }
+                    });
+
+                    $('#showselect_type').modal('show');
             }
+        }
+    });
+
+    $(document).on('click', '.savenewtype', function() {
+        let newtype_id = $("#selectnew_type option:selected").val(); 
+        if(newtype_id!=''){
+            $('#showselect_type').modal('hide');
+            $('#selectnewtype_error').html('');
+            var url = "index.php?r=type-place/delete-and-change&id="+iddel+"&newtype="+newtype_id;
+var form = $('<form action="' + url + '" method="post">' +'</form>');
+$('body').append(form);
+$(form).submit();
+
+        }else{
+            $('#selectnewtype_error').html('กรุณาเลือกประเภทสถานที่ที่ต้องการย้ายข้อมูล');
         }
     });
 </script>
