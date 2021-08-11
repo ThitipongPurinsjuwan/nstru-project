@@ -141,6 +141,26 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   .nav-link-text {
     font-size: 1.1em !important;
   }
+
+  .img-box-news {
+    height: 17em;
+    object-fit: cover;
+  }
+
+  .img-sm-box {
+    height: 6em;
+    object-fit: cover;
+  }
+
+  .img-md-box {
+    height: 23em;
+    object-fit: cover;
+  }
+
+  .img-lg-box {
+    height: 30em;
+    object-fit: cover;
+  }
 </style>
 
 <?php $this->beginBody() ?>
@@ -260,7 +280,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
                   <div class="card">
                     <!-- Card img -->
                     <div class="position-relative">
-                      <img class="card-img" src="../../themes/template/assets/images/blog/4by3/07.jpg" alt="Card image">
+                      <img class="card-img img-box-news" src="<?= '../../images/images_upload_forform/' . $modeNews->name_img_important ?>" alt="Card image">
                       <div class="card-img-overlay d-flex align-items-start flex-column p-3">
 
                         <div class="w-100 mt-auto">

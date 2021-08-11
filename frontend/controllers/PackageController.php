@@ -43,9 +43,6 @@ class PackageController extends Controller
     $query = $dataProvider->query;
     $model = $query->all();
     $listOfDateMoment = Package::find()->select(['date_moment'])->groupBy(['date_moment'])->asArray()->all();
-    // echo "<pre>";
-    // print_r($listOfDateMoment);
-    // echo "</pre>";
 
     return $this->render('index', [
       'model' => $model,

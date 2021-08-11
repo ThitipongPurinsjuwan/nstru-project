@@ -68,6 +68,17 @@ class PublicRelationsController extends Controller
     ]);
   }
 
+  public function actionInfoView($id)
+  {
+    $model = $this->findModel($id);
+    $modelImages = Images::find()->where(['key_images' => $model->key_images])->asArray()->all();
+
+    return $this->render('info-view', [
+      'model' => $model,
+      'modelImages' => $modelImages,
+    ]);
+  }
+
   /**
    * Creates a new PublicRelations model.
    * If creation is successful, the browser will be redirected to the 'view' page.

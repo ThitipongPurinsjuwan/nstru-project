@@ -10,8 +10,9 @@ use yii\grid\GridView;
 ?>
 <style>
   .img-knowing {
-    height: 22em !important;
+    height: 30em !important;
     width: 100% !important;
+    object-fit: cover;
   }
 </style>
 <div class="public-relations-index">
@@ -56,7 +57,7 @@ use yii\grid\GridView;
                 <div class="col-lg-5">
                   <!-- Title -->
                   <h2 class="card-title">
-                    <a href="post-single-6.html" class="btn-link text-reset stretched-link"> <?= $model->topic ?></a>
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/info-view', 'id' => $model->id]) ?>" class="btn-link text-reset stretched-link"> <?= $model->topic ?></a>
                   </h2>
                   <div class="d-flex align-items-center position-relative mt-3">
                     <p><?= $model->details ?></p>

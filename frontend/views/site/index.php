@@ -96,7 +96,7 @@
       <h4 class="mt-4 mb-3">สถานที่</h4>
       <!-- Category item -->
       <?php foreach ($model as $model) :  ?>
-        <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(../../images/images_upload_forform/1462370958-210810022800.jpg); background-position: center left; background-size: cover;">
+        <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); background-position: center left; background-size: cover;">
           <div class="p-3">
             <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/index', 'type' => $model->id]) ?>" class="stretched-link btn-link fw-bold text-white h5"><?= $model->name ?></a>
           </div>
@@ -115,7 +115,7 @@
           <div class="card mb-3">
             <div class="d-flex g-3">
               <div class="col-4">
-                <img class="rounded" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="">
+                <img class="rounded img-sm-box" src="<?= '../../images/images_upload_forform/' . $modelPackage->name_img_important ?>" alt="">
               </div>
               <div class="col-8" style="padding-left: 0.7em;">
                 <h6 class="card-title">

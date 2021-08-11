@@ -25,7 +25,7 @@ $this->title = 'แพ็คเกจ';
               <div class="card">
                 <!-- Card img -->
                 <div class="position-relative">
-                  <img class="card-img" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="Card image">
+                  <img class="card-img img-md-box" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt=" Card image">
                   <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                     <!-- Card overlay bottom -->
                   </div>
