@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     },
                                     'delete' => function ($url, $model, $key) {
                                        
-                                        return  '<button type="button" class="btn btn-light deldata"><i class="fas fa-trash"></i></button>';//Html::a('<i class="fas fa-trash"></i>','class'=>'btn btn-light']); งง
+                                        return  '<button type="button" class="btn btn-light deldata" data-id="'.$model->id.'"><i class="fas fa-trash"></i></button>';//Html::a('<i class="fas fa-trash"></i>','class'=>'btn btn-light']); งง
                                         
 
                                     },
@@ -131,9 +131,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <script>
 $(document).on('click', '.deldata', function() {
+    var id = $(this).data("id");
         if (confirm("ต้องการยกประเภทสถานที่ใช่หรือไม่?")) {
-            if (confirm("ต้องการลบข้อมูลทั้งหมดที่อยู่ในประเภทนี้เลยใช่ไหม?")) {
-                
+            if (confirm("ต้องการลบข้อมูลทั้งหมดที่อยู่ในประเภทนี้เลยใช่หรือไม่?")) {
+            //     $.ajax({
+            //     url: "index.php?r=type-place/delete-all&id="+id,
+            //     method: "POST",
+            //     success: function(data) {
+            //     }
+            // });
+            var url = "index.php?r=type-place/delete-all&id="+id;
+var form = $('<form action="' + url + '" method="post">' +'</form>');
+$('body').append(form);
+$(form).submit();
+            // location.reload();
             }else{
                 $('#showselect_type').modal('show')
             }

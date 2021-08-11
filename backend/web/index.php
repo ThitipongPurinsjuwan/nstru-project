@@ -175,3 +175,19 @@ function titleNews($type){
    );
 return $arrtitle[$type];
 }
+
+
+function getcolor($v) {
+    $color = ["66BB6A","F39C11","26C6DA","963B98","AB3773","77C7BF","BFBAAC","8776AC","382F36","E67F4C","498074",
+    "946E63","4F565E","D3BF9A","69758C","5A666A","CAD7DE","3F9E8D","D1D1C2","4E6680","B5C2A1","F2D4B9","E6DEC8","D1CFC2","BCC2BE"];
+    return "#".$color[$v];
+ }
+ 
+ function getContrastColor($hexcolor) 
+ {               
+     $r = hexdec(substr($hexcolor, 1, 2));
+     $g = hexdec(substr($hexcolor, 3, 2));
+     $b = hexdec(substr($hexcolor, 5, 2));
+     $yiq = (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+     return ($yiq >= 200) ? 'black' : 'white';
+ }   

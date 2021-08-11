@@ -4,6 +4,7 @@ use common\models\Place;
 use common\models\Package;
 use common\models\PublicRelations;
 use common\models\Images;
+use common\models\TypePlace;
 
 $this->title = 'แหล่งท่องเที่ยวเชิงเกษตรอำเภอนบพิตำ';
 
@@ -116,34 +117,23 @@ $this->title = 'แหล่งท่องเที่ยวเชิงเก�
         </a>
     </div>
 
+    <?php $TypePlace = TypePlace::find()->all();
+        $no = 0;
+        foreach($TypePlace as $val):
+            $no++;
+    ?>
+   
     <div class="col-md-3">
-        <a href="index.php?r=place%2Findex&type=1">
-            <div class="card-counter success">
+        <a href="index.php?r=place%2Findex&type=<?=$val['id'];?>">
+            <div class="card-counter" style="background:<?=getcolor($no);?>;color:<?=getContrastColor(getcolor($no));?>;">
                 <i class="fa fa-database"></i>
-                <span class="count-numbers"><?=Place::find()->where(['type'=>1])->count();?></span>
-                <span class="count-name"><?=titlePlace(1);?></span>
+                <span class="count-numbers"><?=Place::find()->where(['type'=>$val['id']])->count();?></span>
+                <span class="count-name"><?=$val['name'];?></span>
             </div>
         </a>
     </div>
+    <?php  endforeach; //($TypePlace as $val):?>
 
-    <div class="col-md-3">
-        <a href="index.php?r=place%2Findex&type=2">
-            <div class="card-counter warning">
-                <i class="fa fa-users"></i>
-                <span class="count-numbers"><?=Place::find()->where(['type'=>2])->count();?></span>
-                <span class="count-name"><?=titlePlace(2);?></span>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-3">
-        <a href="index.php?r=place%2Findex&type=3">
-            <div class="card-counter info">
-                <i class="fa fa-users"></i>
-                <span class="count-numbers"><?=Place::find()->where(['type'=>3])->count();?></span>
-                <span class="count-name"><?=titlePlace(3);?></span>
-            </div>
-        </a>
-    </div>
     <div class="col-md-3">
         <a href="index.php?r=package%2Findex">
             <div class="card-counter violet">
