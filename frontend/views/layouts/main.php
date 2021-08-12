@@ -291,6 +291,9 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
                     <div class="card-body px-0 pt-3">
                       <h5 class="card-title"><a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $modeNews->id]) ?>" class="btn-link text-reset fw-bold"><?= $modeNews->topic ?></a></h5>
                       <!-- Card info -->
+                      <p>
+                        <?= $modeNews->date_imparting ?>
+                      </p>
                     </div>
                   </div>
                 <?php endforeach  ?>

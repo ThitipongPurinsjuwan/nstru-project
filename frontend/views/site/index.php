@@ -118,9 +118,12 @@
                 <img class="rounded img-sm-box" src="<?= '../../images/images_upload_forform/' . $modelPackage->name_img_important ?>" alt="">
               </div>
               <div class="col-8" style="padding-left: 0.7em;">
-                <h6 class="card-title">
+                <h5 class="card-title">
                   <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
-                </h6>
+                </h5>
+                <p>
+                  <?= $modelPackage->date_create ?>
+                </p>
               </div>
             </div>
           </div>

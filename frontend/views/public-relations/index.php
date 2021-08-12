@@ -62,6 +62,9 @@ use yii\grid\GridView;
                   <div class="d-flex align-items-center position-relative mt-3">
                     <p><?= $model->details ?></p>
                   </div>
+                  <div class="d-flex mt-1">
+                    <p><?= $model->date_imparting ?></p>
+                  </div>
                 </div>
                 <!-- Image -->
                 <div class="col-md-12 col-lg-7">
@@ -71,18 +74,7 @@ use yii\grid\GridView;
             </div>
             <!-- Card item END -->
           <?php endforeach ?>
-          <!-- Card item START -->
-          <div class="card border rounded-3 up-hover p-4 mb-4">
-            <div class="row">
-              <div class="col-md-5">
-                <img class="rounded-3" src="../../themes/template/assets/images/blog/4by3/03.jpg" alt="">
-              </div>
-              <div class="col-md-7 mt-3 mt-md-0">
-                <h3><a href="post-single-2.html" class="btn-link stretched-link text-reset">Five unbelievable facts about money.</a></h3>
-                <p>Organization the if relations go work after mechanic But we've area wasn't everything needs of and doctor where would a of Go he prisoners And mountains in just switching city steps Might rung line what Mr Bulk; Was or between towards the have phase were its world my samples are the was royal he luxury the about trying And on he to my enough is was</p>
-              </div>
-            </div>
-          </div>
+
           <!-- Card item END -->
           <!-- Load more -->
           <button type="button" class="btn btn-primary-soft w-100">Load more post <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
