@@ -358,13 +358,17 @@ $this->title = $model->name;
                 <span class="me-3 small">No Comment</span>
               </div>
             <?php endif ?>
-            <?php foreach ($modelReview as $review) : ?>
+            <?php
+            $indexPost = 0;
+            foreach ($modelReview as $review) :
+              $indexPost += 1;
+            ?>
               <!-- Comment START-->
               <div class="my-4 d-flex">
                 <img class="avatar avatar-md rounded-circle float-start me-3" src='../../themes/template/assets/images/avatar/01.jpg' alt="avatar">
                 <div>
                   <div class="mb-2">
-                    <h5 class="m-0">Post 1</h5>
+                    <h5 class="m-0">Post <?= $indexPost ?></h5>
                     <span class="me-3 small"><?= $review->created_at ?></span>
                   </div>
                   <p><?= $review->message ?></p>
