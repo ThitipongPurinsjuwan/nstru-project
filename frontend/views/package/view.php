@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Place;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -73,77 +74,80 @@ $this->title = $model->name;
     </div>
   </section>
 
-  <section class="position-relative pt-0">
-    <div class="container" data-sticky-container>
-      <div class="row">
-        <div class="col-12">
-          <div class="card mb-4">
-            <div class="row">
+  <section class="pt-0">
+    <div class="container position-relative" data-sticky-container>
+      <div class=" row">
 
-              <div class="col-md-9 mt-3 mt-5 md-6">
-
-                <!-- Detail -->
-                <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
-                <!-- Images -->
-                <div class="row g-2 my-5">
-                  <?php foreach ($modelImage as $modelImage) :  ?>
-                    <div class="col-md-4">
-                      <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
-                        <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
-                      </a>
-                    </div>
-                  <?php endforeach  ?>
-                </div>
-
+        <div class="col-lg-8 mb-5">
+          <!-- Detail -->
+          <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
+          <!-- Images -->
+          <div class="row g-2 my-5">
+            <?php foreach ($modelImage as $modelImage) :  ?>
+              <div class="col-md-4">
+                <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                  <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
+                </a>
               </div>
-
-              <div class="col-md-3 mt-3 mt-5 md-0">
-                <div data-sticky data-margin-top="80" data-sticky-for="991">
-                  <div class="row">
-                    <h3>Contact</h3>
-                  </div>
-                  <!-- Contact START -->
-                  <ul class="nav flex-column">
-
-                    <li class="nav-item">
-                      <a class="nav-link pt-0" target="_brank" href="#"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a class="nav-link" href="http://line.me/ti/p/"><i class="fab fa-line fa-fw me-2 text-line"></i>@Test_00</a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a class="nav-link" href="tel:"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i>080-00000</a>
-                    </li>
-
-                  </ul>
-                </div>
-
-                <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
-                <?php foreach ($modelPlace as $modelPlace) :  ?>
-                  <!-- Recent post item -->
-                  <div class="card border rounded-3 up-hover p-2 mb-2 mt-2">
-                    <div class="card mb-1">
-                      <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>">
-                        <div class="row g-3">
-                          <div class="col-6">
-                            <div class="image2">
-                              <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
-                            </div>
-                          </div>
-                          <div class="col-6 ">
-                            <h5 class=" btn-link text-reset fw-normal Namemann"><?= $modelPlace->name ?></h5>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                <?php endforeach  ?>
-              </div>
-            </div>
+            <?php endforeach  ?>
           </div>
         </div>
+
+        <div class="col-lg-4">
+          <div data-sticky data-margin-top="80" data-sticky-for="991">
+            <div class="row">
+              <h3>Contact</h3>
+            </div>
+            <!-- Contact START -->
+            <ul class="nav flex-column">
+              <?php if ($model->facebook_link !== '') : ?>
+                <li class="nav-item">
+                  <a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a>
+                </li>
+              <?php endif ?>
+
+              <?php if ($model->line_id !== '') : ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a>
+                </li>
+              <?php endif ?>
+
+              <?php if ($model->phone !== '') : ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
+                </li>
+              <?php endif ?>
+            </ul>
+
+            <div>
+              <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
+
+              <?php
+              foreach ($modelPlace as $modelPlace) :
+              ?>
+                <!-- Card item START -->
+                <div class="card mb-4">
+                  <div class="row g-3">
+                    <div class="col-4">
+                      <img class="rounded-3" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
+                    </div>
+                    <div class="col-8">
+                      <h5><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset stretched-link fw-bold"><?= $modelPlace->name ?></a></h5>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card item END -->
+              <?php
+              endforeach
+              ?>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
       </div>
     </div>
   </section>

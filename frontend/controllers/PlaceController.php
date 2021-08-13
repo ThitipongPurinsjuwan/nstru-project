@@ -6,7 +6,9 @@ use common\models\Images;
 use common\models\Package;
 use Yii;
 use common\models\Place;
+use common\models\Review;
 use common\models\TypePlace;
+use Exception;
 use frontend\models\PlaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -56,15 +58,37 @@ class PlaceController extends Controller
    */
   public function actionView($id)
   {
+    // $review = new Review();
+
     $model = $this->findModel($id);
     $modelImage = Images::find()->where(['key_images' => $model->key_images])->all();
     $modelPackage = Package::find()->where(['like', 'place', $model->id])->all();
+    $modelReview = Review::find()->where(['place_id' => $model->id])->all();
 
     return $this->render('view', [
       'model' => $model,
+      // 'review' => $review,
       'modelImage' => $modelImage,
+      'modelReview' => $modelReview,
       'modelPackage' => $modelPackage,
     ]);
+  }
+
+  public function actionSaveComment($id)
+  {
+    if ($_POST['save_comment']) {
+      $model = new Review();
+
+      $model->place_id = $id;
+      $model->message = $_POST['comment_message'];
+      $model->rating = 5;
+      $model->created_at = date('Y-m-d');
+      $model->user_create = 1;
+
+      if ($model->save(true)) {
+        return $this->redirect(['view', 'id' => $id]);
+      }
+    }
   }
 
   /**

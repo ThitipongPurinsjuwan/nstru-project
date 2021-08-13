@@ -352,29 +352,26 @@ $this->title = $model->name;
       <div class="container position-relative" data-sticky-container>
         <div class="col-lg-9 mb-5">
           <div class="mt-5">
-            <h3>2 comments</h3>
-            <!-- Comment level 1-->
-            <div class="my-4 d-flex">
-              <img class="avatar avatar-md rounded-circle float-start me-3" src='../../themes/template/assets/images/avatar/01.jpg' alt="avatar">
-              <div>
-                <div class="mb-2">
-                  <h5 class="m-0">Post 1</h5>
-                  <span class="me-3 small">9 มีนาคม 2564 เวลา 15.30 น. </span>
-                </div>
-                <p>คนนำทัวร์ดูแลดีมากกกกก สนุกมากค่ะ แนะนำเลยค่ะทัวร์นี้ </p>
+            <h3> comments</h3>
+            <?php if (count($modelReview) == 0) : ?>
+              <div class="mb-2">
+                <span class="me-3 small">No Comment</span>
               </div>
-            </div>
-            <!-- Comment level 1 -->
-            <div class="my-4 d-flex">
-              <img class="avatar avatar-md rounded-circle float-start me-3" src="../../themes/template/assets/images/avatar/04.jpg" alt="avatar">
-              <div>
-                <div class="mb-2">
-                  <h5 class="m-0">Post 2</h5>
-                  <span class="me-3 small">13 มิถุนายน 2564 เวลา 10.30 น.</span>
+            <?php endif ?>
+            <?php foreach ($modelReview as $review) : ?>
+              <!-- Comment START-->
+              <div class="my-4 d-flex">
+                <img class="avatar avatar-md rounded-circle float-start me-3" src='../../themes/template/assets/images/avatar/01.jpg' alt="avatar">
+                <div>
+                  <div class="mb-2">
+                    <h5 class="m-0">Post 1</h5>
+                    <span class="me-3 small"><?= $review->created_at ?></span>
+                  </div>
+                  <p><?= $review->message ?></p>
                 </div>
-                <p>คุ้มครับ ราคานี้ได้เยอะมาก ไกด์สวยและน่ารักมาก</p>
               </div>
-            </div>
+              <!-- Comment END -->
+            <?php endforeach ?>
           </div>
         </div>
       </div>
@@ -385,13 +382,13 @@ $this->title = $model->name;
     <section class="pt-0">
       <div class="container position-relative" data-sticky-container>
         <div class="col-lg-9 mb-5">
-          <form class="row g-3 mt-2">
+          <form class="row g-3 mt-2" action="<?= \Yii::$app->getUrlManager()->createUrl(['place/save-comment', 'id' => $model->id]) ?>" method="post">
             <div class="col-12">
               <label class="form-label">Your Comment *</label>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" name="comment_message" rows="3"></textarea>
             </div>
             <div class="col-12" style="direction: rtl;">
-              <button type="submit" class="btn btn-primary">Post comment</button>
+              <button type="submit" name="save_comment" value="save" class="btn btn-primary">Post comment</button>
             </div>
           </form>
         </div>

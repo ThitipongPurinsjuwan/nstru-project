@@ -108,9 +108,9 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     padding-bottom: 1em !important;
   }
 
-  .container {
+  /* .container {
     max-width: 100% !important;
-  }
+  } */
 
   .logo-support {
     height: 6em;

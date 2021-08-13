@@ -33,23 +33,18 @@
   <div class="row gy-4">
     <!-- Card item START -->
     <div class="col-sm-6">
-      <div class="card">
-        <!-- Card img -->
-        <div class="position-relative">
-          <img class="card-img" src="../../themes/template/assets/images/blog/4by3/01.jpg" alt="Card image">
-          <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-            <!-- Card overlay bottom -->
-            <div class="w-100 mt-auto">
-              <!-- Card category -->
-              <a href="#" class="badge bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
-            </div>
+      <div class="card card-overlay-bottom bg-parallax h-400 h-lg-100" style="height: 40em !important;" data-jarallax-video="https://youtu.be/0gYD_n8BgE0" data-speed="1.2">
+        <!-- Card Image overlay -->
+        <div class="card-img-overlay d-flex flex-column p-3 p-md-4">
+          <div>
+            <!-- Card category -->
+            <a href="#" class="badge bg-dark fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
           </div>
-        </div>
-        <div class="card-body px-0 pt-3">
-          <h4 class="card-title"><a href="post-single.html" class="btn-link text-reset fw-bold">12 worst types
-              of business accounts
-              you follow on Twitter</a></h4>
-          <!-- Card info -->
+          <div class="w-100 mt-auto">
+            <!-- Card title -->
+            <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">5 investment doubts you should clarify</a></h4>
+            <!-- Card info -->
+          </div>
         </div>
       </div>
     </div>
