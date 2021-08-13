@@ -1,11 +1,11 @@
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
-  window.OneSignal = window.OneSignal || [];
+ /*  window.OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
       appId: "1fc41a7e-c22d-4c94-9359-dcda7892d553",
     });
-  });
+  }); */
 
   var zoom = 1;
   var width = 100;
