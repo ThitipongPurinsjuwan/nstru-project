@@ -113,9 +113,9 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   } */
 
   .logo-support {
-    height: 6em;
+    height: 3.5em;
     width: auto;
-    min-width: 4em;
+    /* min-width: 4em; */
   }
 
   .min-w-7 {
@@ -130,6 +130,10 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     color: white !important;
   }
 
+  .nav-link {
+    font-size: 0.5em !important;
+  }
+
   .navbar-light .navbar-nav .nav-link:hover,
   .navbar-light .navbar-nav .nav-link:focus {
     /* color: #ECF0F1; */
@@ -141,6 +145,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   .nav-link-text {
     font-size: 1.1em !important;
   }
+
 
   .img-box-news {
     height: 17em;
@@ -172,12 +177,13 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <!-- Logo START -->
-        <a href="#" class="rounded text-center text-white-force p-3 d-block">
+        <a href="#" class="text-white-force p-3 d-block">
           <img class="logo-support" src="../../images/TSRI.png" alt="">
         </a>
-        <a href="#" class="rounded text-center text-white-force p-3 d-block">
+        <a href="#" class="text-white-force p-3 d-block">
           <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
         </a>
+        <a class="nav-link" href="index.php">สารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</a>
         <!-- ระบบสารสนเทศภูมิศาสตร์​แหล่งท่องเที่ยวเชิงเกษตร​ -->
 
         <!-- Responsive navbar toggler -->
