@@ -80,7 +80,7 @@ $this->title = $model->name;
 
         <div class="col-lg-8 mb-5">
           <!-- Detail -->
-          <p><span class="dropcap bg-dark text-white px-2">I</span> <?= $model->details ?> </p>
+          <p><?= $model->details ?> </p>
           <!-- Images -->
           <div class="row g-2 my-5">
             <?php foreach ($modelImage as $modelImage) :  ?>

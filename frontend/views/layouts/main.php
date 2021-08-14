@@ -130,7 +130,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     color: white !important;
   }
 
-  .nav-link {
+  .logoName {
     font-size: 0.5em !important;
   }
 
@@ -183,7 +183,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
         <a href="#" class="text-white-force p-3 d-block">
           <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
         </a>
-        <a class="nav-link" href="index.php">สารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</a>
+        <a class="logoName" href="index.php">สารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</a>
         <!-- ระบบสารสนเทศภูมิศาสตร์​แหล่งท่องเที่ยวเชิงเกษตร​ -->
 
         <!-- Responsive navbar toggler -->
