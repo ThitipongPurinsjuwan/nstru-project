@@ -55,8 +55,8 @@ class PublicRelations extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'date_imparting' => Yii::t('app', 'วันที่ประกาศ'),
             'key_images' => Yii::t('app', 'Key Images'),
-            'date_create' => Yii::t('app', 'วันที่บันทีึก/แก้ไข'),
-            'user_create' => Yii::t('app', 'ผู้บันทีึก/แก้ไข'),
+            'date_create' => Yii::t('app', 'วันที่บันทึก/แก้ไข'),
+            'user_create' => Yii::t('app', 'ผู้บันทึก/แก้ไข'),
         ];
     }
 }
