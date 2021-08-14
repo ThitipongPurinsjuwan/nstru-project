@@ -196,9 +196,9 @@ $this->title = "แผนที่ท่องเที่ยว";
       `</a>` +
       `<div class="place-box">` +
       `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}">` +
-      `<h3>${name}</h3>` +
+      `<h4>${name}</h4>` +
       `</a>` +
-      `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +
+      `<span class="date"><time class="entry-date published updated">เปิดทำการ ${bussinessDay}</time></span>` +
       `</div></div></div>`;
 
     return popup;

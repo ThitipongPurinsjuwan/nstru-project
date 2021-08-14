@@ -5,7 +5,7 @@
         <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="1" data-arrow="true" data-dots="false" data-items="1">
           <?php foreach ($modelPlace as $modelPlace) :  ?>
             <!-- Slide 1 -->
-            <div class="card bg-dark-overlay-3 h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url(<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>); background-position: center left; background-size: cover;">
+            <div class="card bg-dark-overlay-3 h-300 h-sm-300 h-md-300 rounded-0" style="background-image:url(<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>); background-position: center left; background-size: cover;">
               <!-- Card Image overlay -->
               <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
                 <div class="w-100 my-auto">
@@ -13,7 +13,7 @@
                     <!-- Card category -->
                     <a href="#" class="badge bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
                     <!-- Card title -->
-                    <h2 class="text-white display-5"><a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset fw-normal"><?= $modelPlace->name ?></a></h2>
+                    <h3 class="text-white display-6"><a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset fw-normal"><?= $modelPlace->name ?></a></h3>
                   </div>
                 </div>
               </div>
