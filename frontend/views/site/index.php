@@ -72,20 +72,6 @@
 <!-- Sidebar START -->
 <div class="col-lg-3 mt-5 mt-lg-0">
   <div data-sticky data-margin-top="80" data-sticky-for="767">
-    <!-- Social widget START -->
-    <div class="d-flex g-2">
-      <div class="col-4">
-        <a href="#" class="rounded text-center text-white-force p-3 d-block">
-          <img class="logo-support" src="../../images/TSRI.png" alt="">
-        </a>
-      </div>
-      <div class="col-4">
-        <a href="#" class="rounded text-center text-white-force p-3 d-block">
-          <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
-        </a>
-      </div>
-    </div>
-    <!-- Social widget END -->
     <!-- Trending topics widget START -->
     <div>
       <h4 class="mt-4 mb-3">สถานที่</h4>

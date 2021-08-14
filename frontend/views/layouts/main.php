@@ -1,6 +1,6 @@
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
- /*  window.OneSignal = window.OneSignal || [];
+  /*  window.OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
       appId: "1fc41a7e-c22d-4c94-9359-dcda7892d553",
@@ -172,9 +172,11 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <!-- Logo START -->
-        <a class="navbar-brand" href="index.php">
-          <img class="navbar-brand-item light-mode-item" src="../../themes/template/assets/images/logo.svg" alt="logo">
-          <img class="navbar-brand-item dark-mode-item" src="../../themes/template/assets/images/logo-light.svg" alt="logo">
+        <a href="#" class="rounded text-center text-white-force p-3 d-block">
+          <img class="logo-support" src="../../images/TSRI.png" alt="">
+        </a>
+        <a href="#" class="rounded text-center text-white-force p-3 d-block">
+          <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
         </a>
         <!-- ระบบสารสนเทศภูมิศาสตร์​แหล่งท่องเที่ยวเชิงเกษตร​ -->
 
@@ -314,10 +316,9 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <footer class="bg-dark pt-5">
     <div class="container">
       <!-- About and Newsletter START -->
-      <div class="row pt-3 pb-4">
-        <div class="col-md-3">
-          <img src="../../themes/template/assets/images/logo-footer.svg" alt="footer logo">
-        </div>
+      <div class="row">
+        <img class="logo-support" src="../../images/TSRI.png" alt="">
+        <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
       </div>
       <!-- About and Newsletter END -->
 
