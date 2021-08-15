@@ -12,7 +12,7 @@ $this->title = 'Video';
 ?>
 <style>
   .h-em {
-    height: 19em !important;
+    height: 21em !important;
   }
 </style>
 <div class="file-list-index">
@@ -53,7 +53,7 @@ $this->title = 'Video';
                   <div>
                     <!-- Card category -->
                     <!-- Card title -->
-                    <h5><a href="#" class="btn-link text-reset"><?= $model->download_name ?></a></h5>
+                    <h5><a href="<?= $model->file_name ?>" target="_blank" class="btn-link text-reset"><?= $model->download_name ?></a></h5>
                     <div class="mt-3 rounded overflow-hidden">
                       <div class="ratio ratio-16x9">
                         <iframe width="560" height="315" src="<?= str_replace("watch?v=", "embed/", $model->file_name) ?>" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -80,8 +80,6 @@ $this->title = 'Video';
             'pagination' => $pages,
             'options' => [
               'class' => 'pagination pagination-bordered',
-              'prevPageLabel' => 'previous',
-              'nextPageLabel' => 'next',
             ],
             'linkOptions' => ['class' => 'page-link'],
             'linkContainerOptions' => ['class' => 'page-item'],

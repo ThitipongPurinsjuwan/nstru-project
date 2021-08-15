@@ -209,6 +209,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
               </ul>
             </li>
             <li class="nav-item"><a class="nav-link" href="index.php?r=travel-map/index"><i class="fas fa-map-marked-alt"></i> แผนที่</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php?r=file-list/index"><i class="fab fa-youtube"></i> วีดิโอน่าสนใจ</a></li>
             <?php foreach ($menuMain as $menu) : ?>
               <li class="nav-item"><a class="nav-link" href="<?= $menu->m_link ?>"><i class="<?= $menu->m_icon ?>"></i> <?= $menu->m_name ?></a></li>
             <?php endforeach ?>
