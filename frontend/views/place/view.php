@@ -365,7 +365,7 @@ $this->title = $model->name;
             ?>
               <!-- Comment START-->
               <div class="my-4 d-flex">
-                <img class="avatar avatar-md rounded-circle float-start me-3" src='../../themes/template/assets/images/avatar/01.jpg' alt="avatar">
+                <img class="avatar avatar-md rounded-circle float-start me-3" src='<?= Place::randomImg() ?>' alt="avatar">
                 <div>
                   <div class="mb-2">
                     <h5 class="m-0">Post <?= $indexPost ?></h5>

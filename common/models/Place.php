@@ -99,4 +99,12 @@ class Place extends \yii\db\ActiveRecord
 
     return $text;
   }
+
+  public static function randomImg()
+  {
+    $rand = rand(1, 15);
+    $name = $rand > 9 ? $rand : '0' . $rand;
+
+    return '../../themes/template/assets/images/avatar/' . $name . '.jpg';
+  }
 }

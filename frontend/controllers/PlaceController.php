@@ -67,7 +67,6 @@ class PlaceController extends Controller
 
     return $this->render('view', [
       'model' => $model,
-      // 'review' => $review,
       'modelImage' => $modelImage,
       'modelReview' => $modelReview,
       'modelPackage' => $modelPackage,
