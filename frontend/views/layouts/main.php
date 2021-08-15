@@ -64,7 +64,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="../../images/rajabhat-logo.png" type="image/x-icon" />
   <?php $this->registerCsrfMetaTags(); ?>
-  <title> ระบบสารสนเทศภูมิศาสตร์​แหล่งท่องเที่ยวเชิงเกษตร​</title>
+  <title> ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</title>
   <title><?= Html::encode($this->title); ?></title>
   <?php $this->head(); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
@@ -118,6 +118,11 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     /* min-width: 4em; */
   }
 
+  .logo-footer {
+    height: 5.5em;
+    width: auto;
+  }
+
   .min-w-7 {
     min-width: 7em;
   }
@@ -166,6 +171,10 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     height: 30em;
     object-fit: cover;
   }
+
+  .mr-1-custom {
+    margin-right: 1em;
+  }
 </style>
 
 <?php $this->beginBody() ?>
@@ -177,15 +186,10 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <!-- Logo START -->
-        <a href="#" class="text-white-force p-3 d-block">
-          <img class="logo-support" src="../../images/TSRI.png" alt="">
-        </a>
-        <a href="#" class="text-white-force p-3 d-block">
+        <a href="index.php" class="text-white-force p-3 d-block">
+          <img class="logo-support mr-1-custom" src="../../images/TSRI.png" alt="">
           <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
         </a>
-        <a class="logoName" href="index.php">สารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</a>
-        <!-- ระบบสารสนเทศภูมิศาสตร์​แหล่งท่องเที่ยวเชิงเกษตร​ -->
-
         <!-- Responsive navbar toggler -->
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="text-body h6 d-none d-sm-inline-block">Menu</span>
@@ -322,9 +326,14 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <footer class="bg-dark pt-5">
     <div class="container">
       <!-- About and Newsletter START -->
-      <div class="row">
-        <img class="logo-support" src="../../images/TSRI.png" alt="">
-        <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
+      <div class="row d-flex">
+        <div class="col-lg-2 col-md-3">
+          <img class="logo-footer mr-1-custom" src="../../images/TSRI.png" alt="">
+          <img class="logo-footer" src="../../images/Logo_nstru.png" alt="">
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+          <h5 class="text-white">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</h5>
+        </div>
       </div>
       <!-- About and Newsletter END -->
       <hr>
