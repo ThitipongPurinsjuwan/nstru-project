@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PublicRelationsSearch */
@@ -48,11 +49,11 @@ use yii\grid\GridView;
   <section class="pt-0">
     <div class="container">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 item-box">
 
           <?php foreach ($model as $model) : ?>
             <!-- Card item START -->
-            <div class="card border rounded-3 up-hover p-4 mb-4">
+            <div class="card border rounded-3 up-hover p-4 mb-4 item-prop">
               <div class="row g-3">
                 <div class="col-lg-5">
                   <!-- Title -->
@@ -76,8 +77,21 @@ use yii\grid\GridView;
           <?php endforeach ?>
 
           <!-- Card item END -->
-          <!-- Load more -->
-          <button type="button" class="btn btn-primary-soft w-100">Load more post <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
+          <!-- Pagination START -->
+          <nav class="my-5 d-flex justify-content-center" aria-label="navigation">
+            <?= LinkPager::widget([
+              'pagination' => $pages,
+              'options' => [
+                'class' => 'pagination pagination-bordered',
+              ],
+              'linkOptions' => ['class' => 'page-link'],
+              'linkContainerOptions' => ['class' => 'page-item'],
+              'nextPageLabel' => "next",
+              'prevPageLabel' => "pre",
+              // 'maxButtonCount' => 3,
+            ]); ?>
+          </nav>
+          <!-- Pagination END -->
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\FileList;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -94,8 +95,11 @@ class SiteController extends Controller
     $modeNews = PublicRelations::find()->where(['type' => 2])->all();
     $modelPackage = Package::find()->limit(4)->all();
 
+    $modelVDO = FileList::find()->where(['type' => 2])->limit(2)->all();
+
     return $this->render('index', [
       'model' => $model,
+      'modelVDO' => $modelVDO,
       'modelPlace' => $modelPlace,
       'modeNews' => $modeNews,
       'modelPackage' => $modelPackage,

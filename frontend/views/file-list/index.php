@@ -85,7 +85,7 @@ $this->title = 'Video';
             'linkContainerOptions' => ['class' => 'page-item'],
             'nextPageLabel' => "next",
             'prevPageLabel' => "pre",
-            'maxButtonCount' => 8,
+            // 'maxButtonCount' => 3,
           ]); ?>
         </nav>
         <!-- Pagination END -->

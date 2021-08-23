@@ -10,6 +10,7 @@ use common\models\Review;
 use common\models\TypePlace;
 use Exception;
 use frontend\models\PlaceSearch;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -40,11 +41,15 @@ class PlaceController extends Controller
    */
   public function actionIndex($type)
   {
-    $model = Place::find()->where(['type' => $type])->all();
+    $model = Place::find()->where(['type' => $type]);
     $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;
+
+    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
+    $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
     return $this->render('index', [
       'model' => $model,
+      'pages' => $pages,
       'nameOfType' => $nameOfType,
       'type' => $type,
     ]);

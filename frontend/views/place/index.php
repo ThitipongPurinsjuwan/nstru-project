@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PlaceSearch */
@@ -36,32 +37,27 @@ $this->title = $nameOfType;
             </div>
             <div class="card-body px-0 pt-3">
               <h4 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h4>
-              <!-- <p class="card-text"><?php $model->details ?></> -->
-              <!-- Card info -->
-              <!-- <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-                <li class="nav-item">
-                  <div class="nav-link">
-                    <div class="d-flex align-items-center position-relative">
-                      <div class="avatar avatar-xs">
-                        <img class="avatar-img rounded-circle" src="../../themes/template/assets/images/avatar/01.jpg" alt="avatar">
-                      </div>
-                      <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                    </div>
-                  </div>
-                </li>
-                <li class="nav-item">Jan 22, 2021</li>
-              </ul> -->
             </div>
           </div>
         </div>
         <!-- Card item END -->
       <?php endforeach  ?>
 
-      <!-- Load more START -->
-      <div class="col-12 text-center mt-5">
-        <button type="button" class="btn btn-primary-soft">Load more post <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
-      </div>
-      <!-- Load more END -->
+      <!-- Pagination START -->
+      <nav class="my-5 d-flex justify-content-center" aria-label="navigation">
+        <?= LinkPager::widget([
+          'pagination' => $pages,
+          'options' => [
+            'class' => 'pagination pagination-bordered',
+          ],
+          'linkOptions' => ['class' => 'page-link'],
+          'linkContainerOptions' => ['class' => 'page-item'],
+          'nextPageLabel' => "next",
+          'prevPageLabel' => "pre",
+          // 'maxButtonCount' => 3,
+        ]); ?>
+      </nav>
+      <!-- Pagination END -->
 
     </div>
   </div>

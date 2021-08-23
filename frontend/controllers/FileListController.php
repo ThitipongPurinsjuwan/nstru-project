@@ -37,13 +37,10 @@ class FileListController extends Controller
   public function actionIndex()
   {
     $model = FileList::find()->where(['type' => 2]);
-    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 9]);
-    $models = $model->offset($pages->offset)
-      ->limit($pages->limit)->all();
 
-    // echo "<pre>";
-    // print_r($pages);
-    // echo "</pre>";
+    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 9]);
+    $models = $model->offset($pages->offset)->limit($pages->limit)->all();
+
     return $this->render('index', [
       'pages' => $pages,
       'models' => $models,

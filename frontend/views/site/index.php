@@ -31,42 +31,25 @@
     <p>ข่าวประชาสัมพันธ์ล่าสุด, รูปภาพ, วีดิโอ, กิจกรรมพิเศษ</p>
   </div>
   <div class="row gy-4">
-    <!-- Card item START -->
-    <div class="col-sm-6">
-      <div class="card card-overlay-bottom bg-parallax h-400 h-lg-100" style="height: 40em !important;" data-jarallax-video="https://youtu.be/0gYD_n8BgE0" data-speed="1.2">
-        <!-- Card Image overlay -->
-        <div class="card-img-overlay d-flex flex-column p-3 p-md-4">
-          <div>
-            <!-- Card category -->
-            <a href="#" class="badge bg-dark fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
-          </div>
-          <div class="w-100 mt-auto">
-            <!-- Card title -->
-            <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">5 investment doubts you should clarify</a></h4>
-            <!-- Card info -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Card item END -->
-    <!-- Card item START -->
-    <div class="col-sm-6">
-      <div class="card card-overlay-bottom bg-parallax h-400 h-lg-100" style="height: 40em !important;" data-jarallax-video="https://youtu.be/JpiCiU9wnSI" data-speed="1.2">
-        <!-- Card Image overlay -->
-        <div class="card-img-overlay d-flex flex-column p-3 p-md-4">
-          <div>
-            <!-- Card category -->
-            <a href="#" class="badge bg-dark fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
-          </div>
-          <div class="w-100 mt-auto">
-            <!-- Card title -->
-            <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">5 investment doubts you should clarify</a></h4>
-            <!-- Card info -->
+    <?php if (count($modelVDO) > 0) :  ?>
+      <?php foreach ($modelVDO as $modelVDO) :  ?>
+        <!-- Card item START -->
+        <div class="col-sm-6">
+          <div class="card card-overlay-bottom bg-parallax h-400 h-lg-100" style="height: 40em !important;" data-jarallax-video="<?= str_replace("watch?v=", "embed/", $modelVDO->file_name) ?>" data-speed="1.2">
+            <!-- Card Image overlay -->
+            <div class="card-img-overlay d-flex flex-column p-3 p-md-4">
+              <div class="w-100 mt-auto">
+                <!-- Card title -->
+                <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link"><?= $modelVDO->download_name ?></a></h4>
+                <!-- Card info -->
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- Card item END -->
+        <!-- Card item END -->
+      <?php endforeach ?>
+    <?php endif ?>
+
   </div>
 </div>
 <!-- Sidebar START -->

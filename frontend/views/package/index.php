@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PackageSearch */
@@ -40,6 +41,22 @@ $this->title = 'แพ็คเกจ';
             </div>
             <!-- Card item END -->
           <?php endforeach  ?>
+
+          <!-- Pagination START -->
+          <nav class="my-5 d-flex justify-content-center" aria-label="navigation">
+            <?= LinkPager::widget([
+              'pagination' => $pages,
+              'options' => [
+                'class' => 'pagination pagination-bordered',
+              ],
+              'linkOptions' => ['class' => 'page-link'],
+              'linkContainerOptions' => ['class' => 'page-item'],
+              'nextPageLabel' => "next",
+              'prevPageLabel' => "pre",
+              // 'maxButtonCount' => 3,
+            ]); ?>
+          </nav>
+          <!-- Pagination END -->
 
         </div>
   </section>

@@ -7,6 +7,7 @@ use common\models\Package;
 use app\models\PackageSearch;
 use common\models\Images;
 use common\models\Place;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -41,10 +42,13 @@ class PackageController extends Controller
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
     $query = $dataProvider->query;
-    $model = $query->all();
     $listOfDateMoment = Package::find()->select(['date_moment'])->groupBy(['date_moment'])->asArray()->all();
 
+    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 9]);
+    $model = $query->offset($pages->offset)->limit($pages->limit)->all();
+
     return $this->render('index', [
+      'pages' => $pages,
       'model' => $model,
       'searchModel' => $searchModel,
       'dataProvider' => $dataProvider,

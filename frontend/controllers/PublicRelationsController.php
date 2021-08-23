@@ -6,6 +6,7 @@ use Yii;
 use common\models\Images;
 use common\models\PublicRelations;
 use frontend\models\PublicRelationsSearch;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,19 +37,15 @@ class PublicRelationsController extends Controller
    */
   public function actionIndex()
   {
-    $model = PublicRelations::find()->where(['type' => 2])->all();
+    $model = PublicRelations::find()->where(['type' => 2]);
+
+    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
+    $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
     return $this->render('index', [
+      'pages' => $pages,
       'model' => $model,
     ]);
-
-    // $searchModel = new PublicRelationsSearch();
-    // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-    // return $this->render('index', [
-    //   'searchModel' => $searchModel,
-    //   'dataProvider' => $dataProvider,
-    // ]);
   }
 
   /**
