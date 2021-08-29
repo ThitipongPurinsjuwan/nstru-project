@@ -38,11 +38,13 @@ Main START -->
 
           <!-- Images -->
           <div class="row g-2">
-            <?php foreach ($modelImage as $modelImage) :  ?>
-              <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
-                <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
-              </a>
-            <?php endforeach  ?>
+            <?php if (count($modelImage) > 0) :  ?>
+              <?php foreach ($modelImage as $modelImage) :  ?>
+                <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                  <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
+                </a>
+              <?php endforeach  ?>
+            <?php endif ?>
           </div>
 
         </div>

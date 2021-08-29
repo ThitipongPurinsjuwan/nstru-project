@@ -51,30 +51,32 @@ use yii\widgets\LinkPager;
       <div class="row">
         <div class="col-12 item-box">
 
-          <?php foreach ($model as $model) : ?>
-            <!-- Card item START -->
-            <div class="card border rounded-3 up-hover p-4 mb-4 item-prop">
-              <div class="row g-3">
-                <div class="col-lg-5">
-                  <!-- Title -->
-                  <h2 class="card-title">
-                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/info-view', 'id' => $model->id]) ?>" class="btn-link text-reset stretched-link"> <?= $model->topic ?></a>
-                  </h2>
-                  <div class="d-flex align-items-center position-relative mt-3">
-                    <p><?= $model->details ?></p>
+          <?php if (count($model) > 0) :  ?>
+            <?php foreach ($model as $model) : ?>
+              <!-- Card item START -->
+              <div class="card border rounded-3 up-hover p-4 mb-4 item-prop">
+                <div class="row g-3">
+                  <div class="col-lg-5">
+                    <!-- Title -->
+                    <h2 class="card-title">
+                      <a href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/info-view', 'id' => $model->id]) ?>" class="btn-link text-reset stretched-link"> <?= $model->topic ?></a>
+                    </h2>
+                    <div class="d-flex align-items-center position-relative mt-3">
+                      <p><?= $model->details ?></p>
+                    </div>
+                    <div class="d-flex mt-1">
+                      <p><?= $model->date_imparting ?></p>
+                    </div>
                   </div>
-                  <div class="d-flex mt-1">
-                    <p><?= $model->date_imparting ?></p>
+                  <!-- Image -->
+                  <div class="col-md-12 col-lg-7">
+                    <img class="rounded-3 img-knowing" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
                   </div>
-                </div>
-                <!-- Image -->
-                <div class="col-md-12 col-lg-7">
-                  <img class="rounded-3 img-knowing" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
                 </div>
               </div>
-            </div>
-            <!-- Card item END -->
-          <?php endforeach ?>
+              <!-- Card item END -->
+            <?php endforeach ?>
+          <?php endif ?>
 
           <!-- Card item END -->
           <!-- Pagination START -->

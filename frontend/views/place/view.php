@@ -217,13 +217,16 @@ $this->title = $model->name;
             <p><?= $model->details ?> </p>
             <!-- Images -->
             <div class="row g-2 my-5">
-              <?php foreach ($modelImage as $modelImage) :  ?>
-                <div class="col-md-4">
-                  <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
-                    <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
-                  </a>
-                </div>
-              <?php endforeach  ?>
+              <?php if (count($modelImage) > 0) :  ?>
+                <?php foreach ($modelImage as $modelImage) :  ?>
+                  <div class="col-md-4">
+                    <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                      <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
+                    </a>
+                  </div>
+                <?php endforeach  ?>
+              <?php endif ?>
+
             </div>
 
             <!-- Activity -->
@@ -314,31 +317,32 @@ $this->title = $model->name;
             </div>
             <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
               <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-md="3" data-items-sm="2" data-items-xs="1">
+                <?php if (count($modelPackage) > 0) :  ?>
+                  <?php foreach ($modelPackage as $modelPackage) :  ?>
+                    <div class="card">
+                      <div class="position-relative">
 
-                <?php foreach ($modelPackage as $modelPackage) :  ?>
-                  <div class="card">
-                    <div class="position-relative">
-
-                      <img class="card-img" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="Card image">
-                      <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                        <!-- <div class="w-100 mb-auto d-flex justify-content-end">
+                        <img class="card-img" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="Card image">
+                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                          <!-- <div class="w-100 mb-auto d-flex justify-content-end">
                           <div class="text-end ms-auto">
                             <div class="icon-md bg-white-soft bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
                           </div>
                         </div> -->
-                        <div class="w-100 mt-auto">
-                          <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
+                          <div class="w-100 mt-auto">
+                            <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
+                          </div>
                         </div>
-                      </div>
 
+                      </div>
+                      <div class="card-body px-0 pt-3">
+                        <h5 class="card-title">
+                          <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
+                        </h5>
+                      </div>
                     </div>
-                    <div class="card-body px-0 pt-3">
-                      <h5 class="card-title">
-                        <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
-                      </h5>
-                    </div>
-                  </div>
-                <?php endforeach  ?>
+                  <?php endforeach  ?>
+                <?php endif ?>
               </div>
             </div>
           </div>

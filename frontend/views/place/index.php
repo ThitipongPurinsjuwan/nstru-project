@@ -15,34 +15,34 @@ $this->title = $nameOfType;
   <!-- Main Post START -->
   <div class="col-lg-12">
     <div class="row gy-4">
+      <?php if (count($model) > 0) :  ?>
+        <?php foreach ($model as $model) :  ?>
+          <!-- Card item START -->
+          <div class="col-sm-6">
+            <div class="card">
+              <!-- Card img -->
+              <div class="position-relative">
+                <img class="card-img img-md-box" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
 
-      <?php foreach ($model as $model) :  ?>
-        <!-- Card item START -->
-        <div class="col-sm-6">
-          <div class="card">
-            <!-- Card img -->
-            <div class="position-relative">
-              <img class="card-img img-md-box" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
-
-              <?php if ($type == 3) : ?>
-                <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                  <!-- Card overlay bottom -->
-                  <div class="w-100 mt-auto">
-                    <!-- Card category -->
-                    <a href="#" class="badge bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>THB <?= $model->price ?></a>
+                <?php if ($type == 3) : ?>
+                  <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                    <!-- Card overlay bottom -->
+                    <div class="w-100 mt-auto">
+                      <!-- Card category -->
+                      <a href="#" class="badge bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>THB <?= $model->price ?></a>
+                    </div>
                   </div>
-                </div>
-              <?php endif ?>
+                <?php endif ?>
 
-            </div>
-            <div class="card-body px-0 pt-3">
-              <h4 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h4>
+              </div>
+              <div class="card-body px-0 pt-3">
+                <h4 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h4>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Card item END -->
-      <?php endforeach  ?>
-
+          <!-- Card item END -->
+        <?php endforeach  ?>
+      <?php endif ?>
       <!-- Pagination START -->
       <nav class="my-5 d-flex justify-content-center" aria-label="navigation">
         <?= LinkPager::widget([

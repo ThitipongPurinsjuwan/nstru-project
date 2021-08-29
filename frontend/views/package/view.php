@@ -83,13 +83,15 @@ $this->title = $model->name;
           <p><?= $model->details ?> </p>
           <!-- Images -->
           <div class="row g-2 my-5">
-            <?php foreach ($modelImage as $modelImage) :  ?>
-              <div class="col-md-4">
-                <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
-                  <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
-                </a>
-              </div>
-            <?php endforeach  ?>
+            <?php if (count($modelImage) > 0) :  ?>
+              <?php foreach ($modelImage as $modelImage) :  ?>
+                <div class="col-md-4">
+                  <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                    <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
+                  </a>
+                </div>
+              <?php endforeach  ?>
+            <?php endif ?>
           </div>
         </div>
 
@@ -122,35 +124,27 @@ $this->title = $model->name;
             <div>
               <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
 
-              <?php
-              foreach ($modelPlace as $modelPlace) :
-              ?>
-                <!-- Card item START -->
-                <div class="card mb-4">
-                  <div class="row g-3">
-                    <div class="col-4">
-                      <img class="rounded-3" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
-                    </div>
-                    <div class="col-8">
-                      <h5><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset stretched-link fw-bold"><?= $modelPlace->name ?></a></h5>
+              <?php if (count($modelImage) > 0) :  ?>
+                <?php foreach ($modelPlace as $modelPlace) : ?>
+                  <!-- Card item START -->
+                  <div class="card mb-4">
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <img class="rounded-3" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
+                      </div>
+                      <div class="col-8">
+                        <h5><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset stretched-link fw-bold"><?= $modelPlace->name ?></a></h5>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <!-- Card item END -->
-              <?php
-              endforeach
-              ?>
+                  <!-- Card item END -->
+                <?php endforeach ?>
+              <?php endif ?>
             </div>
           </div>
-
-
         </div>
-
-
-
       </div>
     </div>
   </section>
   <!-- Card item END -->
-
 </div>
