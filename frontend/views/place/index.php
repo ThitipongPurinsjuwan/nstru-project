@@ -22,7 +22,7 @@ $this->title = $nameOfType;
           <div class="card">
             <!-- Card img -->
             <div class="position-relative">
-              <img class="card-img" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
+              <img class="card-img img-md-box" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
 
               <?php if ($type == 3) : ?>
                 <div class="card-img-overlay d-flex align-items-start flex-column p-3">
