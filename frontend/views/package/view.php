@@ -124,7 +124,7 @@ $this->title = $model->name;
             <div>
               <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
 
-              <?php if (count($modelImage) > 0) :  ?>
+              <?php if (count($modelPlace) > 0) :  ?>
                 <?php foreach ($modelPlace as $modelPlace) : ?>
                   <!-- Card item START -->
                   <div class="card mb-4">
