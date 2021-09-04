@@ -91,10 +91,10 @@ class Place extends \yii\db\ActiveRecord
 
   public static function showLess($content)
   {
-    $text = $content;
+    $text = strip_tags($content);
 
-    if (strlen($content) > 50) {
-      $text = substr($content, 0, 50) . "...";
+    if (strlen($text) > 80) {
+      $text = mb_substr($text, 0, 80, 'UTF-8') . "...";
     }
 
     return $text;
