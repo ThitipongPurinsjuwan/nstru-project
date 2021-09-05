@@ -10,6 +10,7 @@ use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use common\models\Images;
 use yii\web\Controller;
+use yii\db\Query;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -90,20 +91,24 @@ class SiteController extends Controller
 
   public function actionIndex()
   {
+    $connection = \Yii::$app->db;
+
     $model = TypePlace::find()->all();
     $modelPlace = Place::find()->all();
-    $modeNews = PublicRelations::find()->where(['type' => 2])->all();
     $modelPackage = Package::find()->limit(4)->all();
 
+    $modeNews = PublicRelations::find()->where(['type' => 1])->all();
     $modelVDO = FileList::find()->where(['type' => 2])->limit(2)->all();
+
+    $topPlace = $connection->createCommand('SELECT p.id,p.name,p.name_img_important as img,count(r.message) as count FROM `place` as p LEFT JOIN review as r on r.place_id = p.id GROUP BY p.id LIMIT 4')->queryAll();
 
     return $this->render('index', [
       'model' => $model,
+      'topPlace' => $topPlace,
       'modelVDO' => $modelVDO,
       'modelPlace' => $modelPlace,
       'modeNews' => $modeNews,
       'modelPackage' => $modelPackage,
-      // 'modelImage' => $modelImage,
     ]);
   }
 

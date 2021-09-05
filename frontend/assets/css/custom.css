@@ -1,12 +1,17 @@
 html,
 body,
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
 .h5,
 h6,
+.h6,
 a {
   font-family: "Kanit", sans-serif;
 }
@@ -97,26 +102,40 @@ a {
 .address {
   margin-bottom: 0.5em;
 }
-/* ************************************** */
-/* .banner .swiper {
-  width: 100%;
-  height: 68%;
-} */
 
-/* .banner .swiper {
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-/* .banner .swiper-container {
-  margin-left: auto;
-  margin-right: auto;
+.bg-banner {
   position: relative;
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  z-index: 1;
-} */
+}
+
+.bg-banner::before {
+  content: "";
+  background: url(../img/bg-badge/b3.png) no-repeat;
+  background-position: right;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.head-badge {
+  position: relative;
+}
+
+.head-badge::before {
+  content: "";
+  background: url(../img/bg-badge/b3.png) no-repeat;
+  background-position: 100% 100%;
+  background-size: cover;
+  position: absolute;
+  top: -26px;
+  right: -2em;
+  width: 46px;
+  height: 48px;
+}
 
 .banner .swiper-container .swiper-wrapper .swiper-slide {
   text-align: center;
