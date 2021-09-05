@@ -121,7 +121,7 @@ use common\util\DateTimeCustom;
 <!-- RECOMMEND VDO END -->
 
 <!-- TRAVEL START -->
-<section class="py-5">
+<section class="py-5 bg-banner bg-banner-left">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
@@ -251,7 +251,7 @@ use common\util\DateTimeCustom;
 <!-- POPULAR END -->
 
 <!-- PACKAGE START -->
-<section class="py-5">
+<section class="py-5 bg-banner">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">

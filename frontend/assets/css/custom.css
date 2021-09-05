@@ -121,6 +121,11 @@ a {
   z-index: -1;
 }
 
+.bg-banner-left::before {
+  transform: scaleX(-1);
+  left: -10em;
+}
+
 .head-badge {
   position: relative;
 }
