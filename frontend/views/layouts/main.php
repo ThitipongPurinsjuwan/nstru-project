@@ -247,6 +247,21 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
         prevEl: ".swiper-button-prev",
       },
     });
+
+    const handlePagination = () => {
+      const pre = document.querySelector('.page-item.prev.disabled');
+      const next = document.querySelector('.page-item.next.disabled');
+
+      if (pre !== null) {
+        pre.innerHTML = '<a class="page-link">pre</a>'
+      }
+
+      if (next !== null) {
+        next.innerHTML = '<a class="page-link">next</a>'
+      }
+    }
+
+    handlePagination();
   </script>
   <!-- Main Theme JS file    -->
   <?php $this->endBody() ?>
