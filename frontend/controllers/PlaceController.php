@@ -54,26 +54,10 @@ class PlaceController extends Controller
       'type' => $type,
       'pages' => $pages,
       'model' => $model,
+      'nameOfType' => $nameOfType,
       'searchModel' => $searchModel,
       'dataProvider' => $dataProvider,
     ]);
-
-
-
-
-
-    // $model = Place::find()->where(['type' => $type]);
-    // $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;
-
-    // $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
-    // $model = $model->offset($pages->offset)->limit($pages->limit)->all();
-
-    // return $this->render('index', [
-    //   'model' => $model,
-    //   'pages' => $pages,
-    //   'nameOfType' => $nameOfType,
-    //   'type' => $type,
-    // ]);
   }
 
   /**
