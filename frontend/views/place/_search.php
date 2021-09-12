@@ -35,8 +35,8 @@ use yii\widgets\ActiveForm;
             <form action="#">
               <div class="row">
                 <!-- <div class="col-lg-7 d-flex align-items-center form-group"> -->
-                <div class="col-md-7 col-sm-12 my-1">
-                  <?= $form->field($model, 'name')->input('text', ['placeholder' => "ค้นหาชื่อแพ็คเกจ", 'class' => 'form-control border-0 shadow-0'])->label(false) ?>
+                <div class="col-md-10 col-sm-12 my-1">
+                  <?= $form->field($model, 'name')->input('text', ['placeholder' => "ค้นหาชื่อสถานที่", 'class' => 'form-control border-0 shadow-0'])->label(false) ?>
                 </div>
 
                 <div class="col-lg-2 d-grid">
