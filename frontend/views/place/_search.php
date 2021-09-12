@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 <div class="place-search">
 
   <?php $form = ActiveForm::begin([
-    'action' => ['index'],
+    'action' => ['index', 'type' => $type],
     'method' => 'get',
   ]); ?>
   <section class="hero-home">

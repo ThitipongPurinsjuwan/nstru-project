@@ -41,18 +41,39 @@ class PlaceController extends Controller
    */
   public function actionIndex($type)
   {
-    $model = Place::find()->where(['type' => $type]);
+    $searchModel = new PlaceSearch();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+    $query = $dataProvider->query;
+
+    $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 9]);
+    $model = $query->offset($pages->offset)->where(['type' => $type])->limit($pages->limit)->all();
     $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;
 
-    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
-    $model = $model->offset($pages->offset)->limit($pages->limit)->all();
-
     return $this->render('index', [
-      'model' => $model,
-      'pages' => $pages,
-      'nameOfType' => $nameOfType,
       'type' => $type,
+      'pages' => $pages,
+      'model' => $model,
+      'searchModel' => $searchModel,
+      'dataProvider' => $dataProvider,
     ]);
+
+
+
+
+
+    // $model = Place::find()->where(['type' => $type]);
+    // $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;
+
+    // $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
+    // $model = $model->offset($pages->offset)->limit($pages->limit)->all();
+
+    // return $this->render('index', [
+    //   'model' => $model,
+    //   'pages' => $pages,
+    //   'nameOfType' => $nameOfType,
+    //   'type' => $type,
+    // ]);
   }
 
   /**

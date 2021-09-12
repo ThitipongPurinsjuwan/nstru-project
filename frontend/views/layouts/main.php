@@ -73,7 +73,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
 </head>
 <?php $this->beginBody() ?>
 
-<body style="padding-top: 80px;">
+<body class="body-content-custom">
   <header class="header">
     <!-- Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
@@ -109,11 +109,13 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     </nav>
     <!-- /Navbar -->
   </header>
+
   <?= Breadcrumbs::widget([
     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
   ]) ?>
   <?= Alert::widget() ?>
   <?= $content ?>
+
   <!-- ======================= Footer START -->
   <footer class="position-relative z-index-10 d-print-none">
     <!-- Main block - menus, subscribe form-->
@@ -148,10 +150,6 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
       <div class="container py-4">
         <div class="wrap-footer-address">
           <div class="footer-address">
-            <div class="footer-logo">
-              <img class="logo" src="../../images/TSRI.png" alt="">
-              <img class="logo" src="../../images/Logo_nstru.png" alt="">
-            </div>
             <div class="wrap-address">
               <div class="label">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</div>
               <p class="address">มหาวิทยาลัยราชภัฏนครศรีธรรมราช 1 ม. 4 ต.ท่างิ้ว อ.เมืองนครศรีธรรมราช จ.นครศรีธรรมราช 80280 </p>
@@ -160,6 +158,10 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
               <p class="address">อีเมล. www@nstru.ac.th​</p>
               <p class="address">ติดต่อ.​ คุณพรศิลป์​ บัวงาม​ 091-8262827​</p>
             </div>
+          </div>
+          <div class="footer-logo">
+            <img class="logo" src="../../images/TSRI.png" alt="">
+            <img class="logo" src="../../images/Logo_nstru.png" alt="">
           </div>
         </div>
       </div>

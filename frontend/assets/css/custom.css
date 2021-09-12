@@ -26,6 +26,9 @@ a {
   padding-top: 1em !important;
   padding-bottom: 1em !important;
 }
+.leaflet-container {
+  font-family: "Kanit", sans-serif !important;
+}
 
 .logo-support {
   height: 3em;
@@ -39,11 +42,10 @@ a {
 }
 .footer-logo {
   display: flex;
-  flex-direction: column;
 }
 .logo {
-  height: 5em;
-  margin-top: 0.6em;
+  height: 10em;
+  margin-right: 2em;
 }
 
 .min-w-7 {
@@ -191,4 +193,14 @@ a {
 .banner .swiper-pagination-bullet-active {
   opacity: 1;
   background: #ffffff !important;
+}
+
+.body-content-custom {
+  padding-top: 80px;
+}
+
+@media only screen and (max-width: 595px) {
+  .body-content-custom {
+    padding-top: 110px;
+  }
 }

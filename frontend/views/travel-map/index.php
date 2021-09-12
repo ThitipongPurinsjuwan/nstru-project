@@ -1,12 +1,5 @@
 <?php
 
-use common\models\Place;
-use yii\helpers\Html;
-
-/* @var $this yii\web\View */
-/* @var $searchModel frontend\models\PlaceSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = "แผนที่ท่องเที่ยว";
 ?>
 <style>
@@ -16,7 +9,8 @@ $this->title = "แผนที่ท่องเที่ยว";
   }
 
   #mapid {
-    height: 60em;
+    /* height: 84em; */
+    height: 100vh;
   }
 
   .infoBox {
@@ -161,23 +155,6 @@ $this->title = "แผนที่ท่องเที่ยว";
   /* End Popup Map */
 </style>
 <div class="travel-map-index">
-  <!-- modal -->
-  <div class="modal fade" id="mapModalToggle" aria-hidden="true" aria-labelledby="mapModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered full-screen">
-      <div class="modal-content full-screen">
-        <div class="modal-header">
-          <h5 class="modal-title" id="mapModalToggleLabel">แผนที่</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div id="mapM"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- modal -->
-
-  <h1 class="mb-4"><?= Html::encode($this->title) ?></h1>
   <div id="mapid"></div>
 </div>
 
@@ -202,12 +179,6 @@ $this->title = "แผนที่ท่องเที่ยว";
       `</div></div></div>`;
 
     return popup;
-  }
-
-  const isInitMapAlready = () => {
-    const container = L.DomUtil.get('mapM');
-
-    return !container || container._leaflet_id;
   }
 
   const initTypeMarker = (mymap, keys, objMarker) => {
@@ -285,7 +256,15 @@ $this->title = "แผนที่ท่องเที่ยว";
 
       L.marker(latlng, iconOption)
         .bindPopup(popup)
-        .addTo(objMarker.<?= $modelPlace[$i]['type_name'] ?>);
+        .addTo(objMarker.<?= $modelPlace[$i]['type_name'] ?>)
+        .on('mouseover', function(e) {
+          e.target.openPopup();
+        })
+        .on('mouseout', function(e) {
+          setTimeout(() => {
+            e.target.closePopup()
+          }, 3500);
+        });
 
     <?php endfor ?>
   }
@@ -308,18 +287,11 @@ $this->title = "แผนที่ท่องเที่ยว";
     mapId,
     mapOption = {}
   }) => {
-
-    const {
-      showTopRight
-    } = mapOption;
-
-    if (isInitMapAlready()) {
-      return;
-    }
-
     const accessToken = 'pk.eyJ1IjoiYXRtYXRtNDAzMyIsImEiOiJja3JleXd5MHk1NXRiMm9xdWg1ZmNwZWM3In0.19AF64hbIhSmQ_ukdR7EyA';
     const mapboxUrl = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`;
-    const mymap = L.map(mapId).setView([8.44425, 99.95037], 13);
+    const mymap = L.map(mapId, {
+      scrollWheelZoom: false
+    }).setView([8.44425, 99.95037], 13);
 
     let objMarker = JSON.parse('<?= json_encode($objTypePlace) ?>');
 
@@ -327,10 +299,6 @@ $this->title = "แผนที่ท่องเที่ยว";
     const val = Object.values(objMarker);
 
     objMarker = initTypeMarker(mymap, keys, objMarker);
-
-    if (!!showTopRight) {
-      initTopRightFullScreen(mymap);
-    }
 
     initMapLayer(mymap, mapboxUrl, accessToken);
 

@@ -10,7 +10,7 @@ use yii\widgets\LinkPager;
 $this->title = $nameOfType;
 ?>
 <div class="place-index">
-  <?= $this->render('_search', ['model' => $searchModel, 'listOfDateMoment' => $listOfDateMoment]); ?>
+  <?= $this->render('_search', ['model' => $searchModel, 'type' => $type]); ?>
 
   <div class="place-index">
     <section class="py-5">

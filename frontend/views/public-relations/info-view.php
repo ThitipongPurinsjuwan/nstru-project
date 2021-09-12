@@ -20,9 +20,6 @@ Inner intro START -->
         <div class="col-md-6 position-relative">
           <img class="rounded" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Image">
           <!-- Card format icon -->
-          <h5 class="p-3 pe-4 position-absolute top-0 end-0">
-            <span class="badge bg-success text-white fw-bold rounded-pill"> News</span>
-          </h5>
         </div>
         <!-- Content -->
         <div class="col-md-6 mt-4 mt-md-0">
@@ -36,7 +33,7 @@ Inner intro END -->
 
   <!-- =======================
 Main START -->
-  <section class="pt-0">
+  <section class="pt-0 mb-6">
     <div class="container position-relative" data-sticky-container>
       <div class="row">
         <!-- Left sidebar START -->

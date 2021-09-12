@@ -37,10 +37,12 @@ use common\util\DateTimeCustom;
               <a href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $modeNews->id]) ?>">
                 <img class="img-fluid card-img-top" src="<?= '../../images/images_upload_forform/' . $modeNews->name_img_important ?>" alt="..." />
               </a>
-              <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a>
+              <div class="card-body">
+                <a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a>
                 <h5 class="my-2"><a class="text-dark" href="post.html"><?= $modeNews->topic ?> </a></h5>
                 <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i><?= DateTimeCustom::getDateThai($modeNews->date_create) ?></p>
-                <p class="my-2 text-muted text-sm"><?= Place::showLess($modeNews->details) ?></p><a class="btn btn-link ps-0" href="post.html">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
+                <p class="my-2 text-muted text-sm"><?= Place::showLess($modeNews->details) ?></p>
+                <a class="btn btn-link ps-0" href="post.html">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
               </div>
             </div>
           </div>
