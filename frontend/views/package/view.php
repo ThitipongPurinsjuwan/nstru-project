@@ -53,35 +53,15 @@ $this->title = $model->name;
 
 <div class="package-view">
 
-  <!-- Card item START -->
-  <section class="pt-0 card-grid">
-    <div class="row">
-      <div class="col-12">
-        <div class="tiny-slider arrow-hover arrow-blur arrow-white arrow-round rounded-3 overflow-hidden">
-          <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="1" data-arrow="true" data-dots="false" data-items="1">
-            <div class="card bg-dark-overlay-3 h-400 h-sm-500 h-md-600 rounded-0" style="background-image:url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); background-position: center left; background-size: cover;">
-              <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
-                <div class="w-100 my-auto">
-                  <div class="col-md-10 col-lg-7 mx-auto text-center">
-                    <h2 class="text-white display-5"><?= Html::encode($this->title) ?></h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="pt-0">
     <div class="container position-relative" data-sticky-container>
       <div class=" row">
 
         <div class="col-lg-8 mb-5">
-          <!-- Detail -->
+
           <p><?= $model->details ?> </p>
-          <!-- Images -->
+
           <div class="row g-2 my-5">
             <?php if (count($modelImage) > 0) :  ?>
               <?php foreach ($modelImage as $modelImage) :  ?>
