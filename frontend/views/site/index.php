@@ -39,10 +39,10 @@ use common\util\DateTimeCustom;
               </a>
               <div class="card-body">
                 <a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a>
-                <h5 class="my-2"><a class="text-dark" href="post.html"><?= $modeNews->topic ?> </a></h5>
+                <h5 class="my-2"><a class="text-dark" href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $modeNews->id]) ?>"><?= $modeNews->topic ?> </a></h5>
                 <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i><?= DateTimeCustom::getDateThai($modeNews->date_create) ?></p>
                 <p class="my-2 text-muted text-sm"><?= Place::showLess($modeNews->details) ?></p>
-                <a class="btn btn-link ps-0" href="post.html">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
+                <a class="btn btn-link ps-0" href=" <?= \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $modeNews->id]) ?>">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
               </div>
             </div>
           </div>
@@ -287,7 +287,7 @@ use common\util\DateTimeCustom;
                   </div>
                   <div class="card-body d-flex align-items-center">
                     <div class="w-100">
-                      <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html"><?= $modelPackage->name ?></a></h6>
+                      <h6 class="card-title"><a class="text-decoration-none text-dark" href="<?= \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>"><?= $modelPackage->name ?></a></h6>
                       <div class="d-flex card-subtitle mb-3">
                         <p class="flex-grow-1 mb-0 text-muted text-sm">ทัวร์ <?= $modelPackage->date_moment ?> วัน</p>
                       </div>
