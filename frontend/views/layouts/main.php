@@ -65,6 +65,8 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <!-- Font Awesome CSS-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/glightbox/css/glightbox.css">
 
   <!-- Leaflet Map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -213,6 +215,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Magnific Popup - Lightbox for the gallery-->
   <script src="../assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
   <!-- Smooth scroll-->
   <script src="../assets/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
   <!-- Bootstrap Select-->
@@ -225,6 +228,8 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
 
   <script src="../../themes/template/assets/vendor/jarallax/jarallax.min.js"></script>
   <script src="../../themes/template/assets/vendor/jarallax/jarallax-video.min.js"></script>
+  <script src="../../themes/template/assets/vendor/glightbox/js/glightbox.js"></script>
+  <script src="../../themes/template/assets/js/functions.js"></script>
 
   <!-- Initialize Swiper -->
   <script>

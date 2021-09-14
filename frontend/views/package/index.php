@@ -69,5 +69,4 @@ $this->title = 'แพ็คเกจ';
       </div>
     </div>
   </section>
-
 </div>
