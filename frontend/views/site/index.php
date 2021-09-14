@@ -24,9 +24,9 @@ use common\util\DateTimeCustom;
       <div class="col-md-8">
         <h2>ข่าวประชาสัมพันธ์<span class="head-badge"></span></h2>
       </div>
-      <div class="col-md-4 d-md-flex align-items-center justify-content-end">
+      <!-- <div class="col-md-4 d-md-flex align-items-center justify-content-end">
         <a class="text-muted text-sm" href="blog.html">ดูข่าวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
-      </div>
+      </div> -->
     </div>
     <div class="row">
       <?php if (count($modeNews) > 0) :  ?>
@@ -71,7 +71,7 @@ use common\util\DateTimeCustom;
         <h2>วีดีโอแนะนำ</h2>
       </div>
       <div class="col-md-4 d-md-flex align-items-center justify-content-end">
-        <a class="text-muted text-sm" href="blog.html">รายละเอียดทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
+        <a class="text-muted text-sm" href=" index.php?r=file-list/index">ดูวีดีโอทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
       </div>
     </div>
     <div class="row">
@@ -129,7 +129,7 @@ use common\util\DateTimeCustom;
       <div class="col-md-8">
         <h2>สถานที่ท่องเที่ยว<span class="head-badge"></span></h2>
       </div>
-      <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="category.html">
+      <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="index.php?r=place/index&amp;type=1">
           ดูสถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div>
     </div>
     <div class="swiper-container guides-slider mx-n2 pt-3">
@@ -260,7 +260,7 @@ use common\util\DateTimeCustom;
         <h2>แพ็คเกจท่องเที่ยว<span class="head-badge"></span></h2>
       </div>
       <div class="col-md-4 d-lg-flex align-items-center justify-content-end">
-        <a class="text-muted text-sm" href="category.html">ดูแพ็คเกจทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
+        <a class="text-muted text-sm" href="index.php?r=package/index">ดูแพ็คเกจทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
       </div>
     </div>
     <!-- Slider main container-->
