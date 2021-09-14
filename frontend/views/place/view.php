@@ -1,6 +1,7 @@
 <?php
 
 use common\models\Place;
+use common\util\DateTimeCustom;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -186,241 +187,241 @@ $this->title = $model->name;
 </style>
 
 <div class="place-view">
-  <main>
-    <!-- ======================= Inner intro START -->
-    <section class="pt-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="card bg-dark-overlay-5 overflow-hidden card-bg-scale h-400 text-center" style="background-image:url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); background-position: center left; background-size: cover;">
-              <!-- Card Image overlay -->
-              <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
-                <div class="w-100 my-auto">
-                  <!-- Card title -->
-                  <h2 class="text-white display-5"><?= $model->name ?></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ======================= Inner intro END -->
-
-    <!-- ======================= Main START -->
-    <section class="pt-0">
-      <div class="container position-relative" data-sticky-container>
-        <div class="row">
-          <!-- Main Content START -->
-          <div class="col-lg-9 mb-5">
-            <!-- Detail -->
-            <p><?= $model->details ?> </p>
-            <!-- Images -->
-            <div class="row g-2 my-5">
-              <?php if (count($modelImage) > 0) :  ?>
-                <?php foreach ($modelImage as $modelImage) :  ?>
-                  <div class="col-md-4">
-                    <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
-                      <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
-                    </a>
-                  </div>
-                <?php endforeach  ?>
-              <?php endif ?>
-
-            </div>
-
-            <!-- Activity -->
-            <h4 class="mt-4"><i class="bi bi-calendar2-check-fill"></i> กิจกรรม</h4>
-            <div class="row mb-4">
-              <div class="col-md-12">
-                <p><?= $model->activity ?></p>
-              </div>
-            </div>
-          </div>
-          <!-- Main Content END -->
-          <!-- Right sidebar START -->
-          <div class="col-lg-3">
-            <div data-sticky data-margin-top="80" data-sticky-for="991">
-              <div class="row">
-                <h5><i class="bi bi-person-lines-fill" style="margin-right: 0.5em;"></i> ช่องทางติดต่อ</h5>
-              </div>
-              <!-- Contact START -->
-              <ul class="nav flex-column">
-                <?php if ($model->facebook_link !== '') : ?>
-                  <li class="nav-item">
-                    <a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a>
-                  </li>
-                <?php endif ?>
-
-                <?php if ($model->line_id !== '') : ?>
-                  <li class="nav-item">
-                    <a class="nav-link" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a>
-                  </li>
-                <?php endif ?>
-
-                <?php if ($model->phone !== '') : ?>
-                  <li class="nav-item">
-                    <a class="nav-link" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
-                  </li>
-                <?php endif ?>
-              </ul>
-              <!-- Contact END -->
-              <!-- Newsletter START -->
-              <div class="bg-primary-soft p-3 mt-4 rounded-3 text-center">
-                <?= $model->contact ?>
-              </div>
-              <!-- Newsletter END -->
-              <!-- Newsletter START -->
-              <div class="bg-primary-soft mt-2 rounded-3">
-                <a target="_blank" href="https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=<?= $model->latitude ?>,<?= $model->longitude ?>">
-                  <div class="p-3 text-center">
-                    <i class="fa fa-location-arrow" aria-hidden="true"></i> ขอเส้นทาง
-                  </div>
-                </a>
-              </div>
-              <!-- Newsletter END -->
-
-              <!-- Map START -->
-              <div id="mapid" class="mt-2"></div>
-              <!-- modal -->
-              <div class="modal fade" id="mapModalToggle" aria-hidden="true" aria-labelledby="mapModalToggleLabel" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered full-screen">
-                  <div class="modal-content full-screen">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="mapModalToggleLabel">แผนที่</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div id="mapM"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- modal -->
-              <!-- Map END -->
-
-            </div>
-          </div>
-          <!-- Right sidebar END -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== package -->
-    <section class="pt-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-
-            <div class="mb-4 d-md-flex justify-content-between align-items-center">
-              <h2 class="m-0"><i class="bi bi-megaphone"></i> แพ็คเกจ</h2>
-            </div>
-            <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round">
-              <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24" data-arrow="true" data-dots="false" data-items-xl="4" data-items-md="3" data-items-sm="2" data-items-xs="1">
-                <?php if (count($modelPackage) > 0) :  ?>
-                  <?php foreach ($modelPackage as $modelPackage) :  ?>
-                    <div class="card">
-                      <div class="position-relative">
-
-                        <img class="card-img" src="../../themes/template/assets/images/blog/packges/c1.jpg" alt="Card image">
-                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                          <!-- <div class="w-100 mb-auto d-flex justify-content-end">
-                          <div class="text-end ms-auto">
-                            <div class="icon-md bg-white-soft bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
-                          </div>
-                        </div> -->
-                          <div class="w-100 mt-auto">
-                            <a href="#" class="badge bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
-                          </div>
-                        </div>
-
-                      </div>
-                      <div class="card-body px-0 pt-3">
-                        <h5 class="card-title">
-                          <a href="<?php echo \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>" class="btn-link text-reset fw-bold"><?= $modelPackage->name ?></a>
-                        </h5>
-                      </div>
-                    </div>
-                  <?php endforeach  ?>
-                <?php endif ?>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ======================= Main END -->
-
-    <!-- ======================= comments -->
-    <section class="pt-0">
-      <div class="container position-relative" data-sticky-container>
-        <div class="col-lg-9 mb-5">
-          <div class="mt-5">
-            <h3> comments</h3>
-            <?php if (count($modelReview) == 0) : ?>
-              <div class="mb-2">
-                <span class="me-3 small">No Comment</span>
-              </div>
-            <?php endif ?>
-            <?php
-            $indexPost = 0;
-            foreach ($modelReview as $review) :
-              $indexPost += 1;
-            ?>
-              <!-- Comment START-->
-              <div class="my-4 d-flex">
-                <img class="avatar avatar-md rounded-circle float-start me-3" src='<?= Place::randomImg() ?>' alt="avatar">
-                <div>
-                  <div class="mb-2">
-                    <h5 class="m-0">Post <?= $indexPost ?></h5>
-                    <span class="me-3 small"><?= $review->created_at ?></span>
-                  </div>
-                  <p><?= $review->message ?></p>
-                </div>
-              </div>
-              <!-- Comment END -->
-            <?php endforeach ?>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- =======================END comments -->
-
-    <!-- Reply START -->
-    <section class="pt-0">
-      <div class="container position-relative" data-sticky-container>
-        <div class="col-lg-9 mb-5">
-          <form class="row g-3 mt-2" action="<?= \Yii::$app->getUrlManager()->createUrl(['place/save-comment', 'id' => $model->id]) ?>" method="post">
-            <div class="col-12">
-              <label class="form-label">Your Comment *</label>
-              <textarea class="form-control" name="comment_message" rows="3"></textarea>
-            </div>
-            <div class="col-12" style="direction: rtl;">
-              <button type="submit" name="save_comment" value="save" class="btn btn-primary">Post comment</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-    <!-- Reply END -->
-
-    <!-- ======================= Sticky post START -->
-    <div class="sticky-post bg-light border p-4 mb-5 text-sm-end rounded d-none d-xxl-block">
-      <div class="d-flex align-items-center">
-        <!-- Title -->
-        <div class="me-3">
-          <span>Next post<i class="bi bi-arrow-right ms-3"></i></span>
-          <h6 class="m-0"> <a href="javascript:void(0)" class="stretched-link btn-link text-reset">Bad habits that people in the industry need to quit</a></h6>
-        </div>
-        <!-- image -->
-        <div class="col-4 d-none d-md-block">
-          <img src="../../themes/template/assets/images/blog/4by3/05.jpg" alt="Image">
+  <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('<?= '../../images/images_upload_forform/' . $model->name_img_important ?>');">
+    <div class="container overlay-content">
+      <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
+        <div class="text-white mb-4 mb-lg-0">
+          <div class="badge badge-pill badge-transparent px-3 py-2 mb-4">Place &amp; Travel</div>
+          <h1 class="text-shadow verified"><?= $model->name ?></h1>
+          <p><i class="fa-map-marker-alt fas me-2"></i> <?= $model->contact ?></p>
         </div>
       </div>
     </div>
-    <!-- ======================= Sticky post END -->
+  </section>
+  <section class="py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- About Listing-->
+          <div class="text-block">
+            <h3 class="mb-3">รายละเอียด</h3>
+            <p class="text-muted"><?= $model->details ?> </p>
+          </div>
+          <div class="text-block">
+            <h3 class="mb-3">กิจกรรม</h3>
+            <p class="text-muted"><?= $model->activity ?> </p>
+          </div>
+          <div class="text-block">
+            <!-- Listing Location-->
+            <h3 class="mb-4">แผนที่</h3>
+            <div class="map-wrapper-300 mb-3">
+              <div class="h-100" id="mapid"></div>
+            </div>
+          </div>
+          <div class="text-block">
+            <!-- Gallery-->
+            <h3 class="mb-4">รูปภาพ</h3>
+            <div class="row ms-n1 me-n1">
 
-  </main>
+              <section class="position-relative pt-0">
+                <div class="row filter-container overflow-hidden" data-isotope='{"layoutMode": "masonry"}'>
+
+                  <?php if (count($modelImage) > 0) :  ?>
+                    <?php foreach ($modelImage as $modelImage) :  ?>
+                      <!-- Card item START -->
+                      <div class="col-lg-4 col-6 px-1 mb-2 grid-item">
+                        <div class="card">
+                          <!-- Card img -->
+                          <div class="card-fold position-relative">
+                            <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
+                              <img class="img-fluid" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="...">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Card item END -->
+                    <?php endforeach  ?>
+                  <?php endif ?>
+
+                </div>
+              </section>
+
+            </div>
+          </div>
+          <div class="text-block">
+            <p class="subtitle text-sm text-primary">รีวิวจากนักท่องเที่ยว </p>
+            <h5 class="mb-4">Listing Reviews </h5>
+            <?php if (count($modelReview) > 0) : ?>
+
+              <?php
+              $indexPost = 0;
+              foreach ($modelReview as $review) :
+                $indexPost += 1;
+              ?>
+                <div class="d-flex d-block d-sm-flex review">
+                  <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
+                    <img class="d-block avatar avatar-xl p-2 mb-2" src="<?= Place::randomImg() ?>" alt="avatar">
+                    <span class="text-uppercase text-muted text-sm"><?= DateTimeCustom::getDateThai($review->created_at) ?></span>
+                  </div>
+                  <div>
+                    <h6 class="mt-2 mb-1">Post <?= $indexPost ?></h6>
+                    <p class="text-muted text-sm"><?= $review->message ?> </p>
+                  </div>
+                </div>
+              <?php endforeach ?>
+
+            <?php else : ?>
+              <div class="d-flex d-block d-sm-flex review">
+                <p class="text-muted text-sm">No Comments </p>
+              </div>
+            <?php endif ?>
+
+            <div class="py-5">
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
+              <div class="collapse mt-4" id="leaveReview">
+                <h5 class="mb-4">Leave a review</h5>
+                <form class="form" id="contact-form" action="<?= \Yii::$app->getUrlManager()->createUrl(['place/save-comment', 'id' => $model->id]) ?>" method="post">
+                  <div class="mb-4">
+                    <label class="form-label" for="review">Review text *</label>
+                    <textarea class="form-control" rows="4" name="comment_message" placeholder="Enter your review" required="required"></textarea>
+                  </div>
+                  <button class="btn btn-primary" type="submit" name="save_comment" value="save">Post review</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="ps-xl-4">
+            <!-- Opening Hours      -->
+            <div class="card border-0 shadow mb-5">
+              <div class="card-header bg-gray-100 py-4 border-0">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <p class="subtitle text-sm text-primary">วันเวลาเปิดทำการ</p>
+                    <h4 class="mb-0">Opening Hours </h4>
+                  </div>
+                  <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
+                    <use xlink:href="#wall-clock-1"> </use>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <table class="table text-sm mb-0">
+                  <tr>
+                    <th class="ps-0 border-0">Sunday</th>
+                    <td class="pe-0 text-end border-0">8:00 am - 6:00 pm</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <!-- Contact-->
+            <div class="card border-0 shadow mb-5">
+              <div class="card-header bg-gray-100 py-4 border-0">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <p class="subtitle text-sm text-primary">ช่องทางการติดต่อ</p>
+                    <h4 class="mb-0">Contact</h4>
+                  </div>
+                  <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
+                    <use xlink:href="#fountain-pen-1"> </use>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled mb-4">
+                  <?php if ($model->phone !== '') : ?>
+                    <li class="mb-2"> <a class="text-gray-00 text-sm text-decoration-none" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fa fa-phone me-3"></i><span class="text-muted"><?= $model->phone ?></span></a></li>
+                  <?php endif ?>
+
+                  <?php if ($model->facebook_link !== '') : ?>
+                    <li class="mb-2"> <a class="text-blue text-sm text-decoration-none" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook me-3"></i><span class="text-muted">Facebook</span></a></li>
+                  <?php endif ?>
+
+                  <?php if ($model->line_id !== '') : ?>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fa fa-line me-3"></i><span class="text-muted"><?= $model->line_id ?></span></a></li>
+                  <?php endif ?>
+
+                  <li class="mb-2"> <a class=" text-sm text-decoration-none" target="_blank" href="https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=<?= $model->latitude ?>,<?= $model->longitude ?>"><i class="fa fa-location-arrow me-3" aria-hidden="true"></i><span class="text-muted">ขอเส้นทาง</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- <div class="text-center">
+              <p><a class="text-secondary" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p><span>79 people bookmarked this place </span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-6 bg-banner">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <h2>แพ็คเกจท่องเที่ยว<span class="head-badge"></span></h2>
+        </div>
+        <div class="col-md-4 d-lg-flex align-items-center justify-content-end">
+          <a class="text-muted text-sm" href="category.html">ดูแพ็คเกจทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
+        </div>
+      </div>
+      <!-- Slider main container-->
+      <div class="swiper-container swiper-container-mx-negative swiper-init pt-3" data-swiper="{&quot;slidesPerView&quot;:4,&quot;spaceBetween&quot;:20,&quot;loop&quot;:true,&quot;roundLengths&quot;:true,&quot;breakpoints&quot;:{&quot;1200&quot;:{&quot;slidesPerView&quot;:3},&quot;991&quot;:{&quot;slidesPerView&quot;:2},&quot;565&quot;:{&quot;slidesPerView&quot;:1}},&quot;pagination&quot;:{&quot;el&quot;:&quot;.swiper-pagination&quot;,&quot;clickable&quot;:true,&quot;dynamicBullets&quot;:true}}">
+        <!-- Additional required wrapper-->
+        <div class="swiper-wrapper pb-5">
+          <?php if (count($modelPackage) > 0) :  ?>
+            <?php foreach ($modelPackage as $modelPackage) :  ?>
+              <!-- Slides-->
+              <div class="swiper-slide h-auto px-2">
+                <!-- place item-->
+                <div class="w-100 h-100 hover-animate" data-marker-id="<?= $modelPackage->id ?>">
+                  <div class="card h-100 border-0 shadow">
+                    <div class="card-img-top overflow-hidden gradient-overlay">
+                      <img class="img-fluid" src="<?= '../../images/images_upload_forform/' . $modelPackage->name_img_important ?>" alt="..." />
+                      <a class="tile-link" href="<?= \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>"></a>
+                      <div class="card-img-overlay-top text-end">
+                        <a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
+                          <svg class="svg-icon text-white">
+                            <use xlink:href="#heart-1"> </use>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="card-body d-flex align-items-center">
+                      <div class="w-100">
+                        <h6 class="card-title"><a class="text-decoration-none text-dark" href="<?= \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $modelPackage->id]) ?>"><?= $modelPackage->name ?></a></h6>
+                        <div class="d-flex card-subtitle mb-3">
+                          <p class="flex-grow-1 mb-0 text-muted text-sm">ทัวร์ <?= $modelPackage->date_moment ?> วัน</p>
+                        </div>
+                        <p class="card-text text-muted"><span class="h4 text-primary">฿<?= $modelPackage->price ?></span> ต่อแพ็คเกจ</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach  ?>
+          <?php endif  ?>
+        </div>
+        <!-- If we need pagination-->
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- modal -->
+  <div class="modal fade" id="mapModalToggle" aria-hidden="true" aria-labelledby="mapModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered full-screen">
+      <div class="modal-content full-screen">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mapModalToggleLabel">แผนที่</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="mapM"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal -->
 </div>
 
 <script>
@@ -516,7 +517,7 @@ $this->title = $model->name;
       name: '<?= $model->name ?>',
     });
 
-    L.marker(latlng).bindPopup(popup).addTo(mymap);
+    L.marker(latlng).bindPopup(popup).addTo(mymap).openPopup();
 
     const layerOption = {
       collapsed: false

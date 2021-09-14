@@ -247,6 +247,15 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   </script>
   <!-- glightbox strip end -->
 
+
+  <!-- Vendors -->
+  <script src="../../themes/template/assets/vendor/isotope/isotope.pkgd.min.js"></script>
+  <script src="../../themes/template/assets/vendor/imagesLoaded/imagesloaded.js"></script>
+
+  <!-- Template Functions -->
+  <script src="../../themes/template/assets/js/functions.js"></script>
+
+
   <!-- Initialize Swiper -->
   <script>
     const swiper = new Swiper(".my-swiper", {

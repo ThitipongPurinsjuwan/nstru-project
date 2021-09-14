@@ -47,7 +47,7 @@ Main START -->
         <div class="col-md-10 col-lg-8 mb-5">
           <div>
             <p>
-              <span class="dropcap bg-success-soft text-success px-2 rounded">N</span><?= $model->details ?>
+              <?= $model->details ?>
             </p>
           </div>
 
@@ -70,11 +70,18 @@ Main START -->
 
               <?php else : ?>
 
-                <div class="col-md-6">
-                  <a href="<?= '../../images/images_upload_forform/' . $modelImages[$i]['name'] ?>" data-glightbox data-gallery="image-popup">
-                    <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImages[$i]['name'] ?>" alt="Image">
-                  </a>
+                <!-- Card item START -->
+                <div class="col-lg-4 col-6 px-1 mb-2 grid-item">
+                  <div class="card">
+                    <!-- Card img -->
+                    <div class="card-fold position-relative">
+                      <a href="<?= '../../images/images_upload_forform/' . $modelImages[$i]['name'] ?>" data-glightbox data-gallery="image-popup">
+                        <img class="img-fluid" src="<?= '../../images/images_upload_forform/' . $modelImages[$i]['name'] ?>" alt="...">
+                      </a>
+                    </div>
+                  </div>
                 </div>
+                <!-- Card item END -->
 
               <?php endif ?>
 

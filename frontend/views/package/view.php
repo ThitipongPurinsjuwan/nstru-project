@@ -19,7 +19,7 @@ $this->title = $model->name;
 </style>
 
 <div class="package-view">
-  <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('../assets/img/photo/restaurant-1515164783716-8e6920f3e77c.jpg');">
+  <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('<?= '../../images/images_upload_forform/' . $model->name_img_important ?>');">
     <div class="container overlay-content">
       <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
         <div class="text-white mb-4 mb-lg-0">
