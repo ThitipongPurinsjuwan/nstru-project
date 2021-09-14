@@ -12,41 +12,9 @@ $this->title = $model->name;
 \yii\web\YiiAsset::register($this);
 ?>
 <style>
-  .image2 {
-
-
+  .img-h-sm {
+    height: 11em;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 2px 3px 7px #00000096;
-    margin: auto;
-  }
-
-  .rounded {
-
-    height: 20vh;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 2px 3px 7px #00000096;
-    width: 70vh;
-    margin: auto;
-  }
-
-  .Namemann {
-    color: black !important;
-  }
-
-  .text-line {
-    color: #00c10f;
-  }
-
-  .text-phone {
-    color: #f85f4f;
-  }
-
-  .phone-box {
-    border: 1px solid transparent;
-    background-color: transparent;
-    padding: 0;
   }
 </style>
 
@@ -74,12 +42,13 @@ $this->title = $model->name;
           <div class="text-block">
             <h5 class="mb-4">รูปภาพ</h5>
             <div class="row mb-3 ms-n1 me-n1">
-              <div class="col-lg-4 col-6 px-1 mb-2"><a href="../assets/img/photo/photo-1426122402199-be02db90eb90.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="../assets/img/photo/photo-1426122402199-be02db90eb90.jpg" alt="..."></a></div>
-              <div class="col-lg-4 col-6 px-1 mb-2"><a href="../assets/img/photo/photo-1512917774080-9991f1c4c750.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="../assets/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="..."></a></div>
-              <div class="col-lg-4 col-6 px-1 mb-2"><a href="../assets/img/photo/photo-1494526585095-c41746248156.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="../assets/img/photo/photo-1494526585095-c41746248156.jpg" alt="..."></a></div>
-              <div class="col-lg-4 col-6 px-1 mb-2"><a href="../assets/img/photo/photo-1484154218962-a197022b5858.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg" alt="..."></a></div>
-              <div class="col-lg-4 col-6 px-1 mb-2"><a href="../assets/img/photo/photo-1522771739844-6a9f6d5f14af.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="../assets/img/photo/photo-1522771739844-6a9f6d5f14af.jpg" alt="..."></a></div>
-              <div class="col-lg-4 col-6 px-1 mb-2"><a href="../assets/img/photo/photo-1488805990569-3c9e1d76d51c.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="../assets/img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="..."></a></div>
+
+              <?php if (count($modelImage) > 0) :  ?>
+                <?php foreach ($modelImage as $modelImage) :  ?>
+                  <div class="col-lg-4 col-6 px-1 mb-2"><a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup"><img class="img-fluid" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="..."></a></div>
+                <?php endforeach  ?>
+              <?php endif ?>
+
             </div>
           </div>
         </div>
@@ -148,74 +117,48 @@ $this->title = $model->name;
       </div>
     </div>
   </section>
-
-  <!-- <section class="pt-0">
-    <div class="container position-relative" data-sticky-container>
-      <div class=" row">
-
-        <div class="col-lg-8 mb-5">
-
-          <p><?php $model->details ?> </p>
-
-          <div class="row g-2 my-5">
-            <?php if (count($modelImage) > 0) :  ?>
-              <?php foreach ($modelImage as $modelImage) :  ?>
-                <div class="col-md-4">
-                  <a href="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" data-glightbox data-gallery="image-popup">
-                    <img class="rounded" src="<?= '../../images/images_upload_forform/' . $modelImage->name ?>" alt="Image">
-                  </a>
-                </div>
-              <?php endforeach  ?>
-            <?php endif ?>
-          </div>
+  <section class="py-6 bg-gray-100">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <p class="subtitle text-secondary">สถานที่ท่องเที่ยวในแพ็คเกจ </p>
+          <h2>From our travel place</h2>
         </div>
+        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="category.html">
+            สถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div>
+      </div>
+      <!-- Slider main container-->
+      <div class="swiper-container swiper-container-mx-negative swiper-init pt-3" data-swiper="{&quot;slidesPerView&quot;:4,&quot;spaceBetween&quot;:20,&quot;loop&quot;:true,&quot;roundLengths&quot;:true,&quot;breakpoints&quot;:{&quot;1200&quot;:{&quot;slidesPerView&quot;:3},&quot;991&quot;:{&quot;slidesPerView&quot;:2},&quot;565&quot;:{&quot;slidesPerView&quot;:1}},&quot;pagination&quot;:{&quot;el&quot;:&quot;.swiper-pagination&quot;,&quot;clickable&quot;:true,&quot;dynamicBullets&quot;:true}}">
+        <!-- Additional required wrapper-->
+        <div class="swiper-wrapper pb-5">
+          <!-- Slides-->
 
-        <div class="col-lg-4">
-          <div data-sticky data-margin-top="80" data-sticky-for="991">
-            <div class="row">
-              <h3>Contact</h3>
-            </div>
-            <ul class="nav flex-column">
-              <?php if ($model->facebook_link !== '') : ?>
-                <li class="nav-item">
-                  <a class="nav-link pt-0" target="_brank" href="<?= $model->facebook_link ?>"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a>
-                </li>
-              <?php endif ?>
-
-              <?php if ($model->line_id !== '') : ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line fa-fw me-2 text-line"></i><?= $model->line_id ?></a>
-                </li>
-              <?php endif ?>
-
-              <?php if ($model->phone !== '') : ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fas fa-phone-square-alt fa-fw me-2 text-phone"></i><?= $model->phone ?></a></form>
-                </li>
-              <?php endif ?>
-            </ul>
-
-            <div>
-              <h4 class="mt-4 mb-3">สถานที่ท่องเที่ยว</h4>
-
-              <?php if (count($modelPlace) > 0) :  ?>
-                <?php foreach ($modelPlace as $modelPlace) : ?>
-                  <div class="card mb-4">
-                    <div class="row g-3">
-                      <div class="col-4">
-                        <img class="rounded-3" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="">
-                      </div>
-                      <div class="col-8">
-                        <h5><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>" class="btn-link text-reset stretched-link fw-bold"><?= $modelPlace->name ?></a></h5>
-                      </div>
+          <?php if (count($modelPlace) > 0) :  ?>
+            <?php foreach ($modelPlace as $modelPlace) : ?>
+              <div class="swiper-slide h-auto px-2">
+                <!-- place item-->
+                <div class="w-100 h-100 hover-animate">
+                  <div class="card shadow border-0 h-100">
+                    <a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>">
+                      <img class="img-fluid img-h-sm card-img-top" src="<?= '../../images/images_upload_forform/' . $modelPlace->name_img_important ?>" alt="..." />
+                    </a>
+                    <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a>
+                      <h5 class="my-2"><a class="text-dark" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $modelPlace->id]) ?>"><?= $modelPlace->name ?> </a></h5>
+                      <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i>January 16, 2016</p>
+                      <p class="my-2 text-muted text-sm">Pellentesque habitant morbi tristique senectus. Vestibulum tortor quam, feugiat vitae, ultricies ege...</p><a class="btn btn-link ps-0" href="post.html">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
                     </div>
                   </div>
-                <?php endforeach ?>
-              <?php endif ?>
-            </div>
-          </div>
+                </div>
+                <!-- place item-->
+              </div>
+            <?php endforeach ?>
+          <?php endif ?>
+
         </div>
+        <!-- If we need pagination-->
+        <div class="swiper-pagination"></div>
       </div>
     </div>
-  </section> -->
+  </section>
+
 </div>

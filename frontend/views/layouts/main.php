@@ -229,7 +229,23 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <script src="../../themes/template/assets/vendor/jarallax/jarallax.min.js"></script>
   <script src="../../themes/template/assets/vendor/jarallax/jarallax-video.min.js"></script>
   <script src="../../themes/template/assets/vendor/glightbox/js/glightbox.js"></script>
-  <script src="../../themes/template/assets/js/functions.js"></script>
+
+  <!-- glightbox script -->
+  <script>
+    const isVariableDefined = (el) => {
+      return typeof !!el && (el) != 'undefined' && el != null;
+    }
+
+    const light = document.querySelector('[data-glightbox]');
+    if (isVariableDefined(light)) {
+      GLightbox({
+        selector: '*[data-glightbox]',
+        openEffect: 'fade',
+        closeEffect: 'fade'
+      });
+    }
+  </script>
+  <!-- glightbox strip end -->
 
   <!-- Initialize Swiper -->
   <script>
