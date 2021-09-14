@@ -24,8 +24,16 @@ $this->title = $nameOfType;
                 <div class="card h-100 border-0 shadow">
                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); min-height: 300px;"><a class="tile-link" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>"></a>
                   </div>
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h5>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h5 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h5>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">วันเปิดทำการ <?= $model->business_day ?></p>
+
+                      </div>
+                      <p class="card-text text-muted"><span class="h4 text-primary">฿<?= $model->price ?></span> ต่อแพ็คเกจ</p>
+                    </div>
+
                   </div>
                 </div>
               </div>
