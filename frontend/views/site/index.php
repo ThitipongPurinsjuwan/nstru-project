@@ -24,9 +24,9 @@ use common\util\DateTimeCustom;
       <div class="col-md-8">
         <h2>ข่าวประชาสัมพันธ์<span class="head-badge"></span></h2>
       </div>
-      <!-- <div class="col-md-4 d-md-flex align-items-center justify-content-end">
-        <a class="text-muted text-sm" href="blog.html">ดูข่าวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
-      </div> -->
+      <div class="col-md-4 d-md-flex align-items-center justify-content-end">
+        <a class="text-muted text-sm" href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/index', 'type' => 1]) ?>">ดูข่าวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
+      </div>
     </div>
     <div class="row">
       <?php if (count($modeNews) > 0) :  ?>

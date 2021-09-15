@@ -1,8 +1,8 @@
 <?php
 
-use common\util\StringCustom;
-use yii\helpers\Html;
-use yii\grid\GridView;
+
+use common\models\Place;
+use common\util\DateTimeCustom;
 use yii\widgets\LinkPager;
 ?>
 
@@ -10,8 +10,30 @@ use yii\widgets\LinkPager;
   <div class="container">
 
     <div class="row mb-5">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:mediumvioletred></i> ข่าวประชาสัมพันธ์</h2>
+        <div class="row">
+          <?php if (count($model) > 0) :  ?>
+            <?php foreach ($model as $model) : ?>
+              <!-- blog item-->
+              <div class="col-lg-4 col-sm-6 mb-4 hover-animate" style="margin-top: 50px;">
+                <div class="card shadow border-0 h-100">
+                  <a href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $model->id]) ?>">
+                    <img class="img-fluid card-img-top" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="..." />
+                  </a>
+                  <div class="card-body">
+                    <a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a>
+                    <h5 class="my-2"><a class="text-dark" href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $model->id]) ?>"><?= $model->topic ?> </a></h5>
+                    <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i><?= DateTimeCustom::getDateThai($model->date_create) ?></p>
+                    <p class="my-2 text-muted text-sm"><?= Place::showLess($model->details) ?></p>
+                    <a class="btn btn-link ps-0" href=" <?= \Yii::$app->getUrlManager()->createUrl(['public-relations/view', 'id' => $model->id]) ?>">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach  ?>
+          <?php endif  ?>
+        </div>
+
       </div>
     </div>
 

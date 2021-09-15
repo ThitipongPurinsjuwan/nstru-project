@@ -39,7 +39,7 @@ class PublicRelationsController extends Controller
   {
     $model = PublicRelations::find()->where(['type' => $type]);
 
-    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
+    $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 6]);
     $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
     return $this->render('index', [
