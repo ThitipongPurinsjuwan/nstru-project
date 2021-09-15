@@ -36,7 +36,7 @@ class FileListController extends Controller
    */
   public function actionIndex()
   {
-    $model = FileList::find()->where(['type' => 2]);
+    $model = FileList::find()->where(['type' => 2])->orderBy(['date_create' => SORT_DESC]);
 
     $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 9]);
     $models = $model->offset($pages->offset)->limit($pages->limit)->all();

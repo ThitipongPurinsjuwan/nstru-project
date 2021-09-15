@@ -75,48 +75,36 @@ use common\util\DateTimeCustom;
       </div>
     </div>
     <div class="row">
-      <!-- Card item START -->
-      <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="card shadow border-0 h-100 overflow-hidden" style="height: 40em !important;" data-jarallax-video="https://www.youtube.com/embed/MPg-b3reh_g" data-speed="1.2">
-          <!-- Card Image overlay -->
-          <div class="card-img-overlay d-flex flex-column p-3 p-md-4 hover-animate">
-            <div class="w-100 mt-auto">
-              <!-- Card title -->
-              <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">Travel</a></h4>
-              <!-- Card info -->
+
+      <?php if (count($modelVDO) > 0) : ?>
+        <?php foreach ($modelVDO as $vdo) : ?>
+
+          <!-- Card item START -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card shadow border-0 h-100 overflow-hidden" style="height: 40em !important;" data-jarallax-video="<?= str_replace("watch?v=", "embed/", $vdo->file_name) ?>" data-speed="1.2">
+              <!-- Card Image overlay -->
+              <div class="card-img-overlay d-flex flex-column p-3 p-md-4 hover-animate">
+                <div class="w-100 mt-auto">
+                  <!-- Card title -->
+                  <h4 class="text-white"><a href="<?= $vdo->file_name ?>" target="_blank" class="btn-link text-reset stretched-link"><?= $vdo->download_name ?></a></h4>
+                  <!-- Card info -->
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- Card item END -->
-      <!-- Card item START -->
-      <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="card shadow border-0 h-100 overflow-hidden" style="height: 40em !important;" data-jarallax-video="https://www.youtube.com/embed/406d6ez-0rk" data-speed="1.2">
-          <!-- Card Image overlay -->
-          <div class="card-img-overlay d-flex flex-column p-3 p-md-4 hover-animate">
-            <div class="w-100 mt-auto">
-              <!-- Card title -->
-              <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">Travel</a></h4>
-              <!-- Card info -->
-            </div>
+          <!-- Card item END -->
+
+        <?php endforeach ?>
+      <?php else : ?>
+
+        <div class="col-12">
+          <div class="row d-flex justify-content-center" style="text-align-last: center;">
+            <h4>ไม่มีข้อมูล</h4>
           </div>
         </div>
-      </div>
-      <!-- Card item END -->
-      <!-- Card item START -->
-      <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="card shadow border-0 h-100 overflow-hidden" style="height: 40em !important;" data-jarallax-video="https://www.youtube.com/embed/x95oX5wmJO0" data-speed="1.2">
-          <!-- Card Image overlay -->
-          <div class="card-img-overlay d-flex flex-column p-3 p-md-4 hover-animate">
-            <div class="w-100 mt-auto">
-              <!-- Card title -->
-              <h4 class="text-white"><a href="#" class="btn-link text-reset stretched-link">Travel</a></h4>
-              <!-- Card info -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Card item END -->
+
+      <?php endif ?>
+
     </div>
   </div>
 </section>

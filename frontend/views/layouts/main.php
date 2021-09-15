@@ -126,25 +126,25 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
         <div class="container-fluid px-0">
           <div class="swiper-container instagram-slider">
             <div class="swiper-wrapper" style="height: 26%;">
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-1.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-2.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-3.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-4.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-5.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-6.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-7.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-8.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-9.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-10.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-11.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-12.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-13.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-14.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-10.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-11.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-12.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-13.jpg" alt=" "></a></div>
-              <div class="swiper-slide overflow-hidden"><a href="#"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-14.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-1.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-1.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-2.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-2.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-3.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-3.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-4.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-4.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-5.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-5.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-6.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-6.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-7.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-7.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-8.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-8.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-9.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-9.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-10.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-10.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-11.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-11.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-12.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-12.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-13.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-13.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-14.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-14.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-10.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-10.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-11.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-11.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-12.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-12.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-13.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-13.jpg" alt=" "></a></div>
+              <div class="swiper-slide overflow-hidden"><a href="../assets/img/instagram/instagram-14.jpg" data-glightbox data-gallery="image-popup"><img class="img-fluid hover-scale" src="../assets/img/instagram/instagram-14.jpg" alt=" "></a></div>
             </div>
           </div>
         </div>
