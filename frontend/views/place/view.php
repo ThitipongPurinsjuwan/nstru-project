@@ -335,8 +335,7 @@ $this->title = $model->name;
                     <h4 class="mb-0">Contact</h4>
                   </div>
                   <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
-                    <use xlink:href="#fountain-pen-1"> </use>
-                  </svg>
+                    <use xlink:href="#telephone-operator-1"></use>
                 </div>
               </div>
               <div class="card-body">
@@ -361,7 +360,12 @@ $this->title = $model->name;
             <?php if ($model->type == 3) :  ?>
               <div class="card border-0 shadow mb-5">
                 <div class="card-header bg-gray-100 py-4 border-0">
-                  <p class="text-muted"><span class="text-primary h2">฿<?= $model->price ?></span> ต่อคืน</p>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-muted"><span class="text-primary h2">฿<?= $model->price ?></span> ต่อคืน</p>
+                    <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
+                      <use xlink:href="#calls-1"> </use>
+                    </svg>
+                  </div>
                   <hr class="my-4">
                   <form class="form" id="booking-form" action="tel:<?= Place::customizePhoneCall($model->phone) ?>" autocomplete="off">
                     <div class="d-grid mb-4">
