@@ -60,6 +60,7 @@ class PlaceSearch extends Place
     $query->andFilterWhere([
       'id' => $this->id,
       'type' => $this->type,
+      'type' => $_GET['type'],
       'price' => $this->price,
       'amphure' => $this->amphure,
       'district' => $this->district,

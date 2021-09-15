@@ -45,11 +45,8 @@ class PlaceController extends Controller
 
     $query = $dataProvider->query;
 
-    // echo "<pre>";
-    // print_r($query->where(['type' => $type])->limit(3)->all());
-    // echo "</pre>";
     $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 9]);
-    $model = $query->offset($pages->offset)->where(['type' => $type])->limit($pages->limit)->all();
+    $model = $query->offset($pages->offset)->limit($pages->limit)->all();
     $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;
 
     return $this->render('index', [
