@@ -308,10 +308,21 @@ $this->title = $model->name;
               </div>
               <div class="card-body">
                 <table class="table text-sm mb-0">
-                  <tr>
-                    <th class="ps-0 border-0">Sunday</th>
-                    <td class="pe-0 text-end border-0">8:00 am - 6:00 pm</td>
-                  </tr>
+                  <?php if ($openDay !== null && count($openDay) > 0) : ?>
+
+                    <?php foreach ($openDay as $model) : ?>
+                      <tr>
+                        <th class="ps-0 border-0"><?= $model ?></th>
+                        <td class="pe-0 text-end border-0"><?= $openHour ?></td>
+                      </tr>
+                    <?php endforeach ?>
+
+                  <?php else : ?>
+                    <tr>
+                      <th class="ps-0 border-0">ไม่มีข้อมูล</th>
+                      <td class="pe-0 text-end border-0"> - น.</td>
+                    </tr>
+                  <?php endif ?>
                 </table>
               </div>
             </div>

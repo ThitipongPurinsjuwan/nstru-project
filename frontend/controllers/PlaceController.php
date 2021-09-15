@@ -75,13 +75,19 @@ class PlaceController extends Controller
     $modelPackage = Package::find()->where(['like', 'place', $model->id])->all();
     $modelReview = Review::find()->where(['place_id' => $model->id])->all();
 
+    $openDay = Place::getOpenDay($model->business_day);
+    $openHour = Place::getOpenHour($model->business_hours);
+
     return $this->render('view', [
       'model' => $model,
       'modelImage' => $modelImage,
       'modelReview' => $modelReview,
       'modelPackage' => $modelPackage,
+      'openDay' => $openDay,
+      'openHour' => $openHour,
     ]);
   }
+
 
   public function actionSaveComment($id)
   {

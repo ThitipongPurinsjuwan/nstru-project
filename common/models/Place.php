@@ -107,4 +107,45 @@ class Place extends \yii\db\ActiveRecord
 
     return '../../themes/template/assets/images/avatar/' . $name . '.jpg';
   }
+
+  public static function getOpenDay($day)
+  {
+    $result = null;
+    $workDay = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์'];
+    $weekDay = ['เสาร์', 'อาทิตย์'];
+
+    if (strpos($day, '-')) {
+
+      switch ($day) {
+        case 'จ-ศ':
+          $result = $workDay;
+          break;
+        case 'จ-ส':
+          $result = array_merge($workDay, $weekDay[0]);
+          break;
+        case 'ส-อา':
+          $result = $weekDay;
+          break;
+
+        default:
+          break;
+      }
+    } elseif (strpos($day, ',')) {
+      $result = explode(",", $day);
+    } elseif ($day == 'ทุกวัน') {
+      $result = array_merge($workDay, $weekDay);
+    }
+
+    return $result;
+  }
+
+  public function getMatchingDay($shortDay, $arrOfDay)
+  {
+  }
+
+  public static function getOpenHour($hour)
+  {
+    $text = explode(",", $hour);
+    return $text[0] . ' - ' . $text[1] . ' น.';
+  }
 }
