@@ -129,8 +129,8 @@ use common\util\DateTimeCustom;
       <div class="col-md-8">
         <h2>สถานที่ท่องเที่ยว<span class="head-badge"></span></h2>
       </div>
-      <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="index.php?r=place/index&amp;type=1">
-          ดูสถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div>
+      <!-- <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="index.php?r=place/index&amp;type=1">
+          ดูสถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div> -->
     </div>
     <div class="swiper-container guides-slider mx-n2 pt-3">
       <!-- Additional required wrapper-->

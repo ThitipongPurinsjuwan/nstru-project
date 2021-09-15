@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use common\models\Place;
+use common\util\DateTimeCustom;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PlaceSearch */
@@ -27,11 +29,10 @@ $this->title = $nameOfType;
                   <div class="card-body d-flex align-items-center">
                     <div class="w-100">
                       <h5 class="card-title"><a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h5>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">วันเปิดทำการ <?= $model->business_day ?></p>
-
+                      <div class="text-uppercase text-muted text-sm ">
+                        <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i> วันเปิดทำการ <?= $model->business_day ?></p>
+                        <p class="my-2 text-muted text-sm"><?= Place::showLess($model->details) ?></p>
                       </div>
-                      <p class="card-text text-muted"><span class="h4 text-primary">฿<?= $model->price ?></span> ต่อแพ็คเกจ</p>
                     </div>
 
                   </div>
