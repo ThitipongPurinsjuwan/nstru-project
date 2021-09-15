@@ -17,7 +17,7 @@ $this->title = 'แพ็คเกจ';
       <div class="row mb-5">
         <div class="col-md-8">
 
-          <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:mediumvioletred></i> แพ็คเกจแนะนำ</h2>
+          <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> แพ็คเกจแนะนำ</h2>
 
           <!-- <h2>Our guides</h2> -->
         </div>

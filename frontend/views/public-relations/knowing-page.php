@@ -12,7 +12,7 @@ use yii\widgets\LinkPager;
 
     <div class="row mb-5">
       <div class="col-md-8">
-        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:mediumvioletred></i> ข้อควรรู้สำหรับนักท่องเที่ยว</h2>
+        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> ข้อควรรู้สำหรับนักท่องเที่ยว</h2>
       </div>
     </div>
 

@@ -26,7 +26,7 @@ $this->title = 'Video';
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-8">
-          <h2 class="underline "> <i class=" fas fa-bullhorn"></i> วีดิโอแนะนำ</h2>
+          <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> วีดิโอแนะนำ</h2>
         </div>
       </div>
       <div class="row g-4">

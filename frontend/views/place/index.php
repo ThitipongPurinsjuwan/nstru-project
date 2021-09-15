@@ -19,7 +19,7 @@ $this->title = $nameOfType;
   <div class="place-index">
     <section class="py-5">
       <div class="container">
-        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:mediumvioletred></i> สถานที่แนะนำ</h2>
+        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> สถานที่แนะนำ</h2>
         <div class="row" style="margin-top: 50px;">
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) :  ?>

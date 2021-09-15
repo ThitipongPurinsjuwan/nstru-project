@@ -11,7 +11,7 @@ use yii\widgets\LinkPager;
 
     <div class="row mb-5">
       <div class="col-md-12">
-        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:mediumvioletred></i> ข่าวประชาสัมพันธ์</h2>
+        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> ข่าวประชาสัมพันธ์</h2>
         <div class="row">
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) : ?>
