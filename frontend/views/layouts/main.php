@@ -81,7 +81,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <a class="navbar-brand py-0" href="index.php">
+          <a class="navbar-brand py-0" style="margin-right: 30px;" href="index.php">
             <img class="logo-support" src="../../images/TSRI.png" alt="">
             <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
             <a>ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</a>

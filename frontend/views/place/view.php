@@ -357,6 +357,7 @@ $this->title = $model->name;
                 </ul>
               </div>
             </div>
+
             <?php if ($model->type == 3) :  ?>
               <div class="card border-0 shadow mb-5">
                 <div class="card-header bg-gray-100 py-4 border-0">
@@ -371,9 +372,6 @@ $this->title = $model->name;
               </div>
             <?php endif ?>
 
-            <!-- <div class="text-center">
-              <p><a class="text-secondary" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p><span>79 people bookmarked this place </span>
-            </div> -->
           </div>
         </div>
       </div>
@@ -458,12 +456,12 @@ $this->title = $model->name;
   }) => {
     const popup = `<div class="infoBox">` +
       `<div>` +
-      `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}" class="map-box-image">` +
+      `<a href="#" class="map-box-image">` +
       `<img src="${img}">` +
       `<i class="map-box-icon"></i>` +
       `</a>` +
       `<div class="place-box">` +
-      `<a href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => '']) ?>${id}">` +
+      `<a href="#">` +
       `<h3>${name}</h3>` +
       `</a>` +
       `<span class="date"><time class="entry-date published updated">${bussinessDay}</time></span>` +

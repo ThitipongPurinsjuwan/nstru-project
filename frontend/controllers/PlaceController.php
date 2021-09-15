@@ -2,13 +2,12 @@
 
 namespace frontend\controllers;
 
+use Yii;
 use common\models\Images;
 use common\models\Package;
-use Yii;
 use common\models\Place;
 use common\models\Review;
 use common\models\TypePlace;
-use Exception;
 use frontend\models\PlaceSearch;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -46,6 +45,9 @@ class PlaceController extends Controller
 
     $query = $dataProvider->query;
 
+    // echo "<pre>";
+    // print_r($query->where(['type' => $type])->limit(3)->all());
+    // echo "</pre>";
     $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 9]);
     $model = $query->offset($pages->offset)->where(['type' => $type])->limit($pages->limit)->all();
     $nameOfType = TypePlace::find()->where(['id' => $type])->one()->name;

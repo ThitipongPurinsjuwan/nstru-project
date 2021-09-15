@@ -159,7 +159,7 @@ use common\util\DateTimeCustom;
       <?php if (count($topPlace) > 0) : ?>
         <?php for ($i = 0; $i < count($topPlace); $i++) : ?>
 
-          <div class="col-6 col-lg-4 col-xl-3 px-0">
+          <div class="col-6 col-lg-3 col-xl-3 px-0">
             <div class="d-flex align-items-center dark-overlay hover-scale-bg-image" style="min-height: 400px;"><img class="bg-image" src="<?= '../../images/images_upload_forform/' . $topPlace[$i]['img'] ?>" alt="">
               <div class="p-3 p-sm-5 text-white z-index-20">
                 <h4><?= $topPlace[$i]['name'] ?></h4>

@@ -110,13 +110,14 @@ $this->title = $model->name;
               </div>
             </div>
             <div class="text-center">
-              <p><a class="text-secondary" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p><span>79 people bookmarked this place </span>
+              <p><a class="text-secondary" href="#"> <i class="fa fa-heart"></i> <?= count($modelPlace) ?> Landmark This Package</a></p><span> contact us now </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <section class="py-6 bg-gray-100">
     <div class="container">
       <div class="row mb-5">

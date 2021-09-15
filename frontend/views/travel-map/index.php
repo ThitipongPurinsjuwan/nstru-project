@@ -9,9 +9,15 @@ $this->title = "แผนที่ท่องเที่ยว";
   }
 
   #mapid {
-    /* height: 84em; */
-    height: 100vh;
+    height: 91.5vh;
   }
+
+  @media only screen and (max-width: 609px) {
+    #mapid {
+      height: 87vh;
+    }
+  }
+
 
   .infoBox {
     -webkit-animation: fadeIn 300ms;

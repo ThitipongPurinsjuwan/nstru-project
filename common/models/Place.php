@@ -131,7 +131,12 @@ class Place extends \yii\db\ActiveRecord
           break;
       }
     } elseif (strpos($day, ',')) {
-      $result = explode(",", $day);
+      $result = [];
+      $dayTemp = explode(",", $day);
+
+      foreach ($dayTemp as $model) {
+        array_push($result, Place::getMatchingDay($model));
+      }
     } elseif ($day == 'ทุกวัน') {
       $result = array_merge($workDay, $weekDay);
     }
@@ -139,8 +144,11 @@ class Place extends \yii\db\ActiveRecord
     return $result;
   }
 
-  public function getMatchingDay($shortDay, $arrOfDay)
+  public static function getMatchingDay($shortDay)
   {
+    $day = ['จ' => 'จันทร์', 'อ' => 'อังคาร', 'พ' => 'พุธ', 'พฤ' => 'พฤหัสบดี', 'ศ' => 'ศุกร์', 'ส' => 'เสาร์', 'อา' => 'อาทิตย์'];
+
+    return $day[$shortDay];
   }
 
   public static function getOpenHour($hour)

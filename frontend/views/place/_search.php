@@ -32,18 +32,18 @@ use yii\widgets\ActiveForm;
             <h1 class="display-3 fw-bold text-shadow"><?= Html::encode($this->title) ?></h1>
           </div>
           <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
-            <form action="#">
-              <div class="row">
-                <!-- <div class="col-lg-7 d-flex align-items-center form-group"> -->
-                <div class="col-md-10 col-sm-12 my-1">
-                  <?= $form->field($model, 'name')->input('text', ['placeholder' => "ค้นหาชื่อสถานที่", 'class' => 'form-control border-0 shadow-0'])->label(false) ?>
-                </div>
-
-                <div class="col-lg-2 d-grid">
-                  <?= Html::submitButton(Yii::t('app', 'ค้นหา'), ['class' => 'btn btn-primary rounded-pill h-100']) ?>
-                </div>
+            <!-- <form action="#"> -->
+            <div class="row">
+              <!-- <div class="col-lg-7 d-flex align-items-center form-group"> -->
+              <div class="col-md-10 col-sm-12 my-1">
+                <?= $form->field($model, 'name')->input('text', ['placeholder' => "ค้นหาชื่อสถานที่", 'class' => 'form-control border-0 shadow-0'])->label(false) ?>
               </div>
-            </form>
+
+              <div class="col-lg-2 d-grid">
+                <?= Html::submitButton(Yii::t('app', 'ค้นหา'), ['class' => 'btn btn-primary rounded-pill h-100']) ?>
+              </div>
+            </div>
+            <!-- </form> -->
           </div>
         </div>
       </div>
