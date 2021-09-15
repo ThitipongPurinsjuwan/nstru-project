@@ -97,10 +97,11 @@ class SiteController extends Controller
     $modelPlace = Place::find()->all();
     $modelPackage = Package::find()->limit(4)->all();
 
-    $modeNews = PublicRelations::find()->where(['type' => 1])->all();
+    $modeNews = PublicRelations::find()->where(['type' => 1])->orderBy(['date_create' => SORT_DESC])->limit(3)->all();
     $modelVDO = FileList::find()->where(['type' => 2])->limit(2)->all();
 
-    $topPlace = $connection->createCommand('SELECT p.id,p.name,p.name_img_important as img,count(r.message) as count FROM `place` as p LEFT JOIN review as r on r.place_id = p.id GROUP BY p.id LIMIT 4')->queryAll();
+    $sql = 'SELECT p.id,p.name,p.name_img_important as img,count(r.message) as count FROM `place` as p LEFT JOIN review as r on r.place_id = p.id GROUP BY p.id LIMIT 4';
+    $topPlace = $connection->createCommand($sql)->queryAll();
 
     return $this->render('index', [
       'model' => $model,

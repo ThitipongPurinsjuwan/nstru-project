@@ -35,14 +35,15 @@ class PublicRelationsController extends Controller
    * Lists all PublicRelations models.
    * @return mixed
    */
-  public function actionIndex()
+  public function actionIndex($type)
   {
-    $model = PublicRelations::find()->where(['type' => 2]);
+    $model = PublicRelations::find()->where(['type' => $type]);
 
     $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 8]);
     $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
     return $this->render('index', [
+      'type' => $type,
       'pages' => $pages,
       'model' => $model,
     ]);
