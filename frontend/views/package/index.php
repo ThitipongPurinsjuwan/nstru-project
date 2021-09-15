@@ -37,9 +37,14 @@ $this->title = 'แพ็คเกจ';
                     </div>
                   </div>
                   <!-- Card img -->
-                  <div class="card-body">
-                    <h5 class="my-2"><a class="text-dark" <a href="<?= \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $model->id]) ?>" class="btn-link text-reset fw-bold"><?= $model->name ?></a>
-                    </h5>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title"><a class="text-decoration-none text-dark" href="<?= \Yii::$app->getUrlManager()->createUrl(['package/view', 'id' => $model->id]) ?>"><?= $model->name ?></a></h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">ทัวร์ <?= $model->date_moment ?> วัน</p>
+                      </div>
+                      <p class="card-text text-muted"><span class="h4 text-primary">฿<?= $model->price ?></span> ต่อแพ็คเกจ</p>
+                    </div>
                   </div>
                 </div>
               </div>

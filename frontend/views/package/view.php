@@ -124,7 +124,7 @@ $this->title = $model->name;
           <p class="subtitle text-secondary">สถานที่ท่องเที่ยวในแพ็คเกจ </p>
           <h2>From our travel place</h2>
         </div>
-        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="category.html">
+        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/index', 'type' => 1]) ?>">
             สถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div>
       </div>
       <!-- Slider main container-->

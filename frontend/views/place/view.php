@@ -361,7 +361,7 @@ $this->title = $model->name;
           <h2>แพ็คเกจท่องเที่ยว<span class="head-badge"></span></h2>
         </div>
         <div class="col-md-4 d-lg-flex align-items-center justify-content-end">
-          <a class="text-muted text-sm" href="category.html">ดูแพ็คเกจทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
+          <a class="text-muted text-sm" href="index.php?r=package/index">ดูแพ็คเกจทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
         </div>
       </div>
       <!-- Slider main container-->
