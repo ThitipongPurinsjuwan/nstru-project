@@ -310,9 +310,9 @@ $this->title = $model->name;
                 <table class="table text-sm mb-0">
                   <?php if ($openDay !== null && count($openDay) > 0) : ?>
 
-                    <?php foreach ($openDay as $model) : ?>
+                    <?php foreach ($openDay as $data) : ?>
                       <tr>
-                        <th class="ps-0 border-0"><?= $model ?></th>
+                        <th class="ps-0 border-0"><?= $data ?></th>
                         <td class="pe-0 text-end border-0"><?= $openHour ?></td>
                       </tr>
                     <?php endforeach ?>
@@ -357,6 +357,20 @@ $this->title = $model->name;
                 </ul>
               </div>
             </div>
+            <?php if ($model->type == 3) :  ?>
+              <div class="card border-0 shadow mb-5">
+                <div class="card-header bg-gray-100 py-4 border-0">
+                  <p class="text-muted"><span class="text-primary h2">฿<?= $model->price ?></span> ต่อคืน</p>
+                  <hr class="my-4">
+                  <form class="form" id="booking-form" action="tel:<?= Place::customizePhoneCall($model->phone) ?>" autocomplete="off">
+                    <div class="d-grid mb-4">
+                      <button class="btn btn-primary" type="submit">จองเลย</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            <?php endif ?>
+
             <!-- <div class="text-center">
               <p><a class="text-secondary" href="#"> <i class="fa fa-heart"></i> Bookmark This Listing</a></p><span>79 people bookmarked this place </span>
             </div> -->
