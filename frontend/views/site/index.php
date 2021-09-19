@@ -7,9 +7,11 @@ use common\util\DateTimeCustom;
 <div class="banner">
   <div class="swiper-container my-swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img class="" src="../assets/img/download/1.png" alt="..."></div>
-      <div class="swiper-slide"><img class="" src="../assets/img/download/2.png" alt="..."></div>
-      <div class="swiper-slide"><img class="" src="../assets/img/download/3.png" alt="..."></div>
+      <?php if (count($modelBannerIMG) > 0) :  ?>
+        <?php foreach ($modelBannerIMG as $modelBannerIMG) : ?>
+          <div class="swiper-slide"><img class="" src="<?= '../../images/images_upload_forform/' . $modelBannerIMG->name ?>" alt="..." /></div>
+        <?php endforeach  ?>
+      <?php endif  ?>
       <!-- <div class="swiper-slide"><img class="" src="../assets/img/download/5.jpg" alt="..."></div> -->
     </div>
     <div class="swiper-button-next d-flex justify-content-center align-items-center"><i class="fas fa-chevron-left"></i></div>

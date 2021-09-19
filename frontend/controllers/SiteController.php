@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\CoverBanner;
 use common\models\FileList;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -92,6 +93,8 @@ class SiteController extends Controller
   public function actionIndex()
   {
     $connection = \Yii::$app->db;
+    $modelBanner = CoverBanner::find()->one();
+    $modelBannerIMG = Images::find()->where(['key_images' => $modelBanner->image])->all();
 
     $model = TypePlace::find()->all();
     $modelPlace = Place::find()->all();
@@ -110,6 +113,7 @@ class SiteController extends Controller
       'modelPlace' => $modelPlace,
       'modeNews' => $modeNews,
       'modelPackage' => $modelPackage,
+      'modelBannerIMG' => $modelBannerIMG,
     ]);
   }
 

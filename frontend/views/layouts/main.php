@@ -276,6 +276,11 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+      // ex4: {
+      //   width: 110,
+      //   height: 110,
+      //   overflow: visible,
+      // }
     });
 
     const handlePagination = () => {

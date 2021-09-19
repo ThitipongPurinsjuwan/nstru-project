@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\CoverBanner;
 use Yii;
 use common\models\Images;
 use common\models\PublicRelations;
@@ -39,6 +40,8 @@ class PublicRelationsController extends Controller
   {
     $model = PublicRelations::find()->where(['type' => $type]);
 
+    $modelBanner = CoverBanner::find()->one();
+    $modelBannerIMG = Images::find()->where(['key_images' => $modelBanner->image])->all();
     $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 6]);
     $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
@@ -46,6 +49,7 @@ class PublicRelationsController extends Controller
       'type' => $type,
       'pages' => $pages,
       'model' => $model,
+      'modelBannerIMG' => $modelBannerIMG,
     ]);
   }
 

@@ -52,11 +52,12 @@ $this->title = "แผนที่ท่องเที่ยว";
     image-rendering: pixelated;
   }
 
-  img {
-    width: auto;
+  .infoBox img {
+    width: 100%;
     border: 0;
     -ms-interpolation-mode: bicubic;
     max-width: 100%;
+
   }
 
   .infoBox .date {
