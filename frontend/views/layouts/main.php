@@ -162,8 +162,10 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
             </div>
           </div>
           <div class="footer-logo">
-            <img class="logo" src="../../images/TSRI.png" alt="">
-            <img class="logo" src="../../images/Logo_nstru.png" alt="">
+            <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
+              <li class="list-inline-item"><img class="logo" src="../../images/TSRI.png" alt="..."></li>
+              <li class="list-inline-item"><img class="logo" src="../../images/Logo_nstru.png" alt="..."></li>
+            </ul>
           </div>
         </div>
       </div>
