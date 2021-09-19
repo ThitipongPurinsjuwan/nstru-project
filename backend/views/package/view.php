@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-md-6">
                     <div class="card card-success">
-                        <div class="card-body ribbon">
+                        <div class="card-body ribbon"> 
 
                             <p>
                                 <?= Html::a(Yii::t('app', 'แก้ไข'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

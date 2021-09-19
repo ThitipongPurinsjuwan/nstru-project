@@ -13,12 +13,12 @@ $partimages = $_URL.'/images/images_upload_forform/';
 <script src='../../js/magnific-popup/jquery.magnific-popup.min.js'></script>
 
 <style>
-.img-thumbnail {
+/* .img-thumbnail {
     margin-top: 1em;
     width: 100%;
     height: 230px;
     object-fit: cover;
-}
+} */
 
 .bb-fix {
     font-size: 0.6rem;
@@ -27,6 +27,17 @@ $partimages = $_URL.'/images/images_upload_forform/';
 #showlistimages {
     height: 555px;
     overflow: auto;
+}
+.img-thumbnail {
+    margin-top: 1em;
+    width: 100%;
+    height: 150px !important;
+    object-fit: cover;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
 }
 </style>
 
