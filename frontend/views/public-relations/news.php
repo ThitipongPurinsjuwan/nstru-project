@@ -6,12 +6,14 @@ use common\util\DateTimeCustom;
 use yii\widgets\LinkPager;
 ?>
 
-<section class="py-6">
+<section class="py-5 position-relative">
   <div class="container">
 
     <div class="row mb-5">
       <div class="col-md-12">
-        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> ข่าวประชาสัมพันธ์</h2>
+        <h2 class="underline "> ข่าวประชาสัมพันธ์ <span class="head-title-custom">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jqenj9df.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+          </span></h2>
         <div class="row">
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) : ?>
