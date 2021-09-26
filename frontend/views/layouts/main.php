@@ -22,6 +22,8 @@ AppAsset::register($this);
 $modeNews = PublicRelations::find()->where(['type' => 2])->all();
 $modelTypePlace = TypePlace::find()->all();
 $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
+
+$baseUrl = isset($_GET['r']) ? $_GET['r'] : '';
 ?>
 <?php $this->beginPage(); ?>
 
@@ -68,6 +70,9 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <!-- Plugins CSS -->
   <link rel="stylesheet" type="text/css" href="../../themes/template/assets/vendor/glightbox/css/glightbox.css">
 
+  <!-- lottie file -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
   <!-- Leaflet Map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
@@ -79,6 +84,9 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <header class="header">
     <!-- Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
+      <div class="lottie-bg">
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_ynwbrgau.json" background="transparent" speed="1" style="position: absolute; right: 0; left: 0; top:0; height:100vh; transform: translateY(-42%);" loop autoplay></lottie-player>
+      </div>
       <div class="container-fluid">
         <div class="d-flex align-items-center">
           <a class="navbar-brand py-0" style="margin-right: 30px;" href="index.php">
@@ -92,7 +100,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="homeDropdownMenuLink" href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สถานที่</a>
+              <a class="nav-link dropdown-toggle <?= strpos($baseUrl, 'place') ? 'nav-active' : '' ?>" id="homeDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สถานที่</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                 <?php foreach ($modelTypePlace as $modelType) : ?>
                   <a class="dropdown-item" href="index.php?r=place/index&amp;type=<?= $modelType->id ?>"> <?= $modelType->name ?></a>
@@ -100,8 +108,8 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
                 <!-- <a class="dropdown-item" href="">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a> -->
               </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=travel-map/index">แผนที่</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.php?r=file-list/index">วีดิโอน่าสนใจ</a></li>
+            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'travel') ? 'nav-active' : '' ?>" href="index.php?r=travel-map/index">แผนที่</a></li>
+            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'file-list') ? 'nav-active' : '' ?>" href="index.php?r=file-list/index">วีดิโอน่าสนใจ</a></li>
             <?php foreach ($menuMain as $menu) : ?>
               <li class="nav-item"><a class="nav-link" href="<?= $menu->m_link ?>"><?= $menu->m_name ?></a></li>
             <?php endforeach ?>

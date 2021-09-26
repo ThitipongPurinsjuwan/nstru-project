@@ -20,11 +20,17 @@ use common\util\DateTimeCustom;
   </div>
 </div>
 <!-- NEWS START -->
-<section class="py-5 bg-banner">
+<section class="py-5 position-relative">
+  <div class="lottie-bg">
+    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_2m1smtya.json" background="transparent" speed="1" style="position: absolute; right: 0; left: 0;" loop autoplay></lottie-player>
+  </div>
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
-        <h2>ข่าวประชาสัมพันธ์<span class="head-badge"></span></h2>
+        <h2>ข่าวประชาสัมพันธ์<span class="head-title-custom">
+            <lottie-player src="https://assets6.lottiefiles.com/private_files/lf30_4rmx4y8w.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+          </span>
+        </h2>
       </div>
       <div class="col-md-4 d-md-flex align-items-center justify-content-end">
         <a class="text-muted text-sm" href="<?= \Yii::$app->getUrlManager()->createUrl(['public-relations/index', 'type' => 1]) ?>">ดูข่าวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
@@ -51,15 +57,6 @@ use common\util\DateTimeCustom;
         <?php endforeach  ?>
       <?php endif  ?>
       <!-- blog item-->
-      <!-- <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-        <div class="card shadow border-0 h-100"><a href="post.html"><img class="img-fluid card-img-top" src="../assets/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="..." /></a>
-          <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a>
-            <h5 class="my-2"><a class="text-dark" href="post.html">Autumn fashion tips and tricks </a></h5>
-            <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i>January 16, 2016</p>
-            <p class="my-2 text-muted text-sm">Pellentesque habitant morbi tristique senectus. Vestibulum tortor quam, feugiat vitae, ultricies ege...</p><a class="btn btn-link ps-0" href="post.html">Read more<i class="fa fa-long-arrow-alt-right ms-2"></i></a>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
