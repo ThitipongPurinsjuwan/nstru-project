@@ -21,9 +21,9 @@ use common\util\DateTimeCustom;
 </div>
 <!-- NEWS START -->
 <section class="py-5 position-relative">
-  <div class="lottie-bg">
+  <!-- <div class="lottie-bg">
     <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_2m1smtya.json" background="transparent" speed="1" style="position: absolute; right: 0; left: 0;" loop autoplay></lottie-player>
-  </div>
+  </div> -->
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
@@ -114,7 +114,9 @@ use common\util\DateTimeCustom;
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
-        <h2>สถานที่ท่องเที่ยว<span class="head-badge"></span></h2>
+        <h2>สถานที่ท่องเที่ยว<span class="head-title-custom">
+            <lottie-player src="https://assets10.lottiefiles.com/datafiles/cnP9oh2DZFEzaA3/data.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+          </span></h2>
       </div>
       <!-- <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="index.php?r=place/index&amp;type=1">
           ดูสถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div> -->

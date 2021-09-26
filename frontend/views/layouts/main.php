@@ -23,7 +23,10 @@ $modeNews = PublicRelations::find()->where(['type' => 2])->all();
 $modelTypePlace = TypePlace::find()->all();
 $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
 
-$baseUrl = isset($_GET['r']) ? $_GET['r'] : '';
+$baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
+// echo "<pre>";
+// print_r(explode('/', $baseUrl));
+// echo "</pre>";
 ?>
 <?php $this->beginPage(); ?>
 
@@ -100,7 +103,7 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '';
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle <?= strpos($baseUrl, 'place') ? 'nav-active' : '' ?>" id="homeDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สถานที่</a>
+              <a class="nav-link dropdown-toggle <?= strpos($baseUrl, 'place') !== false ? 'nav-active' : '' ?>" id="homeDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สถานที่</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                 <?php foreach ($modelTypePlace as $modelType) : ?>
                   <a class="dropdown-item" href="index.php?r=place/index&amp;type=<?= $modelType->id ?>"> <?= $modelType->name ?></a>
@@ -108,10 +111,10 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '';
                 <!-- <a class="dropdown-item" href="">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a> -->
               </div>
             </li>
-            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'travel') ? 'nav-active' : '' ?>" href="index.php?r=travel-map/index">แผนที่</a></li>
-            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'file-list') ? 'nav-active' : '' ?>" href="index.php?r=file-list/index">วีดิโอน่าสนใจ</a></li>
+            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'travel') !== false ? 'nav-active' : '' ?>" href="index.php?r=travel-map/index">แผนที่</a></li>
+            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'file-list') !== false ? 'nav-active' : '' ?>" href="index.php?r=file-list/index">วีดิโอน่าสนใจ</a></li>
             <?php foreach ($menuMain as $menu) : ?>
-              <li class="nav-item"><a class="nav-link" href="<?= $menu->m_link ?>"><?= $menu->m_name ?></a></li>
+              <li class="nav-item"><a class="nav-link <?= strpos($menu->m_link, explode('/', $baseUrl)[0]) !== false ? 'nav-active' : '' ?>" href="<?= $menu->m_link ?>"><?= $menu->m_name ?></a></li>
             <?php endforeach ?>
           </ul>
         </div>
