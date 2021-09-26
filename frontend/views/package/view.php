@@ -34,7 +34,7 @@ $this->title = $model->name;
   <section class="py-6">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 overflow-hidden">
           <div class="text-block">
             <h3 class="mb-3">รายละเอียด</h3>
             <p class="text-muted"><?= $model->details ?></p>
@@ -53,7 +53,7 @@ $this->title = $model->name;
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="ps-xl-4">
+          <div class="ps-xl-4 sticky-top" style="top: 110px;">
             <div class="card border-0 shadow mb-5">
               <div class="card-header bg-gray-100 py-4 border-0">
                 <div class="d-flex align-items-center justify-content-between">
@@ -89,6 +89,9 @@ $this->title = $model->name;
               </div>
               <div class="card-body">
                 <ul class="list-unstyled mb-4">
+                  <li class="mb-2 text-sm">
+                    <i class="fa fa-user me-3" style="color:royalblue"></i><span class="text-muted"><?= $model->contact ?></span>
+                  </li>
                   <?php if ($model->phone !== '') : ?>
                     <li class="mb-2">
                       <a class="text-gray-00 text-sm text-decoration-none" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fa fa-phone me-3"></i><span class="text-muted"><?= $model->phone ?></span></a>

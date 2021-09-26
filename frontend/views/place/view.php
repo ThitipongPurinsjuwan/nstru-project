@@ -292,7 +292,7 @@ $this->title = $model->name;
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="ps-xl-4">
+          <div class="ps-xl-4 sticky-top" style="top: 110px;">
             <!-- Opening Hours      -->
             <div class="card border-0 shadow mb-5">
               <div class="card-header bg-gray-100 py-4 border-0">
@@ -336,11 +336,12 @@ $this->title = $model->name;
                   </div>
                   <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ms-3 text-muted flex-shrink-0">
                     <use xlink:href="#telephone-operator-1"></use>
+                  </svg>
                 </div>
               </div>
               <div class="card-body">
                 <ul class="list-unstyled mb-4">
-                  <li class="mb-2"> <i class="fa fa-user me-2" style="color:royalblue"></i> <span class="text-muted"><?= $model->contact ?></span></li>
+                  <li class="mb-2 text-sm"> <i class="fa fa-user me-3" style="color:royalblue"></i> <span class="text-muted"><?= $model->contact ?></span></li>
 
                   <?php if ($model->phone !== '') : ?>
                     <li class="mb-2"> <a class="text-blue text-sm text-decoration-none" href="tel:<?= Place::customizePhoneCall($model->phone) ?>"><i class="fa fa-phone me-3"></i><span class="text-muted"><?= $model->phone ?></span></a></li>
@@ -351,7 +352,7 @@ $this->title = $model->name;
                   <?php endif ?>
 
                   <?php if ($model->line_id !== '') : ?>
-                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fa fa-line me-3"></i><span class="text-muted"><?= $model->line_id ?></span></a></li>
+                    <li class="mb-2"> <a class=" text-sm text-decoration-none" href="http://line.me/ti/p/<?= $model->line_id ?>"><i class="fab fa-line me-3"></i><span class="text-muted"><?= $model->line_id ?></span></a></li>
                   <?php endif ?>
 
                   <li class="mb-2"> <a class=" text-sm text-decoration-none" target="_blank" href="https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=<?= $model->latitude ?>,<?= $model->longitude ?>"><i class="fa fa-location-arrow me-3" aria-hidden="true"></i><span class="text-muted">ขอเส้นทาง</span></a></li>

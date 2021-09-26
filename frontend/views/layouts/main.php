@@ -180,7 +180,7 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
       </div>
     </div>
     <!-- Copyright section of the footer-->
-    <div class="py-4 fw-light bg-gray-800 text-gray-300">
+    <div class="py-4 fw-light text-gray-300 gradient">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-6 text-center text-md-start">

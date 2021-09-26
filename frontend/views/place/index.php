@@ -17,9 +17,11 @@ $this->title = $nameOfType;
   <?= $this->render('_search', ['model' => $searchModel, 'type' => $type]); ?>
 
   <div class="place-index">
-    <section class="py-5">
+    <section class="py-5 position-relative">
       <div class="container">
-        <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> สถานที่แนะนำ</h2>
+        <h2 class="underline "> สถานที่แนะนำ <span class="head-title-custom">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jqenj9df.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+          </span></h2>
         <div class="row" style="margin-top: 50px;">
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) :  ?>

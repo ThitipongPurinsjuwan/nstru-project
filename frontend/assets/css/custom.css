@@ -140,7 +140,7 @@ a {
   overflow: hidden;
 }
 
-.lottie-bg.gradient {
+.gradient {
   background: rgb(59, 157, 213);
   background: linear-gradient(
     90deg,
@@ -248,6 +248,55 @@ a {
   border-radius: 6px;
 }
 
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #2b96da !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #2b96da !important;
+}
+
 .shadow {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 40%) !important;
+}
+
+.text-primary {
+  color: #39a1dc !important;
+}
+
+.text-secondary {
+  color: #dec176 !important;
+}
+
+.btn-primary {
+  background-color: #39a1dc !important;
+  border-color: #39a1dc !important;
+}
+
+.btn-outline-primary {
+  color: #39a1dc !important;
+  border-color: #39a1dc !important;
+}
+
+.btn-outline-primary:hover {
+  color: #fff !important;
+  background-color: #39a1dc !important;
+  border-color: #39a1dc !important;
+}
+
+.btn-link {
+  color: #39a1dc !important;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff !important;
+  background-color: #39a1dc !important;
+  border-color: #39a1dc !important;
+}
+
+.page-link {
+  color: #39a1dc !important;
 }
