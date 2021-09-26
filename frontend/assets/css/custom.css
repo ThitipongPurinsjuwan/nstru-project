@@ -86,6 +86,10 @@ a {
   align-items: center;
   border-top: 1px solid #ccc;
 }
+.color-footer{
+  background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(149,211,243,0.7234244039412641) 94%) !important;
+}
 
 .wrap-address {
   padding-left: 2em;
@@ -111,15 +115,15 @@ a {
 
 .bg-banner::before {
   content: "";
-  background: url(../img/bg-badge/b3.png) no-repeat;
-  background-position: right;
-  background-size: contain;
+  background: url(../img/bg-badge/5.png) no-repeat;
+ 
+  background-size: 100%;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0px;
   left: 0px;
-  opacity: 0.1;
+  opacity: 0.2;
   z-index: -1;
 }
 

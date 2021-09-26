@@ -130,7 +130,7 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
   <!-- ======================= Footer START -->
   <footer class="position-relative z-index-10 d-print-none">
     <!-- Main block - menus, subscribe form-->
-    <div class="py-0 bg-gray-100 text-muted">
+    <div class="py-0 color-footer bg-gray-100 text-muted">
       <section>
         <div class="container-fluid px-0">
           <div class="swiper-container instagram-slider">
