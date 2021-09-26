@@ -26,7 +26,9 @@ $this->title = 'Video';
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-8">
-          <h2 class="underline "> <i class=" fas fa-bullhorn" style=color:#4E66F8></i> วีดิโอแนะนำ</h2>
+          <h2 class="underline "> วีดิโอแนะนำ <span class="head-title-custom">
+              <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jqenj9df.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+            </span></h2>
         </div>
       </div>
       <div class="row g-4">

@@ -87,23 +87,21 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
   <header class="header">
     <!-- Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-      <div class="lottie-bg">
-        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_ynwbrgau.json" background="transparent" speed="1" style="position: absolute; right: 0; left: 0; top:0; height:100vh; transform: translateY(-42%);" loop autoplay></lottie-player>
-      </div>
+      <div class="lottie-bg gradient"></div>
       <div class="container-fluid">
         <div class="d-flex align-items-center">
           <a class="navbar-brand py-0" style="margin-right: 30px;" href="index.php">
             <img class="logo-support" src="../../images/TSRI.png" alt="">
             <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
-            <a>ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</a>
           </a>
+          <p class="text-white" style="margin-top: 0; margin-bottom: 0;">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</p>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <!-- Navbar Collapse -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle <?= strpos($baseUrl, 'place') !== false ? 'nav-active' : '' ?>" id="homeDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สถานที่</a>
+              <a class="nav-link dropdown-toggle text-white <?= strpos($baseUrl, 'place') !== false ? 'nav-active' : '' ?>" id="homeDropdownMenuLink" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สถานที่</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
                 <?php foreach ($modelTypePlace as $modelType) : ?>
                   <a class="dropdown-item" href="index.php?r=place/index&amp;type=<?= $modelType->id ?>"> <?= $modelType->name ?></a>
@@ -111,10 +109,10 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
                 <!-- <a class="dropdown-item" href="">Real Estate <span class="badge badge-info-light ms-1 mt-n1">New</span></a> -->
               </div>
             </li>
-            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'travel') !== false ? 'nav-active' : '' ?>" href="index.php?r=travel-map/index">แผนที่</a></li>
-            <li class="nav-item"><a class="nav-link <?= strpos($baseUrl, 'file-list') !== false ? 'nav-active' : '' ?>" href="index.php?r=file-list/index">วีดิโอน่าสนใจ</a></li>
+            <li class="nav-item"><a class="nav-link text-white <?= strpos($baseUrl, 'travel') !== false ? 'nav-active' : '' ?>" href="index.php?r=travel-map/index">แผนที่</a></li>
+            <li class="nav-item"><a class="nav-link text-white <?= strpos($baseUrl, 'file-list') !== false ? 'nav-active' : '' ?>" href="index.php?r=file-list/index">วีดิโอน่าสนใจ</a></li>
             <?php foreach ($menuMain as $menu) : ?>
-              <li class="nav-item"><a class="nav-link <?= strpos($menu->m_link, explode('/', $baseUrl)[0]) !== false ? 'nav-active' : '' ?>" href="<?= $menu->m_link ?>"><?= $menu->m_name ?></a></li>
+              <li class="nav-item"><a class="nav-link text-white <?= strpos($menu->m_link, explode('/', $baseUrl)[0]) !== false ? 'nav-active' : '' ?>" href="<?= $menu->m_link ?>"><?= $menu->m_name ?></a></li>
             <?php endforeach ?>
           </ul>
         </div>

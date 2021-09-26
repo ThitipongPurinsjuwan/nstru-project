@@ -110,7 +110,7 @@ use common\util\DateTimeCustom;
 <!-- RECOMMEND VDO END -->
 
 <!-- TRAVEL START -->
-<section class="py-5 bg-banner bg-banner-left">
+<section class="py-5 position-relative">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
@@ -177,11 +177,13 @@ use common\util\DateTimeCustom;
 <!-- POPULAR END -->
 
 <!-- PACKAGE START -->
-<section class="py-5 bg-banner">
+<section class="py-5 position-relative">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
-        <h2>แพ็คเกจท่องเที่ยว<span class="head-badge"></span></h2>
+        <h2>แพ็คเกจท่องเที่ยว<span class="head-title-custom">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jqenj9df.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+          </span></h2>
       </div>
       <div class="col-md-4 d-lg-flex align-items-center justify-content-end">
         <a class="text-muted text-sm" href="index.php?r=package/index">ดูแพ็คเกจทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a>
