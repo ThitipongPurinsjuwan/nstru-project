@@ -93,8 +93,16 @@ class SiteController extends Controller
   public function actionIndex()
   {
     $connection = \Yii::$app->db;
-    $modelBanner = CoverBanner::find()->one();
-    $modelBannerIMG = Images::find()->where(['key_images' => $modelBanner->image])->all();
+    $modelBanner = CoverBanner::find()->all();
+
+    $imgBannerArr = [];
+
+    foreach ($modelBanner as $banner) {
+      $modelImg = Images::find()->where(['key_images' => $banner->image])->all();
+      array_push($imgBannerArr, $modelImg);
+    }
+
+    // $modelBannerIMG = Images::find()->where(['key_images' => $modelBanner->image])->all();
 
     $model = TypePlace::find()->all();
     $modelPlace = Place::find()->all();
@@ -113,7 +121,8 @@ class SiteController extends Controller
       'modelPlace' => $modelPlace,
       'modeNews' => $modeNews,
       'modelPackage' => $modelPackage,
-      'modelBannerIMG' => $modelBannerIMG,
+      // 'modelBannerIMG' => $modelBannerIMG,
+      'imgBannerArr' => $imgBannerArr,
     ]);
   }
 
