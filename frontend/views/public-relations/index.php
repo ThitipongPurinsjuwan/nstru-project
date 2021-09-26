@@ -20,9 +20,11 @@ use yii\widgets\LinkPager;
 <div class="banner">
   <div class="swiper-container my-swiper">
     <div class="swiper-wrapper">
-      <?php if (count($modelBannerIMG) > 0) :  ?>
-        <?php foreach ($modelBannerIMG as $modelBannerIMG) : ?>
-          <div class="swiper-slide"><img class="" src="<?= '../../images/images_upload_forform/' . $modelBannerIMG->name ?>" alt="..." /></div>
+      <?php if (count($imgBannerArr) > 0) :  ?>
+        <?php foreach ($imgBannerArr as $modelBannerIMG) : ?>
+          <?php foreach ($modelBannerIMG as $modelBannerIMG) : ?>
+            <div class="swiper-slide"><img class="" src="<?= '../../images/images_upload_forform/' . $modelBannerIMG->name ?>" alt="..." /></div>
+          <?php endforeach  ?>
         <?php endforeach  ?>
       <?php endif  ?>
       <!-- <div class="swiper-slide"><img class="" src="../assets/img/download/5.jpg" alt="..."></div> -->

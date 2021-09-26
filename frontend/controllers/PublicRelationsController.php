@@ -39,9 +39,15 @@ class PublicRelationsController extends Controller
   public function actionIndex($type)
   {
     $model = PublicRelations::find()->where(['type' => $type]);
+    $modelBanner = CoverBanner::find()->all();
 
-    $modelBanner = CoverBanner::find()->one();
-    $modelBannerIMG = Images::find()->where(['key_images' => $modelBanner->image])->all();
+    $imgBannerArr = [];
+
+    foreach ($modelBanner as $banner) {
+      $modelImg = Images::find()->where(['key_images' => $banner->image])->all();
+      array_push($imgBannerArr, $modelImg);
+    }
+
     $pages = new Pagination(['totalCount' => $model->count(), 'pageSize' => 6]);
     $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
@@ -49,7 +55,7 @@ class PublicRelationsController extends Controller
       'type' => $type,
       'pages' => $pages,
       'model' => $model,
-      'modelBannerIMG' => $modelBannerIMG,
+      'imgBannerArr' => $imgBannerArr,
     ]);
   }
 
