@@ -164,7 +164,7 @@ use common\util\DateTimeCustom;
             <div class="d-flex align-items-center dark-overlay hover-scale-bg-image" style="min-height: 400px;"><img class="bg-image" src="<?= '../../images/images_upload_forform/' . $topPlace[$i]['img'] ?>" alt="">
               <div class="p-3 p-sm-5 text-white z-index-20">
                 <h4><?= $topPlace[$i]['name'] ?></h4>
-                <a class="btn btn-link text-reset ps-0 stretched-link text-decoration-none" href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $topPlace[$i]['id']]) ?>">รายละเอียดเพิ่มเติม<i class="fa fa-chevron-right ms-2"></i></a>
+                <a class="btn text-reset ps-0 stretched-link text-decoration-none" href="<?php echo \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $topPlace[$i]['id']]) ?>">รายละเอียดเพิ่มเติม<i class="fa fa-chevron-right ms-2"></i></a>
               </div>
             </div>
           </div>
