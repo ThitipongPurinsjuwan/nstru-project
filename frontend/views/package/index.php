@@ -23,7 +23,7 @@ $this->title = 'แพ็คเกจ';
           <!-- <h2>Our guides</h2> -->
         </div>
       </div>
-      <div class="col-11">
+      <div class="col-12">
         <div class="row gy-4">
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) :  ?>
