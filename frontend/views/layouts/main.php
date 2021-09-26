@@ -170,8 +170,10 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '';
             </div>
           </div>
           <div class="footer-logo">
-            <img class="logo" src="../../images/TSRI.png" alt="">
-            <img class="logo" src="../../images/Logo_nstru.png" alt="">
+            <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
+              <li class="list-inline-item mt-4"><img class="logo" src="../../images/TSRI.png" alt="..."></li>
+              <li class="list-inline-item mt-4"><img class="logo" src="../../images/Logo_nstru.png" alt="..."></li>
+            </ul>
           </div>
         </div>
       </div>
