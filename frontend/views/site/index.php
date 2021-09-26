@@ -87,7 +87,7 @@ use common\util\DateTimeCustom;
               <div class="card-img-overlay d-flex flex-column p-3 p-md-4 hover-animate">
                 <div class="w-100 mt-auto">
                   <!-- Card title -->
-                  <h4 class="text-white"><a href="<?= $vdo->file_name ?>" target="_blank" class="btn-link text-reset stretched-link"><?= $vdo->download_name ?></a></h4>
+                  <h4 class="text-white"><a href="<?= $vdo->file_name ?>" target="_blank" class="text-reset stretched-link"><?= $vdo->download_name ?></a></h4>
                   <!-- Card info -->
                 </div>
               </div>

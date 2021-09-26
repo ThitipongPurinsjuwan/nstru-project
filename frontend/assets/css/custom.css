@@ -86,9 +86,13 @@ a {
   align-items: center;
   border-top: 1px solid #ccc;
 }
-.color-footer{
-  background: rgb(255,255,255);
-background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(149,211,243,0.7234244039412641) 94%) !important;
+.color-footer {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(149, 211, 243, 0.7234244039412641) 94%
+  ) !important;
 }
 
 .wrap-address {
@@ -116,7 +120,7 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(149,211,243,0.72
 .bg-banner::before {
   content: "";
   background: url(../img/bg-badge/5.png) no-repeat;
- 
+
   background-size: 100%;
   position: absolute;
   top: 0;
