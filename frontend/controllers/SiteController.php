@@ -102,8 +102,6 @@ class SiteController extends Controller
       array_push($imgBannerArr, $modelImg);
     }
 
-    // $modelBannerIMG = Images::find()->where(['key_images' => $modelBanner->image])->all();
-
     $model = TypePlace::find()->all();
     $modelPlace = Place::find()->all();
     $modelPackage = Package::find()->limit(4)->all();
@@ -121,7 +119,6 @@ class SiteController extends Controller
       'modelPlace' => $modelPlace,
       'modeNews' => $modeNews,
       'modelPackage' => $modelPackage,
-      // 'modelBannerIMG' => $modelBannerIMG,
       'imgBannerArr' => $imgBannerArr,
     ]);
   }
