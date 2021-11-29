@@ -131,7 +131,7 @@ use common\util\DateTimeCustom;
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) :  ?>
               <!-- Slides-->
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="h-auto px-2">
                   <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0">
                     <a class="tile-link" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/index', 'type' => $model->id]) ?>"></a>

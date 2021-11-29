@@ -80,6 +80,13 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <script src="../../js/mapBox/Leaflet.Control.Custom.js"></script>
+  <style>
+    @media only screen and (min-width: 769px) {
+      .nowrap-custom {
+        white-space: nowrap;
+      }
+    }
+  </style>
 </head>
 <?php $this->beginBody() ?>
 
@@ -169,7 +176,7 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
               <p class="address">แฟ็กซ์. 075-392031​</p>
             </div>
           </div>
-          <div class="footer-logo">
+          <div class="footer-logo nowrap-custom">
             <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
               <li class="list-inline-item mt-4"><img class="logo" src="../../images/ov.png" alt="..."></li>
               <li class="list-inline-item mt-4"><img class="logo" src="../../images/TSRI.png" alt="..."></li>
