@@ -82,7 +82,7 @@ use common\util\DateTimeCustom;
 
           <!-- Card item START -->
           <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card shadow border-0 h-100 overflow-hidden" style="height: 40em !important;" data-jarallax-video="<?= str_replace("watch?v=", "embed/", $vdo->file_name) ?>" data-speed="1.2">
+            <div class="card shadow border-0 h-100 overflow-hidden" style="height: 17em !important;" object-fit="cover" data-jarallax-video="<?= str_replace("watch?v=", "embed/", $vdo->file_name) ?>" data-speed="1.2">
               <!-- Card Image overlay -->
               <div class="card-img-overlay d-flex flex-column p-3 p-md-4 hover-animate">
                 <div class="w-100 mt-auto">
@@ -123,23 +123,29 @@ use common\util\DateTimeCustom;
       <!-- <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm" href="index.php?r=place/index&amp;type=1">
           ดูสถานที่ท่องเที่ยวทั้งหมด<i class="fas fa-angle-double-right ms-2"></i></a></div> -->
     </div>
-    <div class="swiper-container guides-slider mx-n2 pt-3">
+    <div class="guides-slider mx-n2 pt-3" loop="false">
       <!-- Additional required wrapper-->
-      <div class="swiper-wrapper pb-5">
-        <?php if (count($model) > 0) :  ?>
-          <?php foreach ($model as $model) :  ?>
-            <!-- Slides-->
-            <div class="swiper-slide h-auto px-2">
-              <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0">
-                <a class="tile-link" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/index', 'type' => $model->id]) ?>"></a>
-                <img class="bg-image" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
-                <div class="card-body overlay-content">
-                  <h6 class="card-title text-shadow text-uppercase"><?= $model->name ?></h6>
+      <div class="pb-5">
+        <div class="row">
+
+          <?php if (count($model) > 0) :  ?>
+            <?php foreach ($model as $model) :  ?>
+              <!-- Slides-->
+              <div class="col-md-4">
+                <div class="h-auto px-2">
+                  <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0">
+                    <a class="tile-link" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/index', 'type' => $model->id]) ?>"></a>
+                    <img class="bg-image" src="<?= '../../images/images_upload_forform/' . $model->name_img_important ?>" alt="Card image">
+                    <div class="card-body overlay-content">
+                      <h6 class="card-title text-shadow text-uppercase"><?= $model->name ?></h6>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php endforeach  ?>
-        <?php endif  ?>
+            <?php endforeach  ?>
+          <?php endif  ?>
+        </div>
+
       </div>
       <div class="swiper-pagination d-md-none"> </div>
     </div>
@@ -234,3 +240,8 @@ use common\util\DateTimeCustom;
   </div>
 </section>
 <!-- PACKAGE END -->
+
+<?php
+
+
+?>

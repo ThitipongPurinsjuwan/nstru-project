@@ -41,7 +41,7 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
 
   <?php $this->registerCsrfMetaTags(); ?>
 
-  <title> ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</title>
+  <title> ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเชิงเกษตรนิเวศ​</title>
   <title><?= Html::encode($this->title); ?></title>
 
   <?php $this->head(); ?>
@@ -91,10 +91,11 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
       <div class="container-fluid">
         <div class="d-flex align-items-center">
           <a class="navbar-brand py-0" style="margin-right: 30px;" href="index.php">
+            <img class="logo-support" src="../../images/ov.png" alt="">
             <img class="logo-support" src="../../images/TSRI.png" alt="">
             <img class="logo-support" src="../../images/Logo_nstru.png" alt="">
           </a>
-          <p class="text-white" style="margin-top: 0; margin-bottom: 0;">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</p>
+          <p class="text-white" style="margin-top: 0; margin-bottom: 0;">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเชิงเกษตรนิเวศ​</p>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <!-- Navbar Collapse -->
@@ -162,16 +163,15 @@ $baseUrl = isset($_GET['r']) ? $_GET['r'] : '--';
         <div class="wrap-footer-address">
           <div class="footer-address">
             <div class="wrap-address">
-              <div class="label">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</div>
+              <div class="label">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเชิงเกษตรนิเวศ​</div>
               <p class="address">มหาวิทยาลัยราชภัฏนครศรีธรรมราช 1 ม. 4 ต.ท่างิ้ว อ.เมืองนครศรีธรรมราช จ.นครศรีธรรมราช 80280 </p>
               <p class="address">โทร. 075-392039</p>
               <p class="address">แฟ็กซ์. 075-392031​</p>
-              <p class="address">อีเมล. www@nstru.ac.th​</p>
-              <p class="address">ติดต่อ.​ คุณพรศิลป์​ บัวงาม​ 091-8262827​</p>
             </div>
           </div>
           <div class="footer-logo">
             <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
+              <li class="list-inline-item mt-4"><img class="logo" src="../../images/ov.png" alt="..."></li>
               <li class="list-inline-item mt-4"><img class="logo" src="../../images/TSRI.png" alt="..."></li>
               <li class="list-inline-item mt-4"><img class="logo" src="../../images/Logo_nstru.png" alt="..."></li>
             </ul>

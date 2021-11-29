@@ -64,7 +64,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="../../images/rajabhat-logo.png" type="image/x-icon" />
   <?php $this->registerCsrfMetaTags(); ?>
-  <title> ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</title>
+  <title> ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเชิงเกษตรนิเวศ​</title>
   <title><?= Html::encode($this->title); ?></title>
   <?php $this->head(); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
@@ -333,7 +333,7 @@ $menuMain = MenuMain::find()->where(['m_status' => 'Y'])->all();
           <img class="logo-footer" src="../../images/Logo_nstru.png" alt="">
         </div>
         <div class="col-md-6 d-flex justify-content-end align-items-center">
-          <h5 class="text-white">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเกษตรเชิงนิเวศ​</h5>
+          <h5 class="text-white">ระบบสารสนเทศเพื่อการจัดการแหล่งท่องเที่ยวเชิงเกษตรนิเวศ​</h5>
         </div>
       </div>
       <!-- About and Newsletter END -->
