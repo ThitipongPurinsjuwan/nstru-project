@@ -43,7 +43,7 @@ class TravelMapController extends Controller
 
     $objTypePlace = $this->getObjTypePlace($modelType);
     $iconsMap = $this->getIconsMap($modelType);
-    // dd($modelPlace);
+    dd($modelPlace);
     return $this->render('index', [
       'modelPlace' => $modelPlace,
       'modelType' => $modelType,
