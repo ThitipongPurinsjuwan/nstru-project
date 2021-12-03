@@ -26,24 +26,21 @@ class TravelMapController extends Controller
 
   public function actionIndex()
   {
-    $modelPlaceTemp = Place::find()->asArray()->all();
+    $modelPlace = Place::find()->asArray()->all();
     $modelType = TypePlace::find()->asArray()->all();
 
-    for ($i = 0; $i < count($modelPlaceTemp); $i++) {
-      if (is_numeric($modelPlaceTemp[$i]['latitude']) && is_numeric($modelPlaceTemp[$i]['longitude'])) {
-        unset($modelPlaceTemp[$i]);
-        continue;
+    for ($i = 0; $i < count($modelPlace); $i++) {
+      $modelPlace[$i]['type_name'] = $this->getNameTypePlaceWithId($modelPlace[$i]['type'], $modelType);
+      $modelPlace[$i]['icon'] = '../../images/image_maker/' . $this->getTypeImage($modelPlace[$i]['type'], $modelType);
+
+      if (!(is_numeric($modelPlace[$i]['latitude']) && is_numeric($modelPlace[$i]['longitude']))) {
+        unset($modelPlace[$i]);
       }
-
-      $modelPlaceTemp[$i]['type_name'] = $this->getNameTypePlaceWithId($modelPlaceTemp[$i]['type'], $modelType);
-      $modelPlaceTemp[$i]['icon'] = '../../images/image_maker/' . $this->getTypeImage($modelPlaceTemp[$i]['type'], $modelType);
     }
-
-    $modelPlace = array_values($modelPlaceTemp);
 
     $objTypePlace = $this->getObjTypePlace($modelType);
     $iconsMap = $this->getIconsMap($modelType);
-    dd($modelPlace);
+    // dd($modelPlace);
     return $this->render('index', [
       'modelPlace' => $modelPlace,
       'modelType' => $modelType,
