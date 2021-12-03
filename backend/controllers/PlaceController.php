@@ -63,7 +63,7 @@ class PlaceController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate() 
     {
         $model = new Place();
 
@@ -85,6 +85,27 @@ class PlaceController extends Controller
         ]);
     }
 
+    public function actionCreateOtop() 
+    {
+        $model = new Place();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $image = Images::find()->where(['key_images' => $model->key_images])->andWhere(['important'=>1])->one();
+            $update_image = Place::find()->where(['id' => $model->id])->one();
+            	if($update_image!=null){
+			$update_image->name_img_important = $image->name;
+			$update_image->save();
+            }
+
+
+            return $this->redirect(['view', 'id' => $model->id, 'type' => $model->type]);
+        }
+
+        return $this->render('create-otop', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Updates an existing Place model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -104,7 +125,18 @@ class PlaceController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionUpdateOtop($id)
+    {
+        $model = $this->findModel($id);
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id, 'type' => $model->type]);
+        }
+
+        return $this->render('update-otop', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Deletes an existing Place model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

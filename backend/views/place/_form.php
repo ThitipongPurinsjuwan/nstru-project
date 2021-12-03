@@ -51,6 +51,7 @@ $type = $_GET['type'];
             <?= $form->field($model, 'activity')->textArea(['maxlength' => true,'rows' => '3','class'=>'summernote']) ?>
         </div>
 
+        
 
         <div class="col-md-6">
 

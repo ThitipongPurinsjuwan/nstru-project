@@ -166,7 +166,8 @@ $server = $_SERVER['REQUEST_URI'];
   <meta charset="<?= Yii::$app->charset; ?>">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="../../images/favicon_io/favicon.ico" type="image/x-icon" />
+  <!-- <link rel="icon" href="../../images/favicon_io/favicon.ico" type="image/x-icon" /> -->
+  <link rel="shortcut icon" href="../../images/rajabhat-logo.png">
   <?php $this->registerCsrfMetaTags(); ?>
   <title><?= Html::encode($this->title); ?></title>
   <?php $this->head(); ?>

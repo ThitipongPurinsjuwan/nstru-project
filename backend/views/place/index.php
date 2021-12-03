@@ -21,53 +21,129 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card card-success">
                 <div class="card-body ribbon">
+                
                     <p>
-                        <?= Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
+                        <?php 
+                        if ($type == 75) {
+                          echo  Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create-otop','type'=>$type], ['class' => 'btn btn-success']);
+                        } else {
+                          echo  Html::a(Yii::t('app', 'เพิ่มข้อมูล'), ['create','type'=>$type], ['class' => 'btn btn-success']);
+                        }
+                         
+                        ?>
                     </p>
 
                     <?php Pjax::begin(); ?>
                     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
-                    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        // 'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            // 'id',
-            // 'type',
-            'name',
-            // 'details',
-            // 'activity',
-            //'price',
-            'business_day',
-            [
-                                    'attribute'=>'business_hours',
+                    <?php 
+                        if ($type == 75) {
+                          echo  GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            // 'filterModel' => $searchModel,
+                            'columns' => [
+                                ['class' => 'yii\grid\SerialColumn'],
+                    
+                                // 'id',
+                                // 'type',
+                                'name',
+                                [
+                                    'attribute'=>'date_create',
                                     'format'=>'raw',    
                                     'value' => function($model)
                                     {
-                                        if(!empty($model->business_hours))
+                                        if(!empty($model->date_create))
                                         {
-                                            return str_replace(","," - ",$model->business_hours)." น."; 
+                                            return DateThaiTime($model->date_create);
                                         }
                                     },
                                 ],
-              'price',
-                                 'contact',
-            //'business_hours',
-            //'key_images',
-            //'amphure',
-            //'district',
-            //'province',
-            //'latitude',
-            //'longitude',
-            //'status',
-            //'date_create',
-            //'user_create',
+                                [
+                                    'attribute'=>'user_create',
+                                    'format'=>'raw',    
+                                    'value' => function($model)
+                                    {
+                                        if(!empty($model->user_create))
+                                        {
+                                            $query = Users::find()
+                                            ->where(['id'=>$model->user_create])->one();
+                                            return $query->name;
+                                        }
+                                    },
+                                ],
+                    
+                                ['class' => 'yii\grid\ActionColumn',
+                                'buttons' => [
+                                    'view' => function ($url, $model, $key) {
+                                        return Html::a('<i class="fas fa-eye"></i>',
+                                            ['place/view', 'id' =>$model->id],['title' => 'View']
+                                        );
+                                    },
+                                    'update' => function ($url, $model, $key) {
+                                       
+                                        return Html::a('<i class="fas fa-pencil-alt"></i>',
+                                            ['place/update-otop', 'id' => $model->id],['title' => 'Update']
 
-            ['class' => 'yii\grid\ActionColumn'],
+                                        );
+                                    },
+                                   
+                                    'delete' => function ($url, $model, $key) {
+                                        
+                                    return  Html::a('<i class="fas fa-trash"></i>', ['delete', 'id' => $model->id], ['data' => ['confirm' => Yii::t('app', 'ต้องการลบข้อมูลชุดนี้ใช่หรือไม่?'),'method' => 'post','title'=>'Delete']]);
+                                           
+                                    },
+                                
+
+                                ],
+                                // 'options'=> ['style'=>'width:10%;'],
+                            ],
         ],
-    ]); ?>
+                        ]);
+
+                        } else {
+                          echo GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            // 'filterModel' => $searchModel,
+                            'columns' => [
+                                ['class' => 'yii\grid\SerialColumn'],
+                    
+                                // 'id',
+                                // 'type',
+                                'name',
+                                // 'details',
+                                // 'activity',
+                                //'price',
+                                'business_day',
+                                [
+                                                        'attribute'=>'business_hours',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->business_hours))
+                                                            {
+                                                                return str_replace(","," - ",$model->business_hours)." น."; 
+                                                            }
+                                                        },
+                                                    ],
+                                  'price',
+                                                     'contact',
+                                //'business_hours',
+                                //'key_images',
+                                //'amphure',
+                                //'district',
+                                //'province',
+                                //'latitude',
+                                //'longitude',
+                                //'status',
+                                //'date_create',
+                                //'user_create',
+                    
+                                ['class' => 'yii\grid\ActionColumn'],
+                            ],
+                        ]);
+                        }
+                        
+                        ?>
 
                     <?php Pjax::end(); ?>
                 </div>

@@ -19,13 +19,40 @@ $this->title = $nameOfType;
   <div class="place-index">
     <section class="py-5 position-relative">
       <div class="container">
-        <h2 class="underline "> สถานที่แนะนำ <span class="head-title-custom">
+        <h2 class="underline "> <?= $nameOfType;?>แนะนำ<span class="head-title-custom">
             <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jqenj9df.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
           </span></h2>
         <div class="row" style="margin-top: 50px;">
           <?php if (count($model) > 0) :  ?>
             <?php foreach ($model as $model) :  ?>
-              <!-- venue item-->
+
+            <?php if ($type == 75) { ?>
+
+            <!-- venue item-->
+            <?php 
+                    if ($model->facebook_link != '') {
+                      $link = $model->facebook_link;
+                    } else {
+                      $link = "#";
+                    }
+                    
+                      ?>
+            <div class="col-sm-6 col-lg-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); min-height: 300px;"><a class="tile-link" href="<?= $link ?>"></a>
+                  </div>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                    
+                      <h5 class="card-title"><a href="<?php echo $link; ?>" target="_blank" class="btn-link text-reset fw-bold"><?= $model->name ?></a></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <?php  } else { ?>
+              
+                <!-- venue item-->
               <div class="col-sm-6 col-lg-4 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
                 <div class="card h-100 border-0 shadow">
                   <div class="card-img-top overflow-hidden dark-overlay bg-cover" style="background-image: url(<?= '../../images/images_upload_forform/' . $model->name_img_important ?>); min-height: 300px;"><a class="tile-link" href="<?= \Yii::$app->getUrlManager()->createUrl(['place/view', 'id' => $model->id]) ?>"></a>
@@ -47,6 +74,9 @@ $this->title = $nameOfType;
                 </div>
               </div>
 
+
+              <?php  } ?>
+              
             <?php endforeach  ?>
           <?php endif ?>
         </div>

@@ -163,6 +163,7 @@ function titlePlace($type){
 // 	   2=>"ร้านอาหาร",
 // 	   3=>"ที่พัก",
 //    );
+
    $query = TypePlace::find()
 	->where(['id'=>$type])->one();
 	return $query->name;

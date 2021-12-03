@@ -16,6 +16,14 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'ข้อมูล'.
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+
+<style>
+.sty {
+ height: 270px;
+}
+</style>
+
+
 <div class="place-view">
 
     <h4><?= Html::encode($this->title) ?></h4>
@@ -27,7 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="card-body ribbon">
 
                             <p>
-                                <?= Html::a(Yii::t('app', 'แก้ไข'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                                <?php
+                                if ($type == 75) {
+                                    echo  Html::a(Yii::t('app', 'แก้ไข'), ['update-otop', 'id' => $model->id], ['class' => 'btn btn-primary']);
+                                  } else {
+                                    echo  Html::a(Yii::t('app', 'แก้ไข'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+                                  }
+                                 ?>
                                 <?= Html::a(Yii::t('app', 'ยกเลิก'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -37,121 +51,175 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
                             </p>
 
-                            <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            // 'id',
-            // 'type',
-            'name',
-            'details:html',
-            'activity:html',
-           
-            // 'key_images',
-            // 'amphure',
-             [
-                                    'attribute'=>'amphure',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->amphure))
-                                        {
-                                            $query = Amphures::find()
-                                            ->where(['id'=>$model->amphure])->one();
-                                            return $query->name_th;
-                                        }
-                                    },
-                                ],
+                            <?php 
+                        if ($model->type == 75) {
+                          echo  DetailView::widget([
+                            'model' => $model,
+                            'attributes' => [
+                                // 'id',
+                                // 'type',
+                                'name',
+                                
+                                                    // 'facebook_link:text',
+                                                    [
+                                                        'attribute'=>'facebook_link',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->facebook_link))
+                                                            {
+                                                                return wordwrap($model->facebook_link,30,"<br />",TRUE);
+                                                            }
+                                                        },
+                                                    ],
+                                                    'latitude',
+                                                    'longitude',
+                               
+                                                    [
+                                                        'attribute'=>'date_create',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->date_create))
+                                                            {
+                                                                return DateThaiTime($model->date_create);
+                                                            }
+                                                        },
+                                                    ],
+                                                     [
+                                                        'attribute'=>'user_create',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->user_create))
+                                                            {
+                                                                $query = Users::find()
+                                                                ->where(['id'=>$model->user_create])->one();
+                                                                return $query->name;
+                                                            }
+                                                        },
+                                                    ],
+                            ],
+                        ]);
+                        } else {
+                          echo  DetailView::widget([
+                            'model' => $model,
+                            'attributes' => [
+                                // 'id',
+                                // 'type',
+                                'name',
+                                'details:html',
+                                'activity:html',
+                               
+                                // 'key_images',
+                                // 'amphure',
                                  [
-                                    'attribute'=>'district',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->district))
-                                        {
-                                            $query = Districts::find()
-                                            ->where(['id'=>$model->district])->one();
-                                            return $query->name_th;
-                                        }
-                                    },
-                                ],
+                                                        'attribute'=>'amphure',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->amphure))
+                                                            {
+                                                                $query = Amphures::find()
+                                                                ->where(['id'=>$model->amphure])->one();
+                                                                return $query->name_th;
+                                                            }
+                                                        },
+                                                    ],
+                                                     [
+                                                        'attribute'=>'district',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->district))
+                                                            {
+                                                                $query = Districts::find()
+                                                                ->where(['id'=>$model->district])->one();
+                                                                return $query->name_th;
+                                                            }
+                                                        },
+                                                    ],
+                                                       [
+                                                        'attribute'=>'province',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->province))
+                                                            {
+                                                                $query = Provinces::find()
+                                                                ->where(['id'=>$model->province])->one();
+                                                                return $query->name_th;
+                                                            }
+                                                        },
+                                                    ],
+                                                     'contact',
+                                                      'facebook_link',
+                                                       'line_id',
+                                                        'phone',
+                                'latitude',
+                                'longitude',
+                               
+                               
+                                'business_day',
+                                [
+                                                        'attribute'=>'business_hours',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->business_hours))
+                                                            {
+                                                                return str_replace(","," - ",$model->business_hours)." น."; 
+                                                            }
+                                                        },
+                                                    ],
+                                  'price',
                                    [
-                                    'attribute'=>'province',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->province))
-                                        {
-                                            $query = Provinces::find()
-                                            ->where(['id'=>$model->province])->one();
-                                            return $query->name_th;
-                                        }
-                                    },
-                                ],
-                                 'contact',
-                                  'facebook_link',
-                                   'line_id',
-                                    'phone',
-            'latitude',
-            'longitude',
-           
-           
-            'business_day',
-            [
-                                    'attribute'=>'business_hours',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->business_hours))
-                                        {
-                                            return str_replace(","," - ",$model->business_hours)." น."; 
-                                        }
-                                    },
-                                ],
-              'price',
-               [
-                                    'attribute'=>'status',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->status))
-                                        {
-                                            return ($model->status==0) ? 'ปิดร้านแล้ว':'ร้านเปิดปกติตามเวลาทำการ';
-                                        }
-                                    },
-                                ],
-                                   [
-                                    'attribute'=>'date_create',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->date_create))
-                                        {
-                                            return DateThaiTime($model->date_create);
-                                        }
-                                    },
-                                ],
-                                 [
-                                    'attribute'=>'user_create',
-                                    'format'=>'raw',    
-                                    'value' => function($model)
-                                    {
-                                        if(!empty($model->user_create))
-                                        {
-                                            $query = Users::find()
-                                            ->where(['id'=>$model->user_create])->one();
-                                            return $query->name;
-                                        }
-                                    },
-                                ],
-        ],
-    ]) ?>
-
+                                                        'attribute'=>'status',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->status))
+                                                            {
+                                                                return ($model->status==0) ? 'ปิดร้านแล้ว':'ร้านเปิดปกติตามเวลาทำการ';
+                                                            }
+                                                        },
+                                                    ],
+                                                       [
+                                                        'attribute'=>'date_create',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->date_create))
+                                                            {
+                                                                return DateThaiTime($model->date_create);
+                                                            }
+                                                        },
+                                                    ],
+                                                     [
+                                                        'attribute'=>'user_create',
+                                                        'format'=>'raw',    
+                                                        'value' => function($model)
+                                                        {
+                                                            if(!empty($model->user_create))
+                                                            {
+                                                                $query = Users::find()
+                                                                ->where(['id'=>$model->user_create])->one();
+                                                                return $query->name;
+                                                            }
+                                                        },
+                                                    ],
+                            ],
+                        ]);
+                        }
+                        
+                        ?>
+                        
 
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-info">
+                    <div class="card card-info <?php echo $sty = ($model->type == 75) ? "sty" : " " ;?>" >
                         <div class="card-body ribbon">
                          <h6><b>ภาพประกอบ</b></h6>
                             <input type="hidden" class="get_key_images" value="<?=$model->key_images;?>">
