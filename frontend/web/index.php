@@ -16,6 +16,20 @@ $config = yii\helpers\ArrayHelper::merge(
 
 (new yii\web\Application($config))->run();
 
+function d($data)
+{
+  echo "<pre>";
+  print_r($data);
+  echo "</pre>";
+}
+function dd($data)
+{
+  echo "<pre>";
+  print_r($data);
+  echo "</pre>";
+  exit;
+}
+
 function DateThai($strDate)
 {
   $strYear = date("Y", strtotime($strDate)) + 543;
